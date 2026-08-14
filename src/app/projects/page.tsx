@@ -1,39 +1,38 @@
+import { PageHeader } from "../../components/page-header";
 import { projects } from "../../data/portfolio";
 
 export default function ProjectsPage() {
   return (
     <section className="mx-auto w-full max-w-6xl px-5 py-14 sm:px-8">
-      <div className="max-w-3xl">
-        <p className="text-sm font-semibold uppercase tracking-wide text-brand-muted">
-          Selected work
-        </p>
-        <h1 className="mt-3 text-4xl font-semibold text-brand-ink">Projects</h1>
-        <p className="mt-4 text-lg leading-8 text-brand-muted">
-          A starting collection of work samples. Replace these placeholders with
-          your strongest real projects when you are ready.
-        </p>
-      </div>
+      <PageHeader
+        eyebrow="Project index"
+        title="Projects"
+        description="A focused view of web builds, funnel work, and multimedia assets that show how development and design come together in practical client-facing output."
+      />
 
       <div className="mt-10 grid gap-5 lg:grid-cols-3">
-        {projects.map((project) => (
+        {projects.map((project, index) => (
           <article
             key={project.title}
-            className="flex flex-col rounded border border-brand-muted/20 bg-white p-6 shadow-sm"
+            className="flex flex-col border border-brand-ink/15 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-brand-ink/40 hover:shadow-lg"
           >
-            <h2 className="text-xl font-semibold text-brand-ink">
+            <p className="text-xs font-black uppercase tracking-[0.24em] text-brand-muted/60">
+              Project {String(index + 1).padStart(2, "0")}
+            </p>
+            <h2 className="mt-5 text-2xl font-black uppercase leading-tight text-brand-ink">
               {project.title}
             </h2>
-            <p className="mt-3 flex-1 leading-7 text-brand-muted">
+            <p className="mt-4 flex-1 leading-7 text-brand-muted/80">
               {project.description}
             </p>
-            <p className="mt-4 border-l-2 border-brand-muted pl-3 text-sm font-medium leading-6 text-brand-ink">
+            <p className="mt-5 border-l-4 border-brand-ink pl-4 text-sm font-semibold leading-6 text-brand-ink">
               {project.impact}
             </p>
             <div className="mt-5 flex flex-wrap gap-2">
               {project.stack.map((item) => (
                 <span
                   key={item}
-                  className="rounded bg-brand-muted/10 px-3 py-1 text-xs font-semibold text-brand-muted"
+                  className="border border-brand-ink/10 bg-brand-muted/10 px-3 py-1 text-xs font-bold uppercase tracking-wide text-brand-muted"
                 >
                   {item}
                 </span>

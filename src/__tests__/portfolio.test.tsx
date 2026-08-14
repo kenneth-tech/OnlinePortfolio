@@ -83,6 +83,10 @@ describe("portfolio pages", () => {
       "href",
       "/contact",
     );
+    expect(screen.getByText("Portfolio console")).toBeInTheDocument();
+    expect(screen.getByText("4+ Years")).toBeInTheDocument();
+    expect(screen.getByText("Web + Multimedia")).toBeInTheDocument();
+    expect(screen.getByText("Remote-ready")).toBeInTheDocument();
   });
 
   test("renders an empty featured project state", () => {
@@ -98,6 +102,7 @@ describe("portfolio pages", () => {
     expect(
       screen.getByRole("heading", { name: "Projects" }),
     ).toBeInTheDocument();
+    expect(screen.getByText("Project index")).toBeInTheDocument();
     for (const project of projects) {
       expect(screen.getByText(project.title)).toBeInTheDocument();
     }
@@ -109,6 +114,7 @@ describe("portfolio pages", () => {
     expect(
       screen.getByRole("heading", { name: "Experience" }),
     ).toBeInTheDocument();
+    expect(screen.getByText("Career timeline")).toBeInTheDocument();
     for (const experience of experiences) {
       expect(screen.getByText(experience.role)).toBeInTheDocument();
     }
@@ -121,6 +127,7 @@ describe("portfolio pages", () => {
     render(<SkillsPage />);
 
     expect(screen.getByRole("heading", { name: "Skills" })).toBeInTheDocument();
+    expect(screen.getByText("Capability matrix")).toBeInTheDocument();
     for (const group of skillGroups) {
       expect(screen.getByText(group.title)).toBeInTheDocument();
     }
@@ -130,6 +137,7 @@ describe("portfolio pages", () => {
     render(<ContactPage />);
 
     expect(screen.getByRole("heading", { name: "Contact" })).toBeInTheDocument();
+    expect(screen.getByText("Availability signal")).toBeInTheDocument();
     expect(screen.getByRole("link", { name: profile.email })).toHaveAttribute(
       "href",
       `mailto:${profile.email}`,
