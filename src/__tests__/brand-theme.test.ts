@@ -23,4 +23,8 @@ describe("brand theme", () => {
   test("uses deep purple for the navbar background", () => {
     expect(siteHeader).toContain("bg-brand-ink");
   });
+
+  test("uses white for the page background", () => {
+    expect(globalsCss).toContain("--background: #ffffff");
+  });
 });

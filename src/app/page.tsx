@@ -36,7 +36,7 @@ export default function HomePage() {
   const featuredProject = projects.at(0);
 
   return (
-    <div className="bg-brand-surface/45">
+    <div className="bg-white">
       <section className="mx-auto grid min-h-[calc(100vh-168px)] w-full max-w-6xl items-center gap-10 px-5 py-16 sm:px-8 lg:grid-cols-[1.1fr_0.9fr]">
         <div>
           <p className="text-sm font-semibold uppercase tracking-wide text-brand-muted">
