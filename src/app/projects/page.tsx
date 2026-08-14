@@ -26,14 +26,14 @@ export default function ProjectsPage() {
             <p className="mt-3 flex-1 leading-7 text-brand-muted">
               {project.description}
             </p>
-            <p className="mt-4 border-l-2 border-brand-accent pl-3 text-sm font-medium leading-6 text-brand-ink">
+            <p className="mt-4 border-l-2 border-brand-muted pl-3 text-sm font-medium leading-6 text-brand-ink">
               {project.impact}
             </p>
             <div className="mt-5 flex flex-wrap gap-2">
               {project.stack.map((item) => (
                 <span
                   key={item}
-                  className="rounded bg-brand-surface px-3 py-1 text-xs font-semibold text-brand-muted"
+                  className="rounded bg-brand-muted/10 px-3 py-1 text-xs font-semibold text-brand-muted"
                 >
                   {item}
                 </span>
@@ -47,7 +47,7 @@ export default function ProjectsPage() {
                     href={link.href}
                     target="_blank"
                     rel="noreferrer"
-                    className="text-sm font-semibold text-brand-muted outline-none hover:text-brand-ink focus-visible:rounded focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-4"
+                    className="text-sm font-semibold text-brand-muted outline-none hover:text-brand-ink focus-visible:rounded focus-visible:ring-2 focus-visible:ring-brand-muted focus-visible:ring-offset-4"
                   >
                     {link.label}
                   </a>

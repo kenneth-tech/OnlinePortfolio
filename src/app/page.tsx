@@ -51,13 +51,13 @@ export default function HomePage() {
           <div className="mt-8 flex flex-wrap gap-3">
             <Link
               href="/projects"
-              className="rounded bg-brand-accent px-5 py-3 text-sm font-semibold text-brand-ink outline-none transition hover:bg-brand-surface focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-4"
+              className="rounded bg-brand-ink px-5 py-3 text-sm font-semibold text-white outline-none transition hover:bg-brand-muted focus-visible:ring-2 focus-visible:ring-brand-muted focus-visible:ring-offset-4"
             >
               View Projects
             </Link>
             <Link
               href="/contact"
-              className="rounded border border-brand-muted/30 px-5 py-3 text-sm font-semibold text-brand-ink outline-none transition hover:border-brand-accent hover:bg-brand-surface focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-4"
+              className="rounded border border-brand-muted/30 px-5 py-3 text-sm font-semibold text-brand-ink outline-none transition hover:border-brand-muted hover:bg-brand-muted/10 focus-visible:ring-2 focus-visible:ring-brand-muted focus-visible:ring-offset-4"
             >
               Contact Me
             </Link>
@@ -74,7 +74,7 @@ export default function HomePage() {
               {featuredSkills.map((skill) => (
                 <span
                   key={skill}
-                  className="rounded border border-brand-accent/35 bg-brand-surface px-3 py-1 text-sm font-medium text-brand-ink"
+                  className="rounded border border-brand-muted/20 bg-brand-muted/10 px-3 py-1 text-sm font-medium text-brand-ink"
                 >
                   {skill}
                 </span>

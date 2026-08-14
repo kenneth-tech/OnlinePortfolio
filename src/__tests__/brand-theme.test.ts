@@ -13,11 +13,13 @@ const siteHeader = readFileSync(
 );
 
 describe("brand theme", () => {
-  test("defines the approved portfolio color palette", () => {
+  test("defines the approved two-color portfolio palette", () => {
     expect(globalsCss).toContain("#321E48");
     expect(globalsCss).toContain("#43637E");
-    expect(globalsCss).toContain("#65DCD5");
-    expect(globalsCss).toContain("#D9FFF4");
+    expect(globalsCss).not.toContain("#65DCD5");
+    expect(globalsCss).not.toContain("#D9FFF4");
+    expect(globalsCss).not.toContain("brand-accent");
+    expect(globalsCss).not.toContain("brand-surface");
   });
 
   test("uses deep purple for the navbar background", () => {

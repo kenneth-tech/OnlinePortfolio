@@ -25,13 +25,13 @@ export default function ContactPage() {
         <div className="mt-6 grid gap-3">
           <a
             href={`mailto:${profile.email}`}
-            className="rounded border border-brand-accent/45 bg-brand-surface px-4 py-3 font-semibold text-brand-ink outline-none transition hover:border-brand-accent focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-4"
+            className="rounded border border-brand-muted/30 bg-brand-muted/10 px-4 py-3 font-semibold text-brand-ink outline-none transition hover:border-brand-muted focus-visible:ring-2 focus-visible:ring-brand-muted focus-visible:ring-offset-4"
           >
             {profile.email}
           </a>
           <a
             href={`tel:${profile.phone.replaceAll(" ", "")}`}
-            className="rounded border border-brand-muted/20 px-4 py-3 font-semibold text-brand-ink outline-none transition hover:border-brand-accent hover:bg-brand-surface focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-4"
+            className="rounded border border-brand-muted/20 px-4 py-3 font-semibold text-brand-ink outline-none transition hover:border-brand-muted hover:bg-brand-muted/10 focus-visible:ring-2 focus-visible:ring-brand-muted focus-visible:ring-offset-4"
           >
             {profile.phone}
           </a>
@@ -41,7 +41,7 @@ export default function ContactPage() {
               href={link.href}
               target="_blank"
               rel="noreferrer"
-              className="rounded border border-brand-muted/20 px-4 py-3 font-semibold text-brand-ink outline-none transition hover:border-brand-accent hover:bg-brand-surface focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-4"
+              className="rounded border border-brand-muted/20 px-4 py-3 font-semibold text-brand-ink outline-none transition hover:border-brand-muted hover:bg-brand-muted/10 focus-visible:ring-2 focus-visible:ring-brand-muted focus-visible:ring-offset-4"
             >
               {link.label}
             </a>
