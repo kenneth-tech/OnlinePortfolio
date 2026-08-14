@@ -15,6 +15,11 @@ const siteFooter = readSource("src", "components", "site-footer.tsx");
 const homePage = readSource("src", "app", "page.tsx");
 const rootLayout = readSource("src", "app", "layout.tsx");
 const cursorGlow = readSource("src", "components", "cursor-glow.tsx");
+const animatedButtonLink = readSource(
+  "src",
+  "components",
+  "animated-button-link.tsx",
+);
 const nonButtonPages = [
   "projects",
   "experience",
@@ -34,15 +39,15 @@ describe("brand theme", () => {
     expect(globalsCss).not.toContain("brand-surface");
   });
 
-  test("reserves aquamarine for buttons and cursor animation", () => {
+  test("reserves aquamarine for animated button styling", () => {
     expect(globalsCss).toContain("--brand-button: #7FFFD4");
     expect(globalsCss).toContain("--brand-muted: #0B1D3A");
-    expect(homePage).toContain("bg-brand-button");
-    expect(rootLayout).toContain("<CursorGlow />");
-    expect(cursorGlow).toContain("brand-button");
-    expect(cursorGlow).toContain("pointer-events-none");
-    expect(cursorGlow).toContain("pointermove");
-    expect(cursorGlow).toContain("prefers-reduced-motion");
+    expect(rootLayout).not.toContain("CursorGlow");
+    expect(cursorGlow).toBe("");
+    expect(animatedButtonLink).toContain("brand-button");
+    expect(animatedButtonLink).toContain("after:bg-brand-button");
+    expect(animatedButtonLink).toContain("hover:shadow-[0_0_28px");
+    expect(homePage).not.toContain("brand-button");
     expect(siteHeader).not.toContain("brand-button");
     expect(siteFooter).not.toContain("brand-button");
     for (const page of nonButtonPages) {

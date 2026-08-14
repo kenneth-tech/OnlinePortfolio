@@ -1,5 +1,4 @@
-import Link from "next/link";
-
+import { AnimatedButtonLink } from "../components/animated-button-link";
 import { StatCard } from "../components/stat-card";
 import { profile, projects, skillGroups, type Project } from "../data/portfolio";
 
@@ -72,18 +71,12 @@ export default function HomePage() {
             {profile.summary}
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link
-              href="/projects"
-              className="rounded bg-brand-button px-5 py-3 text-sm font-semibold text-brand-ink outline-none transition hover:bg-brand-button/80 focus-visible:ring-2 focus-visible:ring-brand-button focus-visible:ring-offset-4"
-            >
+            <AnimatedButtonLink href="/projects">
               View Projects
-            </Link>
-            <Link
-              href="/contact"
-              className="rounded border border-brand-muted/30 px-5 py-3 text-sm font-semibold text-brand-ink outline-none transition hover:border-brand-muted hover:bg-brand-muted/10 focus-visible:ring-2 focus-visible:ring-brand-muted focus-visible:ring-offset-4"
-            >
+            </AnimatedButtonLink>
+            <AnimatedButtonLink href="/contact" variant="secondary">
               Contact Me
-            </Link>
+            </AnimatedButtonLink>
           </div>
           <div className="mt-10 grid gap-3 sm:grid-cols-3">
             {stats.map((stat) => (
@@ -98,7 +91,7 @@ export default function HomePage() {
               <p className="text-xs font-bold uppercase tracking-[0.28em] text-white/65">
                 Portfolio console
               </p>
-              <span className="h-2 w-2 rounded-full bg-brand-button" />
+              <span className="h-2 w-2 rounded-full bg-white/70" />
             </div>
             <div className="mt-5 grid gap-4">
               <FeaturedProjectCard project={featuredProject} />
