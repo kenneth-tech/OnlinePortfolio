@@ -39,16 +39,17 @@ describe("brand theme", () => {
     expect(globalsCss).not.toContain("brand-surface");
   });
 
-  test("reserves aquamarine for simple button styling", () => {
+  test("reserves aquamarine for reference-style button lift", () => {
     expect(globalsCss).toContain("--brand-button: #7FFFD4");
     expect(globalsCss).toContain("--brand-muted: #0B1D3A");
     expect(rootLayout).not.toContain("CursorGlow");
     expect(cursorGlow).toBe("");
     expect(animatedButtonLink).toContain("brand-button");
-    expect(animatedButtonLink).toContain("hover:bg-brand-button/80");
+    expect(animatedButtonLink).toContain("transition-[background-color,border-color,color,transform]");
+    expect(animatedButtonLink).toContain("hover:-translate-y-1");
+    expect(animatedButtonLink).toContain("hover:border-brand-button");
     expect(animatedButtonLink).not.toContain("after:");
     expect(animatedButtonLink).not.toContain("shadow-[");
-    expect(animatedButtonLink).not.toContain("translate");
     expect(homePage).not.toContain("brand-button");
     expect(siteHeader).not.toContain("brand-button");
     expect(siteFooter).not.toContain("brand-button");
