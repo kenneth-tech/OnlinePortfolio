@@ -12,7 +12,7 @@ const navItems = [
 
 export function SiteHeader() {
   return (
-    <header className="border-b border-brand-muted/35 bg-brand-ink">
+    <header className="border-b border-white/10 bg-brand-ink">
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-4 px-5 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-8">
         <Link
           href="/"
@@ -26,7 +26,7 @@ export function SiteHeader() {
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="block rounded px-3 py-2 outline-none transition hover:bg-brand-muted hover:text-white focus-visible:ring-2 focus-visible:ring-white"
+                  className="block rounded px-3 py-2 outline-none transition hover:bg-white/10 hover:text-white focus-visible:ring-2 focus-visible:ring-white"
                 >
                   {item.label}
                 </Link>

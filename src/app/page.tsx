@@ -51,7 +51,7 @@ export default function HomePage() {
           <div className="mt-8 flex flex-wrap gap-3">
             <Link
               href="/projects"
-              className="rounded bg-brand-ink px-5 py-3 text-sm font-semibold text-white outline-none transition hover:bg-brand-muted focus-visible:ring-2 focus-visible:ring-brand-muted focus-visible:ring-offset-4"
+              className="rounded bg-brand-button px-5 py-3 text-sm font-semibold text-brand-ink outline-none transition hover:bg-brand-button/80 focus-visible:ring-2 focus-visible:ring-brand-button focus-visible:ring-offset-4"
             >
               View Projects
             </Link>

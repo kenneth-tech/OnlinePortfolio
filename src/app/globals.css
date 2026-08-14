@@ -2,7 +2,8 @@
 
 :root {
   --brand-ink: #0B1D3A;
-  --brand-muted: #7FFFD4;
+  --brand-muted: #0B1D3A;
+  --brand-button: #7FFFD4;
   --background: #ffffff;
   --foreground: #0B1D3A;
 }
@@ -12,6 +13,7 @@
   --color-foreground: var(--foreground);
   --color-brand-ink: var(--brand-ink);
   --color-brand-muted: var(--brand-muted);
+  --color-brand-button: var(--brand-button);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -23,8 +25,8 @@ body {
 }
 
 ::selection {
-  background: #7FFFD4;
-  color: #0B1D3A;
+  background: #0B1D3A;
+  color: #ffffff;
 }
 
 a {
