@@ -1,4 +1,4 @@
-import { experiences } from "../../data/portfolio";
+import { education, experiences } from "../../data/portfolio";
 
 export default function ExperiencePage() {
   return (
@@ -28,6 +28,9 @@ export default function ExperiencePage() {
               <p className="mt-2 text-sm text-stone-500">
                 {experience.organization}
               </p>
+              <p className="mt-1 text-sm text-stone-500">
+                {experience.location}
+              </p>
             </div>
             <div>
               <h2 className="text-xl font-semibold text-stone-950">
@@ -43,6 +46,26 @@ export default function ExperiencePage() {
             </div>
           </article>
         ))}
+      </div>
+
+      <div className="mt-12">
+        <h2 className="text-2xl font-semibold text-stone-950">Education</h2>
+        <div className="mt-5 grid gap-5">
+          {education.map((item) => (
+            <article
+              key={`${item.degree}-${item.school}`}
+              className="rounded border border-stone-200 bg-white p-6 shadow-sm"
+            >
+              <h3 className="text-xl font-semibold text-stone-950">
+                {item.degree}
+              </h3>
+              <p className="mt-2 text-stone-700">{item.school}</p>
+              <p className="mt-2 text-sm font-semibold text-teal-700">
+                {item.period}
+              </p>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );

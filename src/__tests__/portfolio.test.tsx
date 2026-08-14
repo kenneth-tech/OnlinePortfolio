@@ -8,14 +8,22 @@ import ProjectsPage from "../app/projects/page";
 import SkillsPage from "../app/skills/page";
 import { SiteFooter } from "../components/site-footer";
 import { SiteHeader } from "../components/site-header";
-import { experiences, profile, projects, skillGroups } from "../data/portfolio";
+import {
+  education,
+  experiences,
+  profile,
+  projects,
+  skillGroups,
+} from "../data/portfolio";
 
 describe("portfolio data", () => {
   test("exposes editable profile and portfolio lists", () => {
     expect(profile.name).toEqual(expect.any(String));
     expect(profile.email).toContain("@");
+    expect(profile.phone).toEqual(expect.any(String));
     expect(Array.isArray(projects)).toBe(true);
     expect(Array.isArray(experiences)).toBe(true);
+    expect(Array.isArray(education)).toBe(true);
     expect(Array.isArray(skillGroups)).toBe(true);
   });
 });
@@ -104,6 +112,9 @@ describe("portfolio pages", () => {
     for (const experience of experiences) {
       expect(screen.getByText(experience.role)).toBeInTheDocument();
     }
+    for (const item of education) {
+      expect(screen.getByText(item.degree)).toBeInTheDocument();
+    }
   });
 
   test("renders the skills page from portfolio data", () => {
@@ -122,6 +133,10 @@ describe("portfolio pages", () => {
     expect(screen.getByRole("link", { name: profile.email })).toHaveAttribute(
       "href",
       `mailto:${profile.email}`,
+    );
+    expect(screen.getByRole("link", { name: profile.phone })).toHaveAttribute(
+      "href",
+      `tel:${profile.phone.replaceAll(" ", "")}`,
     );
   });
 });

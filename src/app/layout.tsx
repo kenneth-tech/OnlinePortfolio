@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 
 import { SiteFooter } from "../components/site-footer";
 import { SiteHeader } from "../components/site-header";
+import { profile } from "../data/portfolio";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -16,9 +17,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Your Name | Portfolio",
+  title: `${profile.name} | Portfolio`,
   description:
-    "Portfolio website showcasing skills, projects, experience, and contact information.",
+    "Portfolio website showcasing web development, multimedia design, projects, experience, and contact information.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

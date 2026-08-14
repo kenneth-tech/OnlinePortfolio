@@ -29,6 +29,12 @@ export default function ContactPage() {
           >
             {profile.email}
           </a>
+          <a
+            href={`tel:${profile.phone.replaceAll(" ", "")}`}
+            className="rounded border border-stone-200 px-4 py-3 font-semibold text-stone-800 outline-none transition hover:border-amber-500 hover:bg-amber-50 focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:ring-offset-4"
+          >
+            {profile.phone}
+          </a>
           {profile.links.map((link) => (
             <a
               key={link.href}
