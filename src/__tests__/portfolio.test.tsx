@@ -3,7 +3,7 @@ import { describe, expect, test } from "vitest";
 
 import ContactPage from "../app/contact/page";
 import ExperiencePage from "../app/experience/page";
-import HomePage from "../app/page";
+import HomePage, { FeaturedProjectCard } from "../app/page";
 import ProjectsPage from "../app/projects/page";
 import SkillsPage from "../app/skills/page";
 import { SiteFooter } from "../components/site-footer";
@@ -12,10 +12,11 @@ import { experiences, profile, projects, skillGroups } from "../data/portfolio";
 
 describe("portfolio data", () => {
   test("exposes editable profile and portfolio lists", () => {
-    expect(profile.name).toBe("Your Name");
-    expect(projects).toHaveLength(3);
-    expect(experiences).toHaveLength(3);
-    expect(skillGroups).toHaveLength(4);
+    expect(profile.name).toEqual(expect.any(String));
+    expect(profile.email).toContain("@");
+    expect(Array.isArray(projects)).toBe(true);
+    expect(Array.isArray(experiences)).toBe(true);
+    expect(Array.isArray(skillGroups)).toBe(true);
   });
 });
 
@@ -48,11 +49,13 @@ describe("site chrome", () => {
   test("renders footer profile links", () => {
     render(<SiteFooter />);
 
-    expect(screen.getByText("Your Name")).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: "GitHub" })).toHaveAttribute(
-      "href",
-      "https://github.com/yourusername",
-    );
+    expect(screen.getByText(profile.name)).toBeInTheDocument();
+    for (const link of profile.links) {
+      expect(screen.getByRole("link", { name: link.label })).toHaveAttribute(
+        "href",
+        link.href,
+      );
+    }
   });
 });
 
@@ -61,9 +64,9 @@ describe("portfolio pages", () => {
     render(<HomePage />);
 
     expect(
-      screen.getByRole("heading", { name: "Your Name" }),
+      screen.getByRole("heading", { name: profile.name }),
     ).toBeInTheDocument();
-    expect(screen.getByText("Frontend Developer")).toBeInTheDocument();
+    expect(screen.getByText(profile.role)).toBeInTheDocument();
     expect(screen.getByRole("link", { name: "View Projects" })).toHaveAttribute(
       "href",
       "/projects",
@@ -74,13 +77,22 @@ describe("portfolio pages", () => {
     );
   });
 
+  test("renders an empty featured project state", () => {
+    render(<FeaturedProjectCard />);
+
+    expect(screen.getByText("Featured project")).toBeInTheDocument();
+    expect(screen.getByText("Add your first project")).toBeInTheDocument();
+  });
+
   test("renders the projects page from portfolio data", () => {
     render(<ProjectsPage />);
 
     expect(
       screen.getByRole("heading", { name: "Projects" }),
     ).toBeInTheDocument();
-    expect(screen.getByText(projects[0].title)).toBeInTheDocument();
+    for (const project of projects) {
+      expect(screen.getByText(project.title)).toBeInTheDocument();
+    }
   });
 
   test("renders the experience page from portfolio data", () => {
@@ -89,14 +101,18 @@ describe("portfolio pages", () => {
     expect(
       screen.getByRole("heading", { name: "Experience" }),
     ).toBeInTheDocument();
-    expect(screen.getByText(experiences[0].role)).toBeInTheDocument();
+    for (const experience of experiences) {
+      expect(screen.getByText(experience.role)).toBeInTheDocument();
+    }
   });
 
   test("renders the skills page from portfolio data", () => {
     render(<SkillsPage />);
 
     expect(screen.getByRole("heading", { name: "Skills" })).toBeInTheDocument();
-    expect(screen.getByText(skillGroups[0].title)).toBeInTheDocument();
+    for (const group of skillGroups) {
+      expect(screen.getByText(group.title)).toBeInTheDocument();
+    }
   });
 
   test("renders the contact page without a backend form", () => {

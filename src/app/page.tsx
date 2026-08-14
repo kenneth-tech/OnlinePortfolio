@@ -1,9 +1,39 @@
 import Link from "next/link";
 
-import { profile, projects, skillGroups } from "../data/portfolio";
+import { profile, projects, skillGroups, type Project } from "../data/portfolio";
+
+export function FeaturedProjectCard({ project }: { project?: Project }) {
+  return (
+    <div className="rounded border border-stone-200 bg-white p-6 shadow-sm">
+      <p className="text-sm font-semibold uppercase tracking-wide text-stone-500">
+        Featured project
+      </p>
+      {project ? (
+        <>
+          <h2 className="mt-3 text-2xl font-semibold text-stone-950">
+            {project.title}
+          </h2>
+          <p className="mt-3 leading-7 text-stone-700">
+            {project.description}
+          </p>
+        </>
+      ) : (
+        <>
+          <h2 className="mt-3 text-2xl font-semibold text-stone-950">
+            Add your first project
+          </h2>
+          <p className="mt-3 leading-7 text-stone-700">
+            Add a project in src/data/portfolio.ts to feature it here.
+          </p>
+        </>
+      )}
+    </div>
+  );
+}
 
 export default function HomePage() {
   const featuredSkills = skillGroups.flatMap((group) => group.skills).slice(0, 8);
+  const featuredProject = projects.at(0);
 
   return (
     <div className="bg-stone-50">
@@ -35,17 +65,7 @@ export default function HomePage() {
         </div>
 
         <div className="grid gap-4">
-          <div className="rounded border border-stone-200 bg-white p-6 shadow-sm">
-            <p className="text-sm font-semibold uppercase tracking-wide text-stone-500">
-              Featured project
-            </p>
-            <h2 className="mt-3 text-2xl font-semibold text-stone-950">
-              {projects[0].title}
-            </h2>
-            <p className="mt-3 leading-7 text-stone-700">
-              {projects[0].description}
-            </p>
-          </div>
+          <FeaturedProjectCard project={featuredProject} />
           <div className="rounded border border-stone-200 bg-white p-6 shadow-sm">
             <p className="text-sm font-semibold uppercase tracking-wide text-stone-500">
               Core skills
