@@ -1,32 +1,26 @@
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 
 import { describe, expect, test } from "vitest";
 
-const globalsCss = readFileSync(
-  join(process.cwd(), "src", "app", "globals.css"),
-  "utf8",
-);
-const siteHeader = readFileSync(
-  join(process.cwd(), "src", "components", "site-header.tsx"),
-  "utf8",
-);
-const siteFooter = readFileSync(
-  join(process.cwd(), "src", "components", "site-footer.tsx"),
-  "utf8",
-);
-const homePage = readFileSync(
-  join(process.cwd(), "src", "app", "page.tsx"),
-  "utf8",
-);
+function readSource(...parts: string[]) {
+  const sourcePath = join(process.cwd(), ...parts);
+
+  return existsSync(sourcePath) ? readFileSync(sourcePath, "utf8") : "";
+}
+
+const globalsCss = readSource("src", "app", "globals.css");
+const siteHeader = readSource("src", "components", "site-header.tsx");
+const siteFooter = readSource("src", "components", "site-footer.tsx");
+const homePage = readSource("src", "app", "page.tsx");
+const rootLayout = readSource("src", "app", "layout.tsx");
+const cursorGlow = readSource("src", "components", "cursor-glow.tsx");
 const nonButtonPages = [
   "projects",
   "experience",
   "skills",
   "contact",
-].map((route) =>
-  readFileSync(join(process.cwd(), "src", "app", route, "page.tsx"), "utf8"),
-);
+].map((route) => readSource("src", "app", route, "page.tsx"));
 
 describe("brand theme", () => {
   test("defines the approved two-color portfolio palette", () => {
@@ -40,10 +34,15 @@ describe("brand theme", () => {
     expect(globalsCss).not.toContain("brand-surface");
   });
 
-  test("reserves aquamarine for button styling", () => {
+  test("reserves aquamarine for buttons and cursor animation", () => {
     expect(globalsCss).toContain("--brand-button: #7FFFD4");
     expect(globalsCss).toContain("--brand-muted: #0B1D3A");
     expect(homePage).toContain("bg-brand-button");
+    expect(rootLayout).toContain("<CursorGlow />");
+    expect(cursorGlow).toContain("brand-button");
+    expect(cursorGlow).toContain("pointer-events-none");
+    expect(cursorGlow).toContain("pointermove");
+    expect(cursorGlow).toContain("prefers-reduced-motion");
     expect(siteHeader).not.toContain("brand-button");
     expect(siteFooter).not.toContain("brand-button");
     for (const page of nonButtonPages) {
