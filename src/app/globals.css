@@ -1,10 +1,10 @@
 @import "tailwindcss";
 
 :root {
-  --brand-ink: #321E48;
-  --brand-muted: #43637E;
+  --brand-ink: #0B1D3A;
+  --brand-muted: #7FFFD4;
   --background: #ffffff;
-  --foreground: #321E48;
+  --foreground: #0B1D3A;
 }
 
 @theme inline {
@@ -23,8 +23,8 @@ body {
 }
 
 ::selection {
-  background: #43637E;
-  color: #ffffff;
+  background: #7FFFD4;
+  color: #0B1D3A;
 }
 
 a {

@@ -14,8 +14,10 @@ const siteHeader = readFileSync(
 
 describe("brand theme", () => {
   test("defines the approved two-color portfolio palette", () => {
-    expect(globalsCss).toContain("#321E48");
-    expect(globalsCss).toContain("#43637E");
+    expect(globalsCss).toContain("#7FFFD4");
+    expect(globalsCss).toContain("#0B1D3A");
+    expect(globalsCss).not.toContain("#321E48");
+    expect(globalsCss).not.toContain("#43637E");
     expect(globalsCss).not.toContain("#65DCD5");
     expect(globalsCss).not.toContain("#D9FFF4");
     expect(globalsCss).not.toContain("brand-accent");
