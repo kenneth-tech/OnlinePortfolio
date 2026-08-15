@@ -2,22 +2,11 @@
   isolation: isolate;
 }
 
-.hero::before,
 .hero::after {
   content: "";
   position: absolute;
   inset: 0;
   pointer-events: none;
-}
-
-.hero::before {
-  z-index: -2;
-  background-image: url("/images/homepage-hero-bg.png");
-  background-position: center right;
-  background-repeat: no-repeat;
-  background-size: cover;
-  opacity: 0.78;
-  mix-blend-mode: screen;
 }
 
 .hero::after {
@@ -28,11 +17,6 @@
 }
 
 @media (max-width: 768px) {
-  .hero::before {
-    background-position: 62% center;
-    opacity: 0.5;
-  }
-
   .hero::after {
     background:
       linear-gradient(180deg, rgba(7, 26, 47, 0.92) 0%, rgba(7, 26, 47, 0.76) 52%, rgba(7, 26, 47, 0.92) 100%),

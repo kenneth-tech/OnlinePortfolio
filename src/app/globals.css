@@ -32,10 +32,12 @@ body {
   background:
     linear-gradient(rgba(127, 255, 212, 0.045) 1px, transparent 1px),
     linear-gradient(90deg, rgba(127, 255, 212, 0.045) 1px, transparent 1px),
-    linear-gradient(135deg, rgba(127, 255, 212, 0.12) 0%, #081F39 42%, #071A2F 100%);
+    linear-gradient(90deg, rgba(7, 26, 47, 0.96) 0%, rgba(7, 26, 47, 0.7) 48%, rgba(7, 26, 47, 0.82) 100%),
+    url("/images/homepage-hero-bg.png");
   background-attachment: fixed;
-  background-repeat: repeat, repeat, no-repeat;
-  background-size: 56px 56px, 56px 56px, cover;
+  background-position: top left, top left, center, center right;
+  background-repeat: repeat, repeat, no-repeat, no-repeat;
+  background-size: 56px 56px, 56px 56px, cover, cover;
   color: var(--foreground);
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
 }

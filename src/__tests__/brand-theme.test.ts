@@ -79,19 +79,20 @@ describe("brand theme", () => {
     expect(globalsCss).toContain("linear-gradient");
   });
 
-  test("applies the gradient as a full-site layout background", () => {
+  test("applies the portfolio artwork and gradient as the full-site background", () => {
     expect(globalsCss).toContain("html {");
     expect(globalsCss).toContain("min-height: 100%;");
+    expect(globalsCss).toContain('url("/images/homepage-hero-bg.png")');
     expect(globalsCss).toContain("background-attachment: fixed;");
-    expect(globalsCss).toContain("background-repeat: repeat, repeat, no-repeat;");
+    expect(globalsCss).toContain("background-repeat: repeat, repeat, no-repeat, no-repeat;");
     expect(homePage).not.toContain("absolute inset-0 -z-10 bg-[linear-gradient");
   });
 
-  test("adds a homepage-specific premium background image", () => {
+  test("keeps homepage overlays separate from the site-wide background image", () => {
     expect(homePage).toContain('import styles from "./home.module.css";');
     expect(homePage).toContain("styles.hero");
-    expect(homeModuleCss).toContain("/images/homepage-hero-bg.png");
-    expect(homeModuleCss).toContain("mix-blend-mode: screen;");
+    expect(homeModuleCss).not.toContain("/images/homepage-hero-bg.png");
+    expect(homeModuleCss).not.toContain("mix-blend-mode: screen;");
     expect(existsSync(homeHeroImagePath)).toBe(true);
   });
 
