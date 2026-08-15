@@ -84,7 +84,8 @@ describe("brand theme", () => {
     expect(globalsCss).toContain("min-height: 100%;");
     expect(globalsCss).toContain('url("/images/homepage-hero-bg.png")');
     expect(globalsCss).toContain("background-attachment: fixed;");
-    expect(globalsCss).toContain("background-repeat: repeat, repeat, no-repeat, no-repeat;");
+    expect(globalsCss).toContain("background-repeat: no-repeat, no-repeat;");
+    expect(globalsCss).not.toContain("rgba(127, 255, 212, 0.045) 1px");
     expect(homePage).not.toContain("absolute inset-0 -z-10 bg-[linear-gradient");
   });
 
