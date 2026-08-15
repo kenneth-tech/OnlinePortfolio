@@ -94,6 +94,8 @@ describe("brand theme", () => {
     expect(homePage).toContain("styles.hero");
     expect(homeModuleCss).not.toContain("/images/homepage-hero-bg.png");
     expect(homeModuleCss).not.toContain("mix-blend-mode: screen;");
+    expect(homeModuleCss).not.toContain(".hero::after");
+    expect(homeModuleCss).not.toContain("rgba(7, 26, 47, 0.98)");
     expect(existsSync(homeHeroImagePath)).toBe(true);
   });
 
