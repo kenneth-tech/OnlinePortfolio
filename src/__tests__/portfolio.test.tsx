@@ -1,4 +1,6 @@
 import { render, screen } from "@testing-library/react";
+import { existsSync } from "node:fs";
+import { join } from "node:path";
 import { describe, expect, test } from "vitest";
 
 import ContactPage from "../app/contact/page";
@@ -45,6 +47,25 @@ describe("portfolio data", () => {
       expect(project.role).toEqual(expect.any(String));
       expect(project.year).toEqual(expect.any(String));
       expect(project.links).toHaveLength(1);
+    }
+  });
+
+  test("provides local homepage screenshots for each project", () => {
+    for (const project of projects) {
+      const preview = (
+        project as {
+          image?: {
+            src: string;
+            alt: string;
+          };
+        }
+      ).image;
+
+      expect(preview?.src).toMatch(/^\/images\/projects\/.+\.png$/);
+      expect(preview?.alt).toContain(project.title);
+      expect(
+        existsSync(join(process.cwd(), "public", preview?.src ?? "")),
+      ).toBe(true);
     }
   });
 });
@@ -133,6 +154,9 @@ describe("portfolio pages", () => {
     for (const project of projects) {
       expect(screen.getAllByText(project.title).length).toBeGreaterThan(0);
       expect(screen.getAllByText(project.category).length).toBeGreaterThan(0);
+      expect(
+        screen.getByRole("img", { name: `${project.title} homepage preview` }),
+      ).toBeInTheDocument();
     }
   });
 

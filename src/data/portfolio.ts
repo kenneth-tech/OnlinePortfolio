@@ -9,6 +9,10 @@ export type Project = {
   year: string;
   role: string;
   url: string;
+  image: {
+    src: string;
+    alt: string;
+  };
   description: string;
   impact: string;
   stack: string[];
@@ -62,6 +66,10 @@ export const projects: Project[] = [
     year: "2026",
     role: "Web Development | UI Build",
     url: "https://www.followmetothesea.com/",
+    image: {
+      src: "/images/projects/follow-me-to-the-sea.png",
+      alt: "Follow Me To The Sea homepage preview",
+    },
     description:
       "A social growth website built around clear packages, case studies, and inquiry paths for brands and creators.",
     impact:
@@ -75,6 +83,10 @@ export const projects: Project[] = [
     year: "2026",
     role: "Website Build | Conversion Flow",
     url: "https://www.877junkyjo.com/",
+    image: {
+      src: "/images/projects/877-junky-jo.png",
+      alt: "877Junky Jo homepage preview",
+    },
     description:
       "A direct-response website for Brooklyn junk removal with fast booking paths, service coverage, and trust signals.",
     impact:
@@ -88,6 +100,10 @@ export const projects: Project[] = [
     year: "2026",
     role: "Frontend Build | Ecommerce UX",
     url: "https://new-abs-website.vercel.app/",
+    image: {
+      src: "/images/projects/abs-by-allen-schwartz.png",
+      alt: "ABS by Allen Schwartz homepage preview",
+    },
     description:
       "A fashion ecommerce experience with editorial merchandising, collection navigation, and refined product presentation.",
     impact:
@@ -101,6 +117,10 @@ export const projects: Project[] = [
     year: "2026",
     role: "Web Design | Service Presentation",
     url: "https://www.sandseamedia.com/",
+    image: {
+      src: "/images/projects/sandsea-media.png",
+      alt: "SandSea Media homepage preview",
+    },
     description:
       "A full-service agency website presenting paid ads, social strategy, SEO, web development, and client proof.",
     impact:
@@ -114,6 +134,10 @@ export const projects: Project[] = [
     year: "2026",
     role: "Platform UI | Directory Experience",
     url: "https://www.therapycloud.com/",
+    image: {
+      src: "/images/projects/therapy-cloud.png",
+      alt: "Therapy Cloud homepage preview",
+    },
     description:
       "A mental health platform that helps visitors find therapists and learn about care through a supportive interface.",
     impact:
@@ -127,6 +151,10 @@ export const projects: Project[] = [
     year: "2025",
     role: "Website Design | Business Presence",
     url: "https://www.sydenpro.org/",
+    image: {
+      src: "/images/projects/sydenpro.png",
+      alt: "Sydenpro homepage preview",
+    },
     description:
       "A business services website for accounting, tax, registration, payroll, audit, and consultancy support.",
     impact:
