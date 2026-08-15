@@ -14,12 +14,11 @@ export default function ExperiencePage() {
         {experiences.map((experience, index) => (
           <article
             key={`${experience.role}-${experience.organization}`}
-            className="relative grid gap-5 border border-brand-ink/15 bg-white p-6 shadow-sm md:grid-cols-[220px_1fr]"
+            className="grid gap-5 border-t border-brand-ink/10 pt-6 md:grid-cols-[220px_1fr]"
           >
-            <span className="absolute left-0 top-6 h-10 w-1 bg-brand-ink" />
             <div>
-              <p className="text-xs font-black uppercase tracking-[0.24em] text-brand-muted/60">
-                Step {String(index + 1).padStart(2, "0")}
+              <p className="text-sm font-semibold text-brand-muted/70">
+                Experience {String(index + 1).padStart(2, "0")}
               </p>
               <p className="mt-4 text-sm font-bold text-brand-muted">
                 {experience.period}
@@ -32,14 +31,14 @@ export default function ExperiencePage() {
               </p>
             </div>
             <div>
-              <h2 className="text-2xl font-black uppercase leading-tight text-brand-ink">
+              <h2 className="text-2xl font-semibold leading-tight text-brand-ink">
                 {experience.role}
               </h2>
               <ul className="mt-5 grid gap-3 text-brand-muted/85">
                 {experience.highlights.map((highlight) => (
                   <li
                     key={highlight}
-                    className="border-l border-brand-ink/20 pl-4 leading-7"
+                    className="leading-7"
                   >
                     {highlight}
                   </li>
@@ -50,15 +49,15 @@ export default function ExperiencePage() {
         ))}
       </div>
 
-      <div className="mt-12 border border-brand-ink bg-brand-ink p-6 text-white">
-        <h2 className="text-2xl font-black uppercase">Education</h2>
+      <div className="mt-12 border-t border-brand-ink/10 pt-8">
+        <h2 className="text-2xl font-semibold text-brand-ink">Education</h2>
         <div className="mt-5 grid gap-5">
           {education.map((item) => (
             <article
               key={`${item.degree}-${item.school}`}
-              className="border border-white/15 bg-white p-6 text-brand-ink"
+              className="border border-brand-ink/10 bg-white p-6 text-brand-ink"
             >
-              <h3 className="text-xl font-black uppercase">
+              <h3 className="text-xl font-semibold">
                 {item.degree}
               </h3>
               <p className="mt-2 text-brand-muted">{item.school}</p>

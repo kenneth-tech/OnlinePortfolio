@@ -11,14 +11,14 @@ export default function ContactPage() {
       />
 
       <div className="mt-10 grid gap-6 lg:grid-cols-[0.85fr_1.15fr]">
-        <div className="border border-brand-ink bg-brand-ink p-6 text-white">
-          <p className="text-xs font-bold uppercase tracking-[0.24em] text-white/60">
+        <div className="border border-brand-ink/10 bg-white p-6">
+          <p className="text-sm font-semibold text-brand-muted/70">
             Current status
           </p>
-          <h2 className="mt-5 text-3xl font-black uppercase leading-tight">
+          <h2 className="mt-4 text-3xl font-semibold leading-tight text-brand-ink">
             Open to remote web and multimedia work.
           </h2>
-          <p className="mt-5 leading-7 text-white/75">
+          <p className="mt-5 leading-7 text-brand-muted/80">
             Best fit: responsive websites, landing pages, funnels, UI/UX
             support, multimedia assets, and automation-assisted builds.
           </p>
@@ -37,9 +37,9 @@ export default function ContactPage() {
               key={item.href}
               href={item.href}
               aria-label={item.value}
-              className="group border border-brand-ink/15 bg-white p-5 font-semibold text-brand-ink outline-none transition hover:border-brand-ink hover:bg-brand-muted/10 focus-visible:ring-2 focus-visible:ring-brand-muted focus-visible:ring-offset-4"
+              className="group border border-brand-ink/10 bg-white p-5 font-semibold text-brand-ink outline-none transition hover:border-brand-ink/30 focus-visible:ring-2 focus-visible:ring-brand-muted focus-visible:ring-offset-4"
             >
-              <span className="block text-xs font-black uppercase tracking-[0.24em] text-brand-muted/60">
+              <span className="block text-sm font-medium text-brand-muted/70">
                 {item.label}
               </span>
               <span className="mt-3 block break-words text-lg">{item.value}</span>

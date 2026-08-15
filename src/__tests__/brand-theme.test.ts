@@ -58,8 +58,13 @@ describe("brand theme", () => {
     }
   });
 
-  test("uses deep purple for the navbar background", () => {
-    expect(siteHeader).toContain("bg-brand-ink");
+  test("uses clean white site chrome", () => {
+    expect(siteHeader).toContain("bg-white");
+    expect(siteFooter).toContain("bg-white");
+    expect(siteHeader).toContain("text-brand-ink");
+    expect(siteFooter).toContain("text-brand-ink");
+    expect(siteHeader).not.toContain("bg-brand-ink");
+    expect(siteFooter).not.toContain("bg-brand-ink");
   });
 
   test("uses white for the page background", () => {
