@@ -55,9 +55,6 @@ export default function HomePage() {
   return (
     <div className="bg-transparent">
       <section className="relative mx-auto grid min-h-[calc(100vh-96px)] w-full max-w-6xl items-center gap-12 overflow-hidden px-5 py-16 sm:px-8 lg:grid-cols-[1.08fr_0.92fr] lg:py-24">
-        <div className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(120deg,rgba(127,255,212,0.14),transparent_34%),linear-gradient(300deg,rgba(184,255,232,0.08),transparent_42%)]" />
-        <div className="pointer-events-none absolute inset-0 -z-10 opacity-40 [background-image:linear-gradient(rgba(127,255,212,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(127,255,212,0.08)_1px,transparent_1px)] [background-size:72px_72px]" />
-
         <div>
           <p className="text-sm font-semibold text-brand-button">
             Portfolio signal

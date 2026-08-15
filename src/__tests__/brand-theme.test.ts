@@ -71,4 +71,12 @@ describe("brand theme", () => {
     expect(globalsCss).toContain("--background: #071A2F");
     expect(globalsCss).toContain("linear-gradient");
   });
+
+  test("applies the gradient as a full-site layout background", () => {
+    expect(globalsCss).toContain("html {");
+    expect(globalsCss).toContain("min-height: 100%;");
+    expect(globalsCss).toContain("background-attachment: fixed;");
+    expect(globalsCss).toContain("background-repeat: repeat, repeat, no-repeat;");
+    expect(homePage).not.toContain("absolute inset-0 -z-10 bg-[linear-gradient");
+  });
 });
