@@ -14,13 +14,13 @@ export default function SkillsPage() {
         {skillGroups.map((group, index) => (
           <section
             key={group.title}
-            className="border border-brand-ink/10 bg-white p-6"
+            className="rounded-xl border border-brand-button/15 bg-brand-card/65 p-6 shadow-[0_18px_60px_rgba(0,0,0,0.18)]"
           >
-            <div className="flex items-center justify-between gap-4 border-b border-brand-ink/10 pb-4">
-              <h2 className="text-xl font-semibold text-brand-ink">
+            <div className="flex items-center justify-between gap-4 border-b border-brand-button/10 pb-4">
+              <h2 className="text-xl font-semibold text-white">
                 {group.title}
               </h2>
-              <span className="text-sm font-medium text-brand-muted/50">
+              <span className="text-sm font-medium text-brand-button">
                 {String(index + 1).padStart(2, "0")}
               </span>
             </div>
@@ -28,7 +28,7 @@ export default function SkillsPage() {
               {group.skills.map((skill) => (
                 <span
                   key={skill}
-                  className="border border-brand-ink/10 px-3 py-2 text-sm font-medium text-brand-muted"
+                  className="rounded-full border border-brand-button/15 bg-brand-button/5 px-3 py-2 text-sm font-medium text-brand-muted"
                 >
                   {skill}
                 </span>

@@ -1,32 +1,40 @@
 @import "tailwindcss";
 
 :root {
-  --brand-ink: #0B1D3A;
-  --brand-muted: #0B1D3A;
+  --brand-ink: #071A2F;
+  --brand-card: #0B2545;
   --brand-button: #7FFFD4;
-  --background: #ffffff;
-  --foreground: #0B1D3A;
+  --brand-soft: #B8FFE8;
+  --brand-muted: #9AAFC2;
+  --background: #071A2F;
+  --foreground: #F5FFFC;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-brand-ink: var(--brand-ink);
+  --color-brand-card: var(--brand-card);
   --color-brand-muted: var(--brand-muted);
   --color-brand-button: var(--brand-button);
+  --color-brand-soft: var(--brand-soft);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
 body {
-  background: var(--background);
+  background:
+    linear-gradient(rgba(127, 255, 212, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(127, 255, 212, 0.045) 1px, transparent 1px),
+    linear-gradient(145deg, #071A2F 0%, #081F39 45%, #071A2F 100%);
+  background-size: 56px 56px, 56px 56px, auto;
   color: var(--foreground);
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
 }
 
 ::selection {
-  background: #0B1D3A;
-  color: #ffffff;
+  background: #7FFFD4;
+  color: #071A2F;
 }
 
 a {

@@ -12,21 +12,21 @@ const navItems = [
 
 export function SiteHeader() {
   return (
-    <header className="border-b border-brand-ink/10 bg-white">
+    <header className="border-b border-brand-button/10 bg-brand-ink/95 backdrop-blur">
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-4 px-5 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-8">
         <Link
           href="/"
-          className="w-fit text-base font-semibold text-brand-ink outline-none transition hover:text-brand-muted/70 focus-visible:rounded focus-visible:ring-2 focus-visible:ring-brand-muted focus-visible:ring-offset-4"
+          className="w-fit text-base font-semibold text-white outline-none transition hover:text-brand-button focus-visible:rounded focus-visible:ring-2 focus-visible:ring-brand-button focus-visible:ring-offset-4 focus-visible:ring-offset-brand-ink"
         >
           {profile.name}
         </Link>
         <nav aria-label="Main navigation">
-          <ul className="flex flex-wrap gap-2 text-sm font-medium text-brand-muted/75">
+          <ul className="flex flex-wrap gap-2 text-sm font-medium text-brand-muted">
             {navItems.map((item) => (
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="block rounded px-3 py-2 outline-none transition hover:bg-brand-muted/5 hover:text-brand-ink focus-visible:ring-2 focus-visible:ring-brand-muted"
+                  className="block rounded-lg px-3 py-2 outline-none transition hover:bg-brand-button/10 hover:text-brand-soft focus-visible:ring-2 focus-visible:ring-brand-button"
                 >
                   {item.label}
                 </Link>

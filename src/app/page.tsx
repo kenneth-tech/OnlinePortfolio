@@ -4,25 +4,25 @@ import { profile, projects, skillGroups, type Project } from "../data/portfolio"
 
 export function FeaturedProjectCard({ project }: { project?: Project }) {
   return (
-    <article className="border border-brand-ink/10 bg-white p-5">
-      <p className="text-sm font-semibold text-brand-muted/70">
+    <article className="rounded-xl border border-brand-button/15 bg-brand-card/80 p-5 shadow-[0_18px_60px_rgba(0,0,0,0.18)]">
+      <p className="text-sm font-semibold text-brand-button">
         Featured project
       </p>
       {project ? (
         <>
-          <h3 className="mt-3 text-xl font-semibold leading-tight text-brand-ink">
+          <h3 className="mt-3 text-xl font-semibold leading-tight text-white">
             {project.title}
           </h3>
-          <p className="mt-3 leading-7 text-brand-muted/80">
+          <p className="mt-3 leading-7 text-brand-muted">
             {project.description}
           </p>
         </>
       ) : (
         <>
-          <h3 className="mt-3 text-xl font-semibold leading-tight text-brand-ink">
+          <h3 className="mt-3 text-xl font-semibold leading-tight text-white">
             Add your first project
           </h3>
-          <p className="mt-3 leading-7 text-brand-muted/80">
+          <p className="mt-3 leading-7 text-brand-muted">
             Add a project in src/data/portfolio.ts to feature it here.
           </p>
         </>
@@ -53,21 +53,28 @@ export default function HomePage() {
   ];
 
   return (
-    <div className="bg-white">
-      <section className="mx-auto w-full max-w-6xl px-5 py-16 sm:px-8 lg:py-20">
-        <div className="max-w-3xl">
-          <p className="text-sm font-semibold text-brand-muted/70">
+    <div className="bg-transparent">
+      <section className="relative mx-auto grid min-h-[calc(100vh-96px)] w-full max-w-6xl items-center gap-12 overflow-hidden px-5 py-16 sm:px-8 lg:grid-cols-[1.08fr_0.92fr] lg:py-24">
+        <div className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(120deg,rgba(127,255,212,0.14),transparent_34%),linear-gradient(300deg,rgba(184,255,232,0.08),transparent_42%)]" />
+        <div className="pointer-events-none absolute inset-0 -z-10 opacity-40 [background-image:linear-gradient(rgba(127,255,212,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(127,255,212,0.08)_1px,transparent_1px)] [background-size:72px_72px]" />
+
+        <div>
+          <p className="text-sm font-semibold text-brand-button">
+            Portfolio signal
+          </p>
+          <p className="mt-4 w-fit rounded-full border border-brand-button/25 bg-brand-button/10 px-4 py-2 text-sm font-medium text-brand-soft">
             {profile.role}
           </p>
-          <h1 className="mt-4 text-4xl font-bold leading-tight text-brand-ink sm:text-6xl">
+          <h1 className="mt-6 max-w-4xl text-5xl font-bold leading-[1.02] text-white sm:text-7xl">
             {profile.name}
           </h1>
-          <p className="mt-5 text-lg leading-8 text-brand-muted/85">
+          <h2 className="mt-5 text-2xl font-semibold text-brand-soft">
+            Premium digital experiences
+          </h2>
+          <p className="mt-5 max-w-2xl text-lg leading-8 text-brand-muted">
             {profile.summary}
           </p>
-          <p className="mt-4 text-base text-brand-muted/75">
-            {profile.location}
-          </p>
+          <p className="mt-4 text-base text-brand-muted">{profile.location}</p>
           <div className="mt-8 flex flex-wrap gap-3">
             <AnimatedButtonLink href="/projects">
               View Projects
@@ -77,10 +84,39 @@ export default function HomePage() {
             </AnimatedButtonLink>
           </div>
         </div>
+
+        <aside className="rounded-2xl border border-brand-button/20 bg-brand-card/70 p-6 shadow-[0_24px_90px_rgba(0,0,0,0.28)] backdrop-blur">
+          <div className="flex items-center justify-between gap-4 border-b border-brand-button/10 pb-5">
+            <div>
+              <p className="text-sm font-semibold text-brand-button">
+                Creative engineering
+              </p>
+              <h2 className="mt-2 text-2xl font-semibold text-white">
+                Web, design, and multimedia in one workflow.
+              </h2>
+            </div>
+            <span className="h-10 w-10 rounded-full border border-brand-button/30 bg-brand-button/10 shadow-[0_0_30px_rgba(127,255,212,0.22)]" />
+          </div>
+          <div className="mt-6 grid gap-3">
+            {[
+              "Responsive interfaces",
+              "Conversion-focused landing pages",
+              "UI/UX and multimedia production",
+              "Automation-assisted development",
+            ].map((item) => (
+              <div
+                key={item}
+                className="rounded-xl border border-brand-button/10 bg-brand-ink/35 px-4 py-3 text-sm font-medium text-brand-muted"
+              >
+                {item}
+              </div>
+            ))}
+          </div>
+        </aside>
       </section>
 
-      <section className="mx-auto w-full max-w-6xl border-t border-brand-ink/10 px-5 py-12 sm:px-8">
-        <h2 className="text-2xl font-semibold text-brand-ink">Highlights</h2>
+      <section className="mx-auto w-full max-w-6xl border-t border-brand-button/10 px-5 py-12 sm:px-8">
+        <h2 className="text-2xl font-semibold text-white">Highlights</h2>
         <div className="mt-6 grid gap-4 md:grid-cols-3">
           {stats.map((stat) => (
             <StatCard key={stat.value} {...stat} />
@@ -88,15 +124,13 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto grid w-full max-w-6xl gap-10 border-t border-brand-ink/10 px-5 py-12 sm:px-8 lg:grid-cols-[1.1fr_0.9fr]">
+      <section className="mx-auto grid w-full max-w-6xl gap-10 border-t border-brand-button/10 px-5 py-12 sm:px-8 lg:grid-cols-[1.1fr_0.9fr]">
         <div>
           <div className="flex items-end justify-between gap-4">
-            <h2 className="text-2xl font-semibold text-brand-ink">
-              Selected work
-            </h2>
+            <h2 className="text-2xl font-semibold text-white">Selected work</h2>
             <a
               href="/projects"
-              className="text-sm font-semibold text-brand-muted underline-offset-4 hover:text-brand-ink hover:underline"
+              className="text-sm font-semibold text-brand-button underline-offset-4 hover:text-brand-soft hover:underline"
             >
               View all
             </a>
@@ -105,15 +139,13 @@ export default function HomePage() {
             {featuredProjects.map((project) => (
               <article
                 key={project.title}
-                className="border border-brand-ink/10 bg-white p-5"
+                className="rounded-xl border border-brand-button/15 bg-brand-card/70 p-5 transition-[border-color,transform,box-shadow] duration-200 hover:-translate-y-1 hover:border-brand-button/45 hover:shadow-[0_18px_70px_rgba(127,255,212,0.10)]"
               >
-                <p className="text-sm text-brand-muted/70">
-                  {project.category}
-                </p>
-                <h3 className="mt-2 text-xl font-semibold text-brand-ink">
+                <p className="text-sm text-brand-button">{project.category}</p>
+                <h3 className="mt-2 text-xl font-semibold text-white">
                   {project.title}
                 </h3>
-                <p className="mt-2 leading-7 text-brand-muted/80">
+                <p className="mt-2 leading-7 text-brand-muted">
                   {project.description}
                 </p>
               </article>
@@ -122,12 +154,12 @@ export default function HomePage() {
         </div>
 
         <div>
-          <h2 className="text-2xl font-semibold text-brand-ink">Core skills</h2>
+          <h2 className="text-2xl font-semibold text-white">Core skills</h2>
           <div className="mt-6 flex flex-wrap gap-2">
             {featuredSkills.map((skill) => (
               <span
                 key={skill}
-                className="border border-brand-ink/10 px-3 py-2 text-sm font-medium text-brand-muted"
+                className="rounded-full border border-brand-button/15 bg-brand-button/5 px-3 py-2 text-sm font-medium text-brand-muted"
               >
                 {skill}
               </span>

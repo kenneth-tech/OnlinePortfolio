@@ -105,7 +105,8 @@ describe("portfolio pages", () => {
       "/contact",
     );
     expect(screen.queryByText("Portfolio console")).not.toBeInTheDocument();
-    expect(screen.getByText("Highlights")).toBeInTheDocument();
+    expect(screen.getByText("Portfolio signal")).toBeInTheDocument();
+    expect(screen.getByText("Premium digital experiences")).toBeInTheDocument();
     expect(screen.getByText("Selected work")).toBeInTheDocument();
     expect(screen.getByText("4+ Years")).toBeInTheDocument();
     expect(screen.getByText("Web + Multimedia")).toBeInTheDocument();
@@ -126,8 +127,8 @@ describe("portfolio pages", () => {
       screen.getByRole("heading", { name: "Projects" }),
     ).toBeInTheDocument();
     expect(screen.getByText("Project index")).toBeInTheDocument();
+    expect(screen.getByText("Featured build")).toBeInTheDocument();
     expect(screen.getByText("6 Live Projects")).toBeInTheDocument();
-    expect(screen.getByText("Featured project")).toBeInTheDocument();
     expect(screen.getAllByRole("link", { name: "Visit site" })).toHaveLength(6);
     for (const project of projects) {
       expect(screen.getAllByText(project.title).length).toBeGreaterThan(0);
