@@ -26,6 +26,27 @@ describe("portfolio data", () => {
     expect(Array.isArray(education)).toBe(true);
     expect(Array.isArray(skillGroups)).toBe(true);
   });
+
+  test("lists the six live project websites", () => {
+    expect(projects).toHaveLength(6);
+    expect(projects.map((project) => project.url)).toEqual(
+      expect.arrayContaining([
+        "https://www.followmetothesea.com/",
+        "https://www.877junkyjo.com/",
+        "https://new-abs-website.vercel.app/",
+        "https://www.sandseamedia.com/",
+        "https://www.therapycloud.com/",
+        "https://www.sydenpro.org/",
+      ]),
+    );
+
+    for (const project of projects) {
+      expect(project.category).toEqual(expect.any(String));
+      expect(project.role).toEqual(expect.any(String));
+      expect(project.year).toEqual(expect.any(String));
+      expect(project.links).toHaveLength(1);
+    }
+  });
 });
 
 describe("site chrome", () => {
@@ -103,8 +124,12 @@ describe("portfolio pages", () => {
       screen.getByRole("heading", { name: "Projects" }),
     ).toBeInTheDocument();
     expect(screen.getByText("Project index")).toBeInTheDocument();
+    expect(screen.getByText("6 Live Projects")).toBeInTheDocument();
+    expect(screen.getByText("Featured case study")).toBeInTheDocument();
+    expect(screen.getAllByRole("link", { name: "Visit site" })).toHaveLength(6);
     for (const project of projects) {
-      expect(screen.getByText(project.title)).toBeInTheDocument();
+      expect(screen.getAllByText(project.title).length).toBeGreaterThan(0);
+      expect(screen.getAllByText(project.category).length).toBeGreaterThan(0);
     }
   });
 

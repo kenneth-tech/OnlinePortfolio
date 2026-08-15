@@ -4,6 +4,8 @@ import type { ComponentProps, ReactNode } from "react";
 type AnimatedButtonLinkProps = {
   children: ReactNode;
   href: ComponentProps<typeof Link>["href"];
+  rel?: ComponentProps<typeof Link>["rel"];
+  target?: ComponentProps<typeof Link>["target"];
   variant?: "primary" | "secondary";
 };
 
@@ -20,10 +22,17 @@ const variantClasses = {
 export function AnimatedButtonLink({
   children,
   href,
+  rel,
+  target,
   variant = "primary",
 }: AnimatedButtonLinkProps) {
   return (
-    <Link href={href} className={`${baseClasses} ${variantClasses[variant]}`}>
+    <Link
+      href={href}
+      rel={rel}
+      target={target}
+      className={`${baseClasses} ${variantClasses[variant]}`}
+    >
       {children}
     </Link>
   );

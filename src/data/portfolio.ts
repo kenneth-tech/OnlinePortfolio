@@ -5,6 +5,10 @@ export type ProfileLink = {
 
 export type Project = {
   title: string;
+  category: string;
+  year: string;
+  role: string;
+  url: string;
   description: string;
   impact: string;
   stack: string[];
@@ -53,31 +57,82 @@ export const profile: Profile = {
 
 export const projects: Project[] = [
   {
-    title: "Responsive Website Builds",
+    title: "Follow Me To The Sea",
+    category: "Social Media Growth",
+    year: "2026",
+    role: "Web Development | UI Build",
+    url: "https://www.followmetothesea.com/",
     description:
-      "Responsive websites and landing pages built with modern frontend tools, CMS platforms, and custom code.",
+      "A social growth website built around clear packages, case studies, and inquiry paths for brands and creators.",
     impact:
-      "Improves user experience, page performance, and conversion-focused presentation.",
-    stack: ["Next.js", "React", "Tailwind CSS", "WordPress", "Webflow"],
-    links: [],
+      "Turns social proof services into a polished conversion path with clear calls to action and growth-focused messaging.",
+    stack: ["Next.js", "React", "Tailwind CSS", "UI/UX"],
+    links: [{ label: "Visit site", href: "https://www.followmetothesea.com/" }],
   },
   {
-    title: "Landing Pages and Funnels",
+    title: "877Junky Jo",
+    category: "Local Service",
+    year: "2026",
+    role: "Website Build | Conversion Flow",
+    url: "https://www.877junkyjo.com/",
     description:
-      "Campaign pages and funnel experiences designed for service offers, lead generation, and clear calls to action.",
+      "A direct-response website for Brooklyn junk removal with fast booking paths, service coverage, and trust signals.",
     impact:
-      "Supports marketing campaigns with clearer structure and stronger conversion paths.",
-    stack: ["GoHighLevel", "Webflow", "UI/UX Design", "SEO"],
-    links: [],
+      "Helps local customers understand the service quickly and move toward a call or pre-booking request.",
+    stack: ["Responsive Design", "Lead Generation", "Local SEO", "UI/UX"],
+    links: [{ label: "Visit site", href: "https://www.877junkyjo.com/" }],
   },
   {
-    title: "Multimedia Campaign Assets",
+    title: "ABS by Allen Schwartz",
+    category: "Fashion Ecommerce",
+    year: "2026",
+    role: "Frontend Build | Ecommerce UX",
+    url: "https://new-abs-website.vercel.app/",
     description:
-      "Visual content, short-form videos, motion graphics, ads, and branding materials for digital campaigns.",
+      "A fashion ecommerce experience with editorial merchandising, collection navigation, and refined product presentation.",
     impact:
-      "Strengthens engagement across social, advertising, and brand communication channels.",
-    stack: ["Graphic Design", "Video Editing", "Motion Graphics", "Meta Ads"],
-    links: [],
+      "Positions product discovery around visual hierarchy, lifestyle storytelling, and a smoother shopping journey.",
+    stack: ["Next.js", "Ecommerce UX", "Responsive UI", "Editorial Design"],
+    links: [{ label: "Visit site", href: "https://new-abs-website.vercel.app/" }],
+  },
+  {
+    title: "SandSea Media",
+    category: "Digital Marketing Agency",
+    year: "2026",
+    role: "Web Design | Service Presentation",
+    url: "https://www.sandseamedia.com/",
+    description:
+      "A full-service agency website presenting paid ads, social strategy, SEO, web development, and client proof.",
+    impact:
+      "Organizes a broad service offering into a confident funnel for consultations and growth-focused inquiries.",
+    stack: ["Web Design", "Marketing Strategy", "SEO", "Conversion Copy"],
+    links: [{ label: "Visit site", href: "https://www.sandseamedia.com/" }],
+  },
+  {
+    title: "Therapy Cloud",
+    category: "Mental Health Platform",
+    year: "2026",
+    role: "Platform UI | Directory Experience",
+    url: "https://www.therapycloud.com/",
+    description:
+      "A mental health platform that helps visitors find therapists and learn about care through a supportive interface.",
+    impact:
+      "Makes sensitive service discovery feel calmer, clearer, and easier to navigate for people seeking support.",
+    stack: ["Platform UI", "Directory UX", "Supabase", "Responsive Design"],
+    links: [{ label: "Visit site", href: "https://www.therapycloud.com/" }],
+  },
+  {
+    title: "Sydenpro",
+    category: "Business Services",
+    year: "2025",
+    role: "Website Design | Business Presence",
+    url: "https://www.sydenpro.org/",
+    description:
+      "A business services website for accounting, tax, registration, payroll, audit, and consultancy support.",
+    impact:
+      "Presents complex service lines in a structured way so business owners can understand offerings and connect.",
+    stack: ["Wix", "Business Website", "Service UX", "Content Structure"],
+    links: [{ label: "Visit site", href: "https://www.sydenpro.org/" }],
   },
 ];
 
