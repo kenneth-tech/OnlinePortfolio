@@ -94,4 +94,14 @@ describe("brand theme", () => {
     expect(homeModuleCss).toContain("mix-blend-mode: screen;");
     expect(existsSync(homeHeroImagePath)).toBe(true);
   });
+
+  test("lets homepage hero artwork span the desktop viewport behind centered content", () => {
+    expect(homePage).toContain(
+      '<section className={`${styles.hero} relative overflow-hidden`}>',
+    );
+    expect(homePage).toContain(
+      'className="relative mx-auto grid min-h-[calc(100vh-96px)] w-full max-w-6xl',
+    );
+    expect(homePage).not.toContain("`${styles.hero} relative mx-auto grid");
+  });
 });

@@ -55,62 +55,66 @@ export default function HomePage() {
 
   return (
     <div className="bg-transparent">
-      <section className={`${styles.hero} relative mx-auto grid min-h-[calc(100vh-96px)] w-full max-w-6xl items-center gap-12 overflow-hidden px-5 py-16 sm:px-8 lg:grid-cols-[1.08fr_0.92fr] lg:py-24`}>
-        <div>
-          <p className="text-sm font-semibold text-brand-button">
-            Portfolio signal
-          </p>
-          <p className="mt-4 w-fit rounded-full border border-brand-button/25 bg-brand-button/10 px-4 py-2 text-sm font-medium text-brand-soft">
-            {profile.role}
-          </p>
-          <h1 className="mt-6 max-w-4xl text-5xl font-bold leading-[1.02] text-white sm:text-7xl">
-            {profile.name}
-          </h1>
-          <h2 className="mt-5 text-2xl font-semibold text-brand-soft">
-            Premium digital experiences
-          </h2>
-          <p className="mt-5 max-w-2xl text-lg leading-8 text-brand-muted">
-            {profile.summary}
-          </p>
-          <p className="mt-4 text-base text-brand-muted">{profile.location}</p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <AnimatedButtonLink href="/projects">
-              View Projects
-            </AnimatedButtonLink>
-            <AnimatedButtonLink href="/contact" variant="secondary">
-              Contact Me
-            </AnimatedButtonLink>
-          </div>
-        </div>
-
-        <aside className="rounded-2xl border border-brand-button/20 bg-brand-card/70 p-6 shadow-[0_24px_90px_rgba(0,0,0,0.28)] backdrop-blur">
-          <div className="flex items-center justify-between gap-4 border-b border-brand-button/10 pb-5">
-            <div>
-              <p className="text-sm font-semibold text-brand-button">
-                Creative engineering
-              </p>
-              <h2 className="mt-2 text-2xl font-semibold text-white">
-                Web, design, and multimedia in one workflow.
-              </h2>
+      <section className={`${styles.hero} relative overflow-hidden`}>
+        <div className="relative mx-auto grid min-h-[calc(100vh-96px)] w-full max-w-6xl items-center gap-12 px-5 py-16 sm:px-8 lg:grid-cols-[1.08fr_0.92fr] lg:py-24">
+          <div>
+            <p className="text-sm font-semibold text-brand-button">
+              Portfolio signal
+            </p>
+            <p className="mt-4 w-fit rounded-full border border-brand-button/25 bg-brand-button/10 px-4 py-2 text-sm font-medium text-brand-soft">
+              {profile.role}
+            </p>
+            <h1 className="mt-6 max-w-4xl text-5xl font-bold leading-[1.02] text-white sm:text-7xl">
+              {profile.name}
+            </h1>
+            <h2 className="mt-5 text-2xl font-semibold text-brand-soft">
+              Premium digital experiences
+            </h2>
+            <p className="mt-5 max-w-2xl text-lg leading-8 text-brand-muted">
+              {profile.summary}
+            </p>
+            <p className="mt-4 text-base text-brand-muted">
+              {profile.location}
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <AnimatedButtonLink href="/projects">
+                View Projects
+              </AnimatedButtonLink>
+              <AnimatedButtonLink href="/contact" variant="secondary">
+                Contact Me
+              </AnimatedButtonLink>
             </div>
-            <span className="h-10 w-10 rounded-full border border-brand-button/30 bg-brand-button/10 shadow-[0_0_30px_rgba(127,255,212,0.22)]" />
           </div>
-          <div className="mt-6 grid gap-3">
-            {[
-              "Responsive interfaces",
-              "Conversion-focused landing pages",
-              "UI/UX and multimedia production",
-              "Automation-assisted development",
-            ].map((item) => (
-              <div
-                key={item}
-                className="rounded-xl border border-brand-button/10 bg-brand-ink/35 px-4 py-3 text-sm font-medium text-brand-muted"
-              >
-                {item}
+
+          <aside className="rounded-2xl border border-brand-button/20 bg-brand-card/70 p-6 shadow-[0_24px_90px_rgba(0,0,0,0.28)] backdrop-blur">
+            <div className="flex items-center justify-between gap-4 border-b border-brand-button/10 pb-5">
+              <div>
+                <p className="text-sm font-semibold text-brand-button">
+                  Creative engineering
+                </p>
+                <h2 className="mt-2 text-2xl font-semibold text-white">
+                  Web, design, and multimedia in one workflow.
+                </h2>
               </div>
-            ))}
-          </div>
-        </aside>
+              <span className="h-10 w-10 rounded-full border border-brand-button/30 bg-brand-button/10 shadow-[0_0_30px_rgba(127,255,212,0.22)]" />
+            </div>
+            <div className="mt-6 grid gap-3">
+              {[
+                "Responsive interfaces",
+                "Conversion-focused landing pages",
+                "UI/UX and multimedia production",
+                "Automation-assisted development",
+              ].map((item) => (
+                <div
+                  key={item}
+                  className="rounded-xl border border-brand-button/10 bg-brand-ink/35 px-4 py-3 text-sm font-medium text-brand-muted"
+                >
+                  {item}
+                </div>
+              ))}
+            </div>
+          </aside>
+        </div>
       </section>
 
       <section className="mx-auto w-full max-w-6xl border-t border-brand-button/10 px-5 py-12 sm:px-8">
