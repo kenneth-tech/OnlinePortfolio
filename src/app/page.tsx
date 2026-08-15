@@ -1,6 +1,7 @@
 import { AnimatedButtonLink } from "../components/animated-button-link";
 import { StatCard } from "../components/stat-card";
 import { profile, projects, skillGroups, type Project } from "../data/portfolio";
+import styles from "./home.module.css";
 
 export function FeaturedProjectCard({ project }: { project?: Project }) {
   return (
@@ -54,7 +55,7 @@ export default function HomePage() {
 
   return (
     <div className="bg-transparent">
-      <section className="relative mx-auto grid min-h-[calc(100vh-96px)] w-full max-w-6xl items-center gap-12 overflow-hidden px-5 py-16 sm:px-8 lg:grid-cols-[1.08fr_0.92fr] lg:py-24">
+      <section className={`${styles.hero} relative mx-auto grid min-h-[calc(100vh-96px)] w-full max-w-6xl items-center gap-12 overflow-hidden px-5 py-16 sm:px-8 lg:grid-cols-[1.08fr_0.92fr] lg:py-24`}>
         <div>
           <p className="text-sm font-semibold text-brand-button">
             Portfolio signal

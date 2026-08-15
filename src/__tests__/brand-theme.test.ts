@@ -13,6 +13,13 @@ const globalsCss = readSource("src", "app", "globals.css");
 const siteHeader = readSource("src", "components", "site-header.tsx");
 const siteFooter = readSource("src", "components", "site-footer.tsx");
 const homePage = readSource("src", "app", "page.tsx");
+const homeModuleCss = readSource("src", "app", "home.module.css");
+const homeHeroImagePath = join(
+  process.cwd(),
+  "public",
+  "images",
+  "homepage-hero-bg.png",
+);
 const rootLayout = readSource("src", "app", "layout.tsx");
 const cursorGlow = readSource("src", "components", "cursor-glow.tsx");
 const animatedButtonLink = readSource(
@@ -78,5 +85,13 @@ describe("brand theme", () => {
     expect(globalsCss).toContain("background-attachment: fixed;");
     expect(globalsCss).toContain("background-repeat: repeat, repeat, no-repeat;");
     expect(homePage).not.toContain("absolute inset-0 -z-10 bg-[linear-gradient");
+  });
+
+  test("adds a homepage-specific premium background image", () => {
+    expect(homePage).toContain('import styles from "./home.module.css";');
+    expect(homePage).toContain("styles.hero");
+    expect(homeModuleCss).toContain("/images/homepage-hero-bg.png");
+    expect(homeModuleCss).toContain("mix-blend-mode: screen;");
+    expect(existsSync(homeHeroImagePath)).toBe(true);
   });
 });
