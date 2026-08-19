@@ -22,37 +22,35 @@ export function SiteFooter() {
   const phoneHref = `tel:${profile.phone.replaceAll(" ", "")}`;
 
   return (
-    <footer className="border-t border-brand-button/30 bg-white text-brand-ink">
+    <footer className="border-t border-brand-button/20 bg-black text-white">
       <div className="mx-auto grid w-full max-w-6xl gap-10 px-5 py-12 sm:px-8 lg:grid-cols-[1.2fr_0.7fr_0.8fr]">
         <section className="max-w-xl">
           <Link
             href="/"
-            className="inline-flex w-fit text-lg font-semibold tracking-normal outline-none transition hover:text-brand-card focus-visible:rounded focus-visible:ring-2 focus-visible:ring-brand-button focus-visible:ring-offset-4 focus-visible:ring-offset-white"
+            className="inline-flex w-fit text-lg font-semibold tracking-normal outline-none transition hover:text-brand-button focus-visible:rounded focus-visible:ring-2 focus-visible:ring-brand-button focus-visible:ring-offset-4 focus-visible:ring-offset-black"
           >
             {profile.name}
           </Link>
-          <p className="mt-3 text-sm font-semibold text-brand-card">
+          <p className="mt-3 text-sm font-semibold text-brand-button">
             {profile.role}
           </p>
-          <p className="mt-1 text-sm text-brand-card/70">
-            {profile.location}
-          </p>
-          <p className="mt-5 max-w-lg text-sm leading-7 text-brand-card/70">
+          <p className="mt-1 text-sm text-brand-muted">{profile.location}</p>
+          <p className="mt-5 max-w-lg text-sm leading-7 text-brand-muted">
             Building refined web interfaces, conversion-focused pages, and
             multimedia experiences for brands that need clear digital presence.
           </p>
         </section>
 
         <nav aria-label="Footer navigation">
-          <h2 className="text-xs font-semibold uppercase text-brand-card">
+          <h2 className="text-xs font-semibold uppercase text-brand-button">
             Explore
           </h2>
-          <ul className="mt-4 grid gap-3 text-sm text-brand-card/70">
+          <ul className="mt-4 grid gap-3 text-sm text-brand-muted">
             {footerNavItems.map((item) => (
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="inline-flex outline-none transition hover:text-brand-ink focus-visible:rounded focus-visible:ring-2 focus-visible:ring-brand-button focus-visible:ring-offset-4 focus-visible:ring-offset-white"
+                  className="inline-flex outline-none transition hover:text-brand-button focus-visible:rounded focus-visible:ring-2 focus-visible:ring-brand-button focus-visible:ring-offset-4 focus-visible:ring-offset-black"
                 >
                   {item.label}
                 </Link>
@@ -62,29 +60,29 @@ export function SiteFooter() {
         </nav>
 
         <section>
-          <h2 className="text-xs font-semibold uppercase text-brand-card">
+          <h2 className="text-xs font-semibold uppercase text-brand-button">
             Contact
           </h2>
-          <div className="mt-4 grid gap-3 text-sm text-brand-card/70">
+          <div className="mt-4 grid gap-3 text-sm text-brand-muted">
             <a
               href={`mailto:${profile.email}`}
-              className="inline-flex outline-none transition hover:text-brand-ink focus-visible:rounded focus-visible:ring-2 focus-visible:ring-brand-button focus-visible:ring-offset-4 focus-visible:ring-offset-white"
+              className="inline-flex outline-none transition hover:text-brand-button focus-visible:rounded focus-visible:ring-2 focus-visible:ring-brand-button focus-visible:ring-offset-4 focus-visible:ring-offset-black"
             >
               {profile.email}
             </a>
             <a
               href={phoneHref}
-              className="inline-flex outline-none transition hover:text-brand-ink focus-visible:rounded focus-visible:ring-2 focus-visible:ring-brand-button focus-visible:ring-offset-4 focus-visible:ring-offset-white"
+              className="inline-flex outline-none transition hover:text-brand-button focus-visible:rounded focus-visible:ring-2 focus-visible:ring-brand-button focus-visible:ring-offset-4 focus-visible:ring-offset-black"
             >
               {profile.phone}
             </a>
           </div>
 
-          <ul className="mt-6 grid gap-2 text-sm text-brand-card/70">
+          <ul className="mt-6 grid gap-2 text-sm text-brand-muted">
             {serviceItems.map((item) => (
               <li
                 key={item}
-                className="border-l border-brand-button/70 pl-3 leading-6"
+                className="border-l border-brand-button/35 pl-3 leading-6"
               >
                 {item}
               </li>
@@ -93,8 +91,8 @@ export function SiteFooter() {
         </section>
       </div>
 
-      <div className="border-t border-brand-button/25">
-        <div className="mx-auto flex w-full max-w-6xl flex-col gap-3 px-5 py-5 text-sm text-brand-card/70 sm:flex-row sm:items-center sm:justify-between sm:px-8">
+      <div className="border-t border-brand-button/15">
+        <div className="mx-auto flex w-full max-w-6xl flex-col gap-3 px-5 py-5 text-sm text-brand-muted sm:flex-row sm:items-center sm:justify-between sm:px-8">
           <p>(c) {year} Mark Kenneth R. Rillamas. All rights reserved.</p>
           <div className="flex flex-wrap gap-4">
             {profile.links.map((link) => (
@@ -103,7 +101,7 @@ export function SiteFooter() {
                 href={link.href}
                 target="_blank"
                 rel="noreferrer"
-                className="outline-none transition hover:text-brand-ink focus-visible:rounded focus-visible:ring-2 focus-visible:ring-brand-button focus-visible:ring-offset-4 focus-visible:ring-offset-white"
+                className="outline-none transition hover:text-brand-button focus-visible:rounded focus-visible:ring-2 focus-visible:ring-brand-button focus-visible:ring-offset-4 focus-visible:ring-offset-black"
               >
                 {link.label}
               </a>
