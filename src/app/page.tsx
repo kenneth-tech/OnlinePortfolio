@@ -1,3 +1,4 @@
+import { CreativeIconCloud } from "../components/creative-icon-cloud";
 import { AnimatedButtonLink } from "../components/animated-button-link";
 import { StatCard } from "../components/stat-card";
 import { profile, projects, skillGroups, type Project } from "../data/portfolio";
@@ -57,7 +58,7 @@ export default function HomePage() {
     <div className="bg-transparent">
       <section className={`${styles.hero} relative overflow-hidden`}>
         <div className="relative mx-auto grid min-h-[calc(100vh-96px)] w-full max-w-6xl items-center gap-12 px-5 py-16 sm:px-8 lg:grid-cols-[1.08fr_0.92fr] lg:py-24">
-          <div>
+          <div className="motion-surface">
             <p className="text-sm font-semibold text-brand-button">
               Portfolio signal
             </p>
@@ -86,7 +87,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          <aside className="rounded-2xl border border-brand-button/20 bg-brand-card/70 p-6 shadow-[0_24px_90px_rgba(0,0,0,0.28)] backdrop-blur">
+          <aside className="motion-card rounded-2xl border border-brand-button/20 bg-brand-card/70 p-6 shadow-[0_24px_90px_rgba(0,0,0,0.28)] backdrop-blur">
             <div className="flex items-center justify-between gap-4 border-b border-brand-button/10 pb-5">
               <div>
                 <p className="text-sm font-semibold text-brand-button">
@@ -98,6 +99,7 @@ export default function HomePage() {
               </div>
               <span className="h-10 w-10 rounded-full border border-brand-button/30 bg-brand-button/10 shadow-[0_0_30px_rgba(127,255,212,0.22)]" />
             </div>
+            <CreativeIconCloud />
             <div className="mt-6 grid gap-3">
               {[
                 "Responsive interfaces",
@@ -107,7 +109,7 @@ export default function HomePage() {
               ].map((item) => (
                 <div
                   key={item}
-                  className="rounded-xl border border-brand-button/10 bg-brand-ink/35 px-4 py-3 text-sm font-medium text-brand-muted"
+                className="motion-card rounded-xl border border-brand-button/10 bg-brand-ink/35 px-4 py-3 text-sm font-medium text-brand-muted"
                 >
                   {item}
                 </div>
@@ -141,7 +143,7 @@ export default function HomePage() {
             {featuredProjects.map((project) => (
               <article
                 key={project.title}
-                className="rounded-xl border border-brand-button/15 bg-brand-card/70 p-5 transition-[border-color,transform,box-shadow] duration-200 hover:-translate-y-1 hover:border-brand-button/45 hover:shadow-[0_18px_70px_rgba(127,255,212,0.10)]"
+                className="motion-card rounded-xl border border-brand-button/15 bg-brand-card/70 p-5 transition-[border-color,transform,box-shadow] duration-200 hover:-translate-y-1 hover:border-brand-button/45 hover:shadow-[0_18px_70px_rgba(127,255,212,0.10)]"
               >
                 <p className="text-sm text-brand-button">{project.category}</p>
                 <h3 className="mt-2 text-xl font-semibold text-white">

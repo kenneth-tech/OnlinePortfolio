@@ -14,7 +14,7 @@ export default function SkillsPage() {
         {skillGroups.map((group, index) => (
           <section
             key={group.title}
-            className="rounded-xl border border-brand-button/15 bg-brand-card/65 p-6 shadow-[0_18px_60px_rgba(0,0,0,0.18)]"
+            className="motion-card rounded-xl border border-brand-button/15 bg-brand-card/65 p-6 shadow-[0_18px_60px_rgba(0,0,0,0.18)]"
           >
             <div className="flex items-center justify-between gap-4 border-b border-brand-button/10 pb-4">
               <h2 className="text-xl font-semibold text-white">

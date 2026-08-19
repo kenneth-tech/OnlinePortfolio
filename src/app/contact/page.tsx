@@ -11,7 +11,7 @@ export default function ContactPage() {
       />
 
       <div className="mt-10 grid gap-6 lg:grid-cols-[0.85fr_1.15fr]">
-        <div className="rounded-2xl border border-brand-button/20 bg-brand-card/75 p-6 shadow-[0_24px_90px_rgba(0,0,0,0.26)]">
+        <div className="motion-card rounded-2xl border border-brand-button/20 bg-brand-card/75 p-6 shadow-[0_24px_90px_rgba(0,0,0,0.26)]">
           <p className="text-sm font-semibold text-brand-button">
             Current status
           </p>
@@ -37,7 +37,7 @@ export default function ContactPage() {
               key={item.href}
               href={item.href}
               aria-label={item.value}
-              className="group rounded-xl border border-brand-button/15 bg-brand-card/65 p-5 font-semibold text-white outline-none transition hover:border-brand-button/45 focus-visible:ring-2 focus-visible:ring-brand-button focus-visible:ring-offset-4 focus-visible:ring-offset-brand-ink"
+              className="motion-card group rounded-xl border border-brand-button/15 bg-brand-card/65 p-5 font-semibold text-white outline-none transition hover:border-brand-button/45 focus-visible:ring-2 focus-visible:ring-brand-button focus-visible:ring-offset-4 focus-visible:ring-offset-brand-ink"
             >
               <span className="block text-sm font-medium text-brand-button">
                 {item.label}

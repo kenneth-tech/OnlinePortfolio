@@ -48,3 +48,73 @@ body {
 a {
   text-underline-offset: 4px;
 }
+
+@keyframes soft-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes depth-float {
+  0%,
+  100% {
+    transform: perspective(720px) rotateX(10deg) rotateY(-12deg) translateY(0);
+  }
+
+  50% {
+    transform: perspective(720px) rotateX(14deg) rotateY(10deg) translateY(-8px);
+  }
+}
+
+.motion-surface {
+  animation: soft-rise 700ms ease both;
+}
+
+.motion-card {
+  animation: soft-rise 720ms ease both;
+  transition:
+    border-color 200ms ease,
+    box-shadow 200ms ease,
+    transform 200ms ease;
+}
+
+.motion-card:hover {
+  transform: translateY(-4px);
+}
+
+.motion-icon {
+  animation: depth-float 5.6s ease-in-out infinite;
+  transform-style: preserve-3d;
+  transition:
+    border-color 200ms ease,
+    box-shadow 200ms ease,
+    transform 200ms ease;
+}
+
+.motion-icon:hover {
+  border-color: rgba(127, 255, 212, 0.45);
+  box-shadow: 0 22px 70px rgba(127, 255, 212, 0.14);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 1ms !important;
+  }
+
+  .motion-card:hover,
+  .motion-icon,
+  .motion-icon:hover {
+    transform: none;
+  }
+}

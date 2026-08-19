@@ -6,7 +6,7 @@ type PageHeaderProps = {
 
 export function PageHeader({ eyebrow, title, description }: PageHeaderProps) {
   return (
-    <header className="max-w-3xl">
+    <header className="motion-surface max-w-3xl">
       <p className="text-sm font-semibold text-brand-button">
         {eyebrow}
       </p>

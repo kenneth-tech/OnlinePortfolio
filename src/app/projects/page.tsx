@@ -12,7 +12,7 @@ function ProjectPreview({
   priority?: boolean;
 }) {
   return (
-    <div className="overflow-hidden rounded-xl border border-brand-button/15 bg-brand-ink/70 shadow-[0_18px_60px_rgba(0,0,0,0.24)]">
+    <div className="motion-card overflow-hidden rounded-xl border border-brand-button/15 bg-brand-ink/70 shadow-[0_18px_60px_rgba(0,0,0,0.24)]">
       <div className="flex h-9 items-center gap-2 border-b border-brand-button/10 bg-brand-ink/85 px-4">
         <span className="h-2.5 w-2.5 rounded-full bg-brand-button/80" />
         <span className="h-2.5 w-2.5 rounded-full bg-brand-soft/50" />
@@ -54,7 +54,7 @@ export default function ProjectsPage() {
         ].map(([label, detail]) => (
           <div
             key={label}
-            className="rounded-xl border border-brand-button/15 bg-brand-card/70 p-5 shadow-[0_18px_60px_rgba(0,0,0,0.18)]"
+            className="motion-card rounded-xl border border-brand-button/15 bg-brand-card/70 p-5 shadow-[0_18px_60px_rgba(0,0,0,0.18)]"
           >
             <p className="text-xl font-semibold text-white">{label}</p>
             <p className="mt-2 text-sm leading-6 text-brand-muted">{detail}</p>
@@ -62,7 +62,7 @@ export default function ProjectsPage() {
         ))}
       </div>
 
-      <article className="mt-10 grid gap-8 rounded-2xl border border-brand-button/20 bg-brand-card/75 p-5 shadow-[0_24px_90px_rgba(0,0,0,0.26)] lg:grid-cols-[1.15fr_0.85fr] lg:p-6">
+      <article className="motion-card mt-10 grid gap-8 rounded-2xl border border-brand-button/20 bg-brand-card/75 p-5 shadow-[0_24px_90px_rgba(0,0,0,0.26)] lg:grid-cols-[1.15fr_0.85fr] lg:p-6">
         <ProjectPreview project={featuredProject} priority />
         <div className="self-center">
           <p className="text-sm font-semibold text-brand-button">
@@ -109,7 +109,7 @@ export default function ProjectsPage() {
         {projectGrid.map((project) => (
           <article
             key={project.title}
-            className="flex flex-col overflow-hidden rounded-xl border border-brand-button/15 bg-brand-card/65 shadow-[0_18px_60px_rgba(0,0,0,0.18)] transition-[border-color,transform,box-shadow] duration-200 hover:-translate-y-1 hover:border-brand-button/45 hover:shadow-[0_18px_70px_rgba(127,255,212,0.10)]"
+            className="motion-card flex flex-col overflow-hidden rounded-xl border border-brand-button/15 bg-brand-card/65 shadow-[0_18px_60px_rgba(0,0,0,0.18)] transition-[border-color,transform,box-shadow] duration-200 hover:-translate-y-1 hover:border-brand-button/45 hover:shadow-[0_18px_70px_rgba(127,255,212,0.10)]"
           >
             <ProjectPreview project={project} />
             <div className="flex flex-1 flex-col p-6">

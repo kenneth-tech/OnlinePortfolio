@@ -132,6 +132,8 @@ describe("portfolio pages", () => {
     expect(screen.getByText("4+ Years")).toBeInTheDocument();
     expect(screen.getByText("Web + Multimedia")).toBeInTheDocument();
     expect(screen.getByText("Remote-ready")).toBeInTheDocument();
+    expect(screen.getByLabelText("Web development icon")).toBeInTheDocument();
+    expect(screen.getByLabelText("Multimedia design icon")).toBeInTheDocument();
   });
 
   test("renders an empty featured project state", () => {

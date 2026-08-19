@@ -14,7 +14,7 @@ export default function ExperiencePage() {
         {experiences.map((experience, index) => (
           <article
             key={`${experience.role}-${experience.organization}`}
-            className="grid gap-5 rounded-xl border border-brand-button/15 bg-brand-card/65 p-6 shadow-[0_18px_60px_rgba(0,0,0,0.18)] md:grid-cols-[220px_1fr]"
+            className="motion-card grid gap-5 rounded-xl border border-brand-button/15 bg-brand-card/65 p-6 shadow-[0_18px_60px_rgba(0,0,0,0.18)] md:grid-cols-[220px_1fr]"
           >
             <div>
               <p className="text-sm font-semibold text-brand-button">
@@ -55,7 +55,7 @@ export default function ExperiencePage() {
           {education.map((item) => (
             <article
               key={`${item.degree}-${item.school}`}
-              className="rounded-xl border border-brand-button/15 bg-brand-card/65 p-6 text-white"
+              className="motion-card rounded-xl border border-brand-button/15 bg-brand-card/65 p-6 text-white"
             >
               <h3 className="text-xl font-semibold">
                 {item.degree}

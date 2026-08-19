@@ -12,7 +12,15 @@ function readSource(...parts: string[]) {
 const globalsCss = readSource("src", "app", "globals.css");
 const siteHeader = readSource("src", "components", "site-header.tsx");
 const siteFooter = readSource("src", "components", "site-footer.tsx");
+const statCard = readSource("src", "components", "stat-card.tsx");
+const pageHeader = readSource("src", "components", "page-header.tsx");
+const creativeIconCloud = readSource(
+  "src",
+  "components",
+  "creative-icon-cloud.tsx",
+);
 const homePage = readSource("src", "app", "page.tsx");
+const projectsPage = readSource("src", "app", "projects", "page.tsx");
 const homeModuleCss = readSource("src", "app", "home.module.css");
 const homeHeroImagePath = join(
   process.cwd(),
@@ -107,5 +115,27 @@ describe("brand theme", () => {
       'className="relative mx-auto grid min-h-[calc(100vh-96px)] w-full max-w-6xl',
     );
     expect(homePage).not.toContain("`${styles.hero} relative mx-auto grid");
+  });
+
+  test("defines refined whole-site motion with reduced-motion support", () => {
+    expect(globalsCss).toContain("@keyframes soft-rise");
+    expect(globalsCss).toContain("@keyframes depth-float");
+    expect(globalsCss).toContain(".motion-surface");
+    expect(globalsCss).toContain(".motion-card");
+    expect(globalsCss).toContain(".motion-icon");
+    expect(globalsCss).toContain("@media (prefers-reduced-motion: reduce)");
+    expect(pageHeader).toContain("motion-surface");
+    expect(statCard).toContain("motion-card");
+    expect(projectsPage).toContain("motion-card");
+  });
+
+  test("adds reusable 3d creative icons for web and multimedia work", () => {
+    expect(creativeIconCloud).toContain("CreativeIconCloud");
+    expect(creativeIconCloud).toContain("Web development icon");
+    expect(creativeIconCloud).toContain("Multimedia design icon");
+    expect(creativeIconCloud).toContain("UI design icon");
+    expect(creativeIconCloud).toContain("Video production icon");
+    expect(creativeIconCloud).toContain("motion-icon");
+    expect(homePage).toContain("CreativeIconCloud");
   });
 });
