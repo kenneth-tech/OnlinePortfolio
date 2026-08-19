@@ -198,6 +198,7 @@ describe("portfolio pages", () => {
       screen.getByRole("heading", { name: "Experience" }),
     ).toBeInTheDocument();
     expect(screen.getByText("Career timeline")).toBeInTheDocument();
+    expect(screen.queryAllByText(/Experience \d{2}/)).toHaveLength(0);
     for (const experience of experiences) {
       expect(screen.getByText(experience.role)).toBeInTheDocument();
     }

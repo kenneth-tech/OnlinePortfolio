@@ -11,16 +11,13 @@ export default function ExperiencePage() {
       />
 
       <div className="mt-10 space-y-6">
-        {experiences.map((experience, index) => (
+        {experiences.map((experience) => (
           <article
             key={`${experience.role}-${experience.organization}`}
             className="motion-card grid gap-5 rounded-xl border border-brand-button/15 bg-brand-card/65 p-6 shadow-[0_18px_60px_rgba(0,0,0,0.18)] md:grid-cols-[220px_1fr]"
           >
             <div>
-              <p className="text-sm font-semibold text-brand-button">
-                Experience {String(index + 1).padStart(2, "0")}
-              </p>
-              <p className="mt-4 text-sm font-bold text-brand-soft">
+              <p className="text-sm font-bold text-brand-soft">
                 {experience.period}
               </p>
               <p className="mt-2 text-sm text-brand-muted">
