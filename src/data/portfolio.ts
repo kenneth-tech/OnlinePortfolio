@@ -57,8 +57,14 @@ export const profile: Profile = {
   email: "rillamasmarkkenneth763@gmail.com",
   phone: "0965 135 5727",
   links: [
-    { label: "GitHub", href: "https://github.com/" },
-    { label: "LinkedIn", href: "https://www.linkedin.com/" },
+    {
+      label: "GitHub",
+      href: "https://github.com/kenneth-tech?tab=repositories",
+    },
+    {
+      label: "LinkedIn",
+      href: "https://www.linkedin.com/in/mark-kenneth-rillamas-962578212/",
+    },
   ],
 };
 
