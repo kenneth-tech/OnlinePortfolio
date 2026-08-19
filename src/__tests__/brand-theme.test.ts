@@ -114,9 +114,25 @@ describe("brand theme", () => {
       '<section className={`${styles.hero} relative overflow-hidden`}>',
     );
     expect(homePage).toContain(
-      'className="relative mx-auto grid min-h-[calc(100vh-96px)] w-full max-w-6xl',
+      "min-h-[calc(100svh-88px)]",
     );
     expect(homePage).not.toContain("`${styles.hero} relative mx-auto grid");
+  });
+
+  test("adds mobile-friendly layout safeguards and touch targets", () => {
+    expect(globalsCss).toContain("overflow-x: hidden;");
+    expect(globalsCss).toContain("@media (max-width: 640px)");
+    expect(globalsCss).toContain("background-attachment: scroll;");
+    expect(siteHeader).toContain("sticky top-0 z-50");
+    expect(siteHeader).toContain("overflow-x-auto");
+    expect(siteHeader).toContain("min-h-11");
+    expect(animatedButtonLink).toContain("w-full sm:w-auto");
+    expect(homePage).toContain("text-4xl");
+    expect(homePage).toContain("sm:text-6xl");
+    expect(homePage).toContain("lg:text-7xl");
+    expect(projectsPage).toContain("grid-cols-1");
+    expect(pageHeader).toContain("text-3xl");
+    expect(pageHeader).toContain("sm:text-5xl");
   });
 
   test("defines refined whole-site motion with reduced-motion support", () => {

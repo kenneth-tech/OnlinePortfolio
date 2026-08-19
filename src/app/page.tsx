@@ -34,7 +34,9 @@ export function FeaturedProjectCard({ project }: { project?: Project }) {
 }
 
 export default function HomePage() {
-  const featuredSkills = skillGroups.flatMap((group) => group.skills).slice(0, 10);
+  const featuredSkills = skillGroups
+    .flatMap((group) => group.skills)
+    .slice(0, 10);
   const featuredProjects = projects.slice(0, 3);
   const stats = [
     {
@@ -57,24 +59,24 @@ export default function HomePage() {
   return (
     <div className="bg-transparent">
       <section className={`${styles.hero} relative overflow-hidden`}>
-        <div className="relative mx-auto grid min-h-[calc(100vh-96px)] w-full max-w-6xl items-center gap-12 px-5 py-16 sm:px-8 lg:grid-cols-[1.08fr_0.92fr] lg:py-24">
+        <div className="relative mx-auto grid min-h-[calc(100svh-88px)] w-full max-w-6xl items-center gap-10 px-4 py-12 sm:px-8 sm:py-16 lg:grid-cols-[1.08fr_0.92fr] lg:gap-12 lg:py-24">
           <div className="motion-surface">
             <p className="w-fit rounded-full border border-brand-button/25 bg-brand-button/10 px-4 py-2 text-sm font-medium text-brand-soft">
               {profile.role}
             </p>
-            <h1 className="mt-6 max-w-4xl text-5xl font-bold leading-[1.02] text-white sm:text-7xl">
+            <h1 className="mt-6 max-w-4xl text-4xl font-bold leading-[1.05] text-white sm:text-6xl lg:text-7xl">
               {profile.name}
             </h1>
-            <h2 className="mt-5 text-2xl font-semibold text-brand-soft">
+            <h2 className="mt-5 text-xl font-semibold text-brand-soft sm:text-2xl">
               Premium digital experiences
             </h2>
-            <p className="mt-5 max-w-2xl text-lg leading-8 text-brand-muted">
+            <p className="mt-5 max-w-2xl text-base leading-7 text-brand-muted sm:text-lg sm:leading-8">
               {profile.summary}
             </p>
             <p className="mt-4 text-base text-brand-muted">
               {profile.location}
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <AnimatedButtonLink href="/projects">
                 View Projects
               </AnimatedButtonLink>
@@ -84,17 +86,17 @@ export default function HomePage() {
             </div>
           </div>
 
-          <aside className="motion-card rounded-2xl border border-brand-button/20 bg-brand-card/70 p-6 shadow-[0_24px_90px_rgba(0,0,0,0.28)] backdrop-blur">
-            <div className="flex items-center justify-between gap-4 border-b border-brand-button/10 pb-5">
+          <aside className="motion-card rounded-2xl border border-brand-button/20 bg-brand-card/70 p-4 shadow-[0_24px_90px_rgba(0,0,0,0.28)] backdrop-blur sm:p-6">
+            <div className="flex items-start justify-between gap-4 border-b border-brand-button/10 pb-5">
               <div>
                 <p className="text-sm font-semibold text-brand-button">
                   Creative engineering
                 </p>
-                <h2 className="mt-2 text-2xl font-semibold text-white">
+                <h2 className="mt-2 text-xl font-semibold text-white sm:text-2xl">
                   Web, design, and multimedia in one workflow.
                 </h2>
               </div>
-              <span className="h-10 w-10 rounded-full border border-brand-button/30 bg-brand-button/10 shadow-[0_0_30px_rgba(127,255,212,0.22)]" />
+              <span className="h-10 w-10 shrink-0 rounded-full border border-brand-button/30 bg-brand-button/10 shadow-[0_0_30px_rgba(127,255,212,0.22)]" />
             </div>
             <CreativeIconCloud />
             <div className="mt-6 grid gap-3">
@@ -106,7 +108,7 @@ export default function HomePage() {
               ].map((item) => (
                 <div
                   key={item}
-                className="motion-card rounded-xl border border-brand-button/10 bg-brand-ink/35 px-4 py-3 text-sm font-medium text-brand-muted"
+                  className="motion-card rounded-xl border border-brand-button/10 bg-brand-ink/35 px-4 py-3 text-sm font-medium text-brand-muted"
                 >
                   {item}
                 </div>
@@ -116,7 +118,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-6xl border-t border-brand-button/10 px-5 py-12 sm:px-8">
+      <section className="mx-auto w-full max-w-6xl border-t border-brand-button/10 px-4 py-10 sm:px-8 sm:py-12">
         <h2 className="text-2xl font-semibold text-white">Highlights</h2>
         <div className="mt-6 grid gap-4 md:grid-cols-3">
           {stats.map((stat) => (
@@ -125,9 +127,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto grid w-full max-w-6xl gap-10 border-t border-brand-button/10 px-5 py-12 sm:px-8 lg:grid-cols-[1.1fr_0.9fr]">
+      <section className="mx-auto grid w-full max-w-6xl gap-10 border-t border-brand-button/10 px-4 py-10 sm:px-8 sm:py-12 lg:grid-cols-[1.1fr_0.9fr]">
         <div>
-          <div className="flex items-end justify-between gap-4">
+          <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-end sm:justify-between">
             <h2 className="text-2xl font-semibold text-white">Selected work</h2>
             <a
               href="/projects"

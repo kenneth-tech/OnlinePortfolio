@@ -30,7 +30,7 @@ export function SiteFooter() {
 
   return (
     <footer className="border-t border-brand-button/20 bg-black text-white">
-      <div className="mx-auto grid w-full max-w-6xl gap-10 px-5 py-12 sm:px-8 lg:grid-cols-[1.2fr_0.7fr_0.8fr]">
+      <div className="mx-auto grid w-full max-w-6xl gap-8 px-4 py-10 sm:px-8 sm:py-12 lg:grid-cols-[1.2fr_0.7fr_0.8fr] lg:gap-10">
         <section className="max-w-xl">
           <Link
             href="/"
@@ -99,7 +99,7 @@ export function SiteFooter() {
       </div>
 
       <div className="border-t border-brand-button/15">
-        <div className="mx-auto flex w-full max-w-6xl flex-col gap-3 px-5 py-5 text-sm text-brand-muted sm:flex-row sm:items-center sm:justify-between sm:px-8">
+        <div className="mx-auto flex w-full max-w-6xl flex-col gap-4 px-4 py-5 text-sm text-brand-muted sm:flex-row sm:items-center sm:justify-between sm:px-8">
           <p>(c) {year} Mark Kenneth R. Rillamas. All rights reserved.</p>
           <div className="flex flex-wrap gap-3">
             {profile.links.map((link) => (

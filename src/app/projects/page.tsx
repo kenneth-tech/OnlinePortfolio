@@ -39,14 +39,14 @@ export default function ProjectsPage() {
   const [featuredProject, ...projectGrid] = projects;
 
   return (
-    <section className="mx-auto w-full max-w-6xl px-5 py-14 sm:px-8">
+    <section className="mx-auto w-full max-w-6xl px-4 py-10 sm:px-8 sm:py-14">
       <PageHeader
         eyebrow="Project index"
         title="Projects"
         description="A curated set of live websites across social growth, local service, ecommerce, marketing, mental health, and business support."
       />
 
-      <div className="mt-8 grid gap-4 sm:grid-cols-3">
+      <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
         {[
           ["6 Live Projects", "Websites visitors can open and review."],
           ["6 Industries", "Different audiences and business goals."],
@@ -62,13 +62,13 @@ export default function ProjectsPage() {
         ))}
       </div>
 
-      <article className="motion-card mt-10 grid gap-8 rounded-2xl border border-brand-button/20 bg-brand-card/75 p-5 shadow-[0_24px_90px_rgba(0,0,0,0.26)] lg:grid-cols-[1.15fr_0.85fr] lg:p-6">
+      <article className="motion-card mt-10 grid gap-6 rounded-2xl border border-brand-button/20 bg-brand-card/75 p-4 shadow-[0_24px_90px_rgba(0,0,0,0.26)] sm:p-5 lg:grid-cols-[1.15fr_0.85fr] lg:gap-8 lg:p-6">
         <ProjectPreview project={featuredProject} priority />
         <div className="self-center">
           <p className="text-sm font-semibold text-brand-button">
             Featured build
           </p>
-          <h2 className="mt-3 text-4xl font-semibold leading-tight text-white">
+          <h2 className="mt-3 text-3xl font-semibold leading-tight text-white sm:text-4xl">
             {featuredProject.title}
           </h2>
           <p className="mt-3 text-sm text-brand-soft">
@@ -93,7 +93,7 @@ export default function ProjectsPage() {
               </span>
             ))}
           </div>
-          <div className="mt-6">
+          <div className="mt-6 flex">
             <AnimatedButtonLink
               href={featuredProject.links[0].href}
               rel="noreferrer"
@@ -105,18 +105,18 @@ export default function ProjectsPage() {
         </div>
       </article>
 
-      <div className="mt-8 grid gap-5 md:grid-cols-2">
+      <div className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-2">
         {projectGrid.map((project) => (
           <article
             key={project.title}
             className="motion-card flex flex-col overflow-hidden rounded-xl border border-brand-button/15 bg-brand-card/65 shadow-[0_18px_60px_rgba(0,0,0,0.18)] transition-[border-color,transform,box-shadow] duration-200 hover:-translate-y-1 hover:border-brand-button/45 hover:shadow-[0_18px_70px_rgba(127,255,212,0.10)]"
           >
             <ProjectPreview project={project} />
-            <div className="flex flex-1 flex-col p-6">
+            <div className="flex flex-1 flex-col p-5 sm:p-6">
               <p className="text-sm font-medium text-brand-button">
                 {project.category}
               </p>
-              <h2 className="mt-3 text-2xl font-semibold leading-tight text-white">
+              <h2 className="mt-3 text-xl font-semibold leading-tight text-white sm:text-2xl">
                 {project.title}
               </h2>
               <p className="mt-2 text-sm text-brand-muted">{project.role}</p>
@@ -133,7 +133,7 @@ export default function ProjectsPage() {
                   </span>
                 ))}
               </div>
-              <div className="mt-6">
+              <div className="mt-6 flex">
                 <AnimatedButtonLink
                   href={project.links[0].href}
                   rel="noreferrer"

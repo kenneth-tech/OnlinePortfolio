@@ -3,19 +3,19 @@ import { profile } from "../../data/portfolio";
 
 export default function ContactPage() {
   return (
-    <section className="mx-auto w-full max-w-6xl px-5 py-14 sm:px-8">
+    <section className="mx-auto w-full max-w-6xl px-4 py-10 sm:px-8 sm:py-14">
       <PageHeader
         eyebrow="Availability signal"
         title="Contact"
         description="A direct channel for web projects, collaboration, freelance inquiries, and opportunities connected to development or multimedia work."
       />
 
-      <div className="mt-10 grid gap-6 lg:grid-cols-[0.85fr_1.15fr]">
-        <div className="motion-card rounded-2xl border border-brand-button/20 bg-brand-card/75 p-6 shadow-[0_24px_90px_rgba(0,0,0,0.26)]">
+      <div className="mt-8 grid gap-5 sm:mt-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-6">
+        <div className="motion-card rounded-2xl border border-brand-button/20 bg-brand-card/75 p-5 shadow-[0_24px_90px_rgba(0,0,0,0.26)] sm:p-6">
           <p className="text-sm font-semibold text-brand-button">
             Current status
           </p>
-          <h2 className="mt-4 text-3xl font-semibold leading-tight text-white">
+          <h2 className="mt-4 text-2xl font-semibold leading-tight text-white sm:text-3xl">
             Open to remote web and multimedia work.
           </h2>
           <p className="mt-5 leading-7 text-brand-muted">
@@ -26,7 +26,11 @@ export default function ContactPage() {
 
         <div className="grid gap-3">
           {[
-            { label: "Email", href: `mailto:${profile.email}`, value: profile.email },
+            {
+              label: "Email",
+              href: `mailto:${profile.email}`,
+              value: profile.email,
+            },
             {
               label: "Phone",
               href: `tel:${profile.phone.replaceAll(" ", "")}`,
@@ -42,7 +46,9 @@ export default function ContactPage() {
               <span className="block text-sm font-medium text-brand-button">
                 {item.label}
               </span>
-              <span className="mt-3 block break-words text-lg">{item.value}</span>
+              <span className="mt-3 block break-words text-base sm:text-lg">
+                {item.value}
+              </span>
             </a>
           ))}
         </div>

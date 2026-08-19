@@ -10,7 +10,7 @@ type AnimatedButtonLinkProps = {
 };
 
 const baseClasses =
-  "inline-flex min-h-11 items-center justify-center rounded-lg border px-5 py-3 text-sm font-semibold outline-none transition-[background-color,border-color,color,transform,box-shadow] duration-200 hover:-translate-y-1";
+  "inline-flex min-h-12 w-full sm:w-auto items-center justify-center rounded-lg border px-5 py-3 text-sm font-semibold outline-none transition-[background-color,border-color,color,transform,box-shadow] duration-200 hover:-translate-y-1";
 
 const variantClasses = {
   primary:

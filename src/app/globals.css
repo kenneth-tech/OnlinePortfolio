@@ -25,10 +25,12 @@
 html {
   min-height: 100%;
   background: #071A2F;
+  overflow-x: hidden;
 }
 
 body {
   min-height: 100%;
+  overflow-x: hidden;
   background:
     linear-gradient(90deg, rgba(7, 26, 47, 0.96) 0%, rgba(7, 26, 47, 0.7) 48%, rgba(7, 26, 47, 0.82) 100%),
     url("/images/homepage-hero-bg.png");
@@ -47,6 +49,13 @@ body {
 
 a {
   text-underline-offset: 4px;
+}
+
+img,
+svg,
+canvas,
+video {
+  max-width: 100%;
 }
 
 @keyframes soft-rise {
@@ -116,5 +125,12 @@ a {
   .motion-icon,
   .motion-icon:hover {
     transform: none;
+  }
+}
+
+@media (max-width: 640px) {
+  body {
+    background-attachment: scroll;
+    background-position: center, center top;
   }
 }

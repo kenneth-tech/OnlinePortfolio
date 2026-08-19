@@ -3,18 +3,18 @@ import { education, experiences } from "../../data/portfolio";
 
 export default function ExperiencePage() {
   return (
-    <section className="mx-auto w-full max-w-6xl px-5 py-14 sm:px-8">
+    <section className="mx-auto w-full max-w-6xl px-4 py-10 sm:px-8 sm:py-14">
       <PageHeader
         eyebrow="Career timeline"
         title="Experience"
         description="A progression through web development, multimedia design, digital marketing, and technical operations work across remote and on-site teams."
       />
 
-      <div className="mt-10 space-y-6">
+      <div className="mt-8 space-y-5 sm:mt-10 sm:space-y-6">
         {experiences.map((experience) => (
           <article
             key={`${experience.role}-${experience.organization}`}
-            className="motion-card grid gap-5 rounded-xl border border-brand-button/15 bg-brand-card/65 p-6 shadow-[0_18px_60px_rgba(0,0,0,0.18)] md:grid-cols-[220px_1fr]"
+            className="motion-card grid gap-5 rounded-xl border border-brand-button/15 bg-brand-card/65 p-5 shadow-[0_18px_60px_rgba(0,0,0,0.18)] sm:p-6 md:grid-cols-[220px_1fr]"
           >
             <div>
               <p className="text-sm font-bold text-brand-soft">
@@ -28,10 +28,10 @@ export default function ExperiencePage() {
               </p>
             </div>
             <div>
-              <h2 className="text-2xl font-semibold leading-tight text-white">
+              <h2 className="text-xl font-semibold leading-tight text-white sm:text-2xl">
                 {experience.role}
               </h2>
-              <ul className="mt-5 grid gap-3 text-brand-muted">
+              <ul className="mt-5 grid gap-3 text-sm text-brand-muted sm:text-base">
                 {experience.highlights.map((highlight) => (
                   <li
                     key={highlight}
@@ -46,13 +46,13 @@ export default function ExperiencePage() {
         ))}
       </div>
 
-      <div className="mt-12 border-t border-brand-button/10 pt-8">
+      <div className="mt-10 border-t border-brand-button/10 pt-8 sm:mt-12">
         <h2 className="text-2xl font-semibold text-white">Education</h2>
         <div className="mt-5 grid gap-5">
           {education.map((item) => (
             <article
               key={`${item.degree}-${item.school}`}
-              className="motion-card rounded-xl border border-brand-button/15 bg-brand-card/65 p-6 text-white"
+              className="motion-card rounded-xl border border-brand-button/15 bg-brand-card/65 p-5 text-white sm:p-6"
             >
               <h3 className="text-xl font-semibold">
                 {item.degree}
