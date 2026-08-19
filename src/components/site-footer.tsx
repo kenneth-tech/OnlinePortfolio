@@ -1,6 +1,8 @@
 import Link from "next/link";
+import { FaGithub, FaLinkedinIn } from "react-icons/fa6";
+import type { IconType } from "react-icons";
 
-import { profile } from "../data/portfolio";
+import { profile, type ProfileLink } from "../data/portfolio";
 
 const footerNavItems = [
   { label: "Home", href: "/" },
@@ -16,6 +18,11 @@ const serviceItems = [
   "Multimedia production",
   "Automation-assisted workflows",
 ] as const;
+
+const socialIcons: Partial<Record<ProfileLink["label"], IconType>> = {
+  GitHub: FaGithub,
+  LinkedIn: FaLinkedinIn,
+};
 
 export function SiteFooter() {
   const year = new Date().getFullYear();
@@ -94,16 +101,17 @@ export function SiteFooter() {
       <div className="border-t border-brand-button/15">
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-3 px-5 py-5 text-sm text-brand-muted sm:flex-row sm:items-center sm:justify-between sm:px-8">
           <p>(c) {year} Mark Kenneth R. Rillamas. All rights reserved.</p>
-          <div className="flex flex-wrap gap-4">
+          <div className="flex flex-wrap gap-3">
             {profile.links.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 target="_blank"
                 rel="noreferrer"
-                className="outline-none transition hover:text-brand-button focus-visible:rounded focus-visible:ring-2 focus-visible:ring-brand-button focus-visible:ring-offset-4 focus-visible:ring-offset-black"
+                aria-label={link.label}
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-brand-button/25 text-white outline-none transition-[background-color,border-color,color,transform,box-shadow] duration-200 hover:-translate-y-0.5 hover:border-brand-button hover:bg-brand-button/10 hover:text-brand-button hover:shadow-[0_0_24px_rgba(127,255,212,0.16)] focus-visible:ring-2 focus-visible:ring-brand-button focus-visible:ring-offset-4 focus-visible:ring-offset-black"
               >
-                {link.label}
+                <SocialIcon label={link.label} />
               </a>
             ))}
           </div>
@@ -111,4 +119,14 @@ export function SiteFooter() {
       </div>
     </footer>
   );
+}
+
+function SocialIcon({ label }: { label: ProfileLink["label"] }) {
+  const Icon = socialIcons[label];
+
+  if (!Icon) {
+    return <span className="text-xs font-semibold">{label}</span>;
+  }
+
+  return <Icon aria-hidden="true" className="h-4 w-4" />;
 }

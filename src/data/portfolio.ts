@@ -56,7 +56,10 @@ export const profile: Profile = {
     "Web Developer and Multimedia Designer with experience building responsive websites, landing pages, and digital experiences using modern tools and efficient development workflows. Skilled in UI/UX design, rapid prototyping, automation, and multimedia production with a focus on usability, performance, and conversion.",
   email: "rillamasmarkkenneth763@gmail.com",
   phone: "0965 135 5727",
-  links: [],
+  links: [
+    { label: "GitHub", href: "https://github.com/" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/" },
+  ],
 };
 
 export const projects: Project[] = [

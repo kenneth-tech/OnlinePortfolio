@@ -27,6 +27,10 @@ describe("portfolio data", () => {
     expect(Array.isArray(experiences)).toBe(true);
     expect(Array.isArray(education)).toBe(true);
     expect(Array.isArray(skillGroups)).toBe(true);
+    expect(profile.links).toEqual([
+      { label: "GitHub", href: "https://github.com/" },
+      { label: "LinkedIn", href: "https://www.linkedin.com/" },
+    ]);
   });
 
   test("lists the six live project websites", () => {
