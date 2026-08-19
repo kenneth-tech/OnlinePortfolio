@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import { existsSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, test } from "vitest";
@@ -96,15 +96,44 @@ describe("site chrome", () => {
     );
   });
 
-  test("renders footer profile links", () => {
+  test("renders a professional footer with profile, navigation, and contact links", () => {
     render(<SiteFooter />);
 
-    expect(screen.getByText(profile.name)).toBeInTheDocument();
+    const footer = screen.getByRole("contentinfo");
+
+    expect(within(footer).getByText(profile.name)).toBeInTheDocument();
+    expect(within(footer).getByText(profile.role)).toBeInTheDocument();
+    expect(within(footer).getByText(profile.location)).toBeInTheDocument();
+    expect(
+      within(footer).getByRole("navigation", { name: "Footer navigation" }),
+    ).toBeInTheDocument();
+    expect(within(footer).getByRole("link", { name: "Home" })).toHaveAttribute(
+      "href",
+      "/",
+    );
+    expect(
+      within(footer).getByRole("link", { name: "Projects" }),
+    ).toHaveAttribute("href", "/projects");
+    expect(
+      within(footer).getByRole("link", { name: "Experience" }),
+    ).toHaveAttribute("href", "/experience");
+    expect(
+      within(footer).getByRole("link", { name: "Skills" }),
+    ).toHaveAttribute("href", "/skills");
+    expect(
+      within(footer).getByRole("link", { name: "Contact" }),
+    ).toHaveAttribute("href", "/contact");
+    expect(
+      within(footer).getByRole("link", { name: profile.email }),
+    ).toHaveAttribute("href", `mailto:${profile.email}`);
+    expect(
+      within(footer).getByRole("link", { name: profile.phone }),
+    ).toHaveAttribute("href", `tel:${profile.phone.replaceAll(" ", "")}`);
+
     for (const link of profile.links) {
-      expect(screen.getByRole("link", { name: link.label })).toHaveAttribute(
-        "href",
-        link.href,
-      );
+      expect(
+        within(footer).getByRole("link", { name: link.label }),
+      ).toHaveAttribute("href", link.href);
     }
   });
 });
