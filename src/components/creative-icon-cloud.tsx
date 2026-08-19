@@ -59,7 +59,7 @@ export function CreativeIconCloud() {
           key={icon.label}
           aria-label={icon.label}
           role="img"
-          className={`${icon.frameClassName} motion-icon flex aspect-square items-center justify-center rounded-2xl border border-brand-button/20 bg-brand-ink/45 text-brand-button shadow-[0_18px_48px_rgba(0,0,0,0.24)] backdrop-blur`}
+          className={`${icon.frameClassName} motion-icon flex aspect-square items-center justify-center rounded-2xl border border-brand-button/20 bg-brand-ink/45 text-brand-button shadow-[0_18px_48px_rgba(0,0,0,0.24)] backdrop-blur md:aspect-[5/3]`}
         >
           {icon.children}
         </div>

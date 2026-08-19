@@ -138,4 +138,9 @@ describe("brand theme", () => {
     expect(creativeIconCloud).toContain("motion-icon");
     expect(homePage).toContain("CreativeIconCloud");
   });
+
+  test("keeps creative icon tiles square on mobile and rectangular on desktop", () => {
+    expect(creativeIconCloud).toContain("aspect-square");
+    expect(creativeIconCloud).toContain("md:aspect-[5/3]");
+  });
 });
