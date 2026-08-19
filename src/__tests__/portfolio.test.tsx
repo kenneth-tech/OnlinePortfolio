@@ -1,4 +1,4 @@
-import { render, screen, within } from "@testing-library/react";
+import { fireEvent, render, screen, within } from "@testing-library/react";
 import { existsSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, test } from "vitest";
@@ -104,6 +104,36 @@ describe("site chrome", () => {
       "href",
       "/contact",
     );
+  });
+
+  test("toggles the mobile navigation menu from the hamburger button", () => {
+    render(<SiteHeader />);
+
+    const menuButton = screen.getByRole("button", {
+      name: "Open main menu",
+    });
+    const navigation = screen.getByRole("navigation", {
+      name: "Main navigation",
+    });
+
+    expect(menuButton).toHaveAttribute("aria-expanded", "false");
+    expect(navigation).toHaveClass("max-sm:hidden");
+
+    fireEvent.click(menuButton);
+
+    expect(menuButton).toHaveAttribute("aria-expanded", "true");
+    expect(menuButton).toHaveAccessibleName("Close main menu");
+    expect(navigation).toHaveClass("max-sm:block");
+
+    const contactLink = screen.getByRole("link", { name: "Contact" });
+    contactLink.addEventListener("click", (event) => event.preventDefault(), {
+      once: true,
+    });
+
+    fireEvent.click(contactLink);
+
+    expect(menuButton).toHaveAttribute("aria-expanded", "false");
+    expect(navigation).toHaveClass("max-sm:hidden");
   });
 
   test("renders a professional footer with profile, navigation, and contact links", () => {

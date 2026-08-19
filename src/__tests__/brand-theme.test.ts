@@ -124,7 +124,11 @@ describe("brand theme", () => {
     expect(globalsCss).toContain("@media (max-width: 640px)");
     expect(globalsCss).toContain("background-attachment: scroll;");
     expect(siteHeader).toContain("sticky top-0 z-50");
-    expect(siteHeader).toContain("overflow-x-auto");
+    expect(siteHeader).toContain('"use client";');
+    expect(siteHeader).toContain('aria-expanded={isMenuOpen}');
+    expect(siteHeader).toContain("sm:hidden");
+    expect(siteHeader).toContain("max-sm:hidden");
+    expect(siteHeader).toContain("max-sm:block");
     expect(siteHeader).toContain("min-h-11");
     expect(animatedButtonLink).toContain("w-full sm:w-auto");
     expect(homePage).toContain("text-4xl");
