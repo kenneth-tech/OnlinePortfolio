@@ -126,9 +126,13 @@ describe("brand theme", () => {
     expect(siteHeader).toContain("sticky top-0 z-50");
     expect(siteHeader).toContain('"use client";');
     expect(siteHeader).toContain('aria-expanded={isMenuOpen}');
+    expect(siteHeader).toContain('aria-controls="mobile-navigation"');
     expect(siteHeader).toContain("sm:hidden");
-    expect(siteHeader).toContain("max-sm:hidden");
-    expect(siteHeader).toContain("max-sm:block");
+    expect(siteHeader).toContain('aria-label="Mobile navigation"');
+    expect(siteHeader).toContain("Close mobile menu backdrop");
+    expect(siteHeader).toContain("max-sm:translate-x-full");
+    expect(siteHeader).toContain("max-sm:translate-x-0");
+    expect(siteHeader).toContain("transition-[transform,opacity]");
     expect(siteHeader).toContain("min-h-11");
     expect(animatedButtonLink).toContain("w-full sm:w-auto");
     expect(homePage).toContain("text-4xl");

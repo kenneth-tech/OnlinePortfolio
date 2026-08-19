@@ -106,26 +106,48 @@ describe("site chrome", () => {
     );
   });
 
-  test("toggles the mobile navigation menu from the hamburger button", () => {
+  test("opens and closes the mobile sidebar navigation", () => {
     render(<SiteHeader />);
 
     const menuButton = screen.getByRole("button", {
       name: "Open main menu",
     });
-    const navigation = screen.getByRole("navigation", {
-      name: "Main navigation",
-    });
+    const navigation = document.getElementById("mobile-navigation");
+
+    if (!navigation) {
+      throw new Error("Mobile navigation was not rendered");
+    }
 
     expect(menuButton).toHaveAttribute("aria-expanded", "false");
-    expect(navigation).toHaveClass("max-sm:hidden");
+    expect(navigation).toHaveAttribute("inert");
+    expect(navigation).toHaveClass("max-sm:translate-x-full");
+    expect(
+      screen.queryByRole("button", { name: "Close mobile menu backdrop" }),
+    ).not.toBeInTheDocument();
 
     fireEvent.click(menuButton);
 
     expect(menuButton).toHaveAttribute("aria-expanded", "true");
     expect(menuButton).toHaveAccessibleName("Close main menu");
-    expect(navigation).toHaveClass("max-sm:block");
+    expect(
+      screen.getByRole("navigation", { name: "Mobile navigation" }),
+    ).toBe(navigation);
+    expect(navigation).not.toHaveAttribute("inert");
+    expect(navigation).toHaveClass("max-sm:translate-x-0");
 
-    const contactLink = screen.getByRole("link", { name: "Contact" });
+    fireEvent.click(
+      screen.getByRole("button", { name: "Close mobile menu backdrop" }),
+    );
+
+    expect(menuButton).toHaveAttribute("aria-expanded", "false");
+    expect(navigation).toHaveAttribute("inert");
+    expect(navigation).toHaveClass("max-sm:translate-x-full");
+
+    fireEvent.click(menuButton);
+
+    const contactLink = within(navigation).getByRole("link", {
+      name: "Contact",
+    });
     contactLink.addEventListener("click", (event) => event.preventDefault(), {
       once: true,
     });
@@ -133,7 +155,8 @@ describe("site chrome", () => {
     fireEvent.click(contactLink);
 
     expect(menuButton).toHaveAttribute("aria-expanded", "false");
-    expect(navigation).toHaveClass("max-sm:hidden");
+    expect(navigation).toHaveAttribute("inert");
+    expect(navigation).toHaveClass("max-sm:translate-x-full");
   });
 
   test("renders a professional footer with profile, navigation, and contact links", () => {
