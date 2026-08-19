@@ -59,10 +59,7 @@ export default function HomePage() {
       <section className={`${styles.hero} relative overflow-hidden`}>
         <div className="relative mx-auto grid min-h-[calc(100vh-96px)] w-full max-w-6xl items-center gap-12 px-5 py-16 sm:px-8 lg:grid-cols-[1.08fr_0.92fr] lg:py-24">
           <div className="motion-surface">
-            <p className="text-sm font-semibold text-brand-button">
-              Portfolio signal
-            </p>
-            <p className="mt-4 w-fit rounded-full border border-brand-button/25 bg-brand-button/10 px-4 py-2 text-sm font-medium text-brand-soft">
+            <p className="w-fit rounded-full border border-brand-button/25 bg-brand-button/10 px-4 py-2 text-sm font-medium text-brand-soft">
               {profile.role}
             </p>
             <h1 className="mt-6 max-w-4xl text-5xl font-bold leading-[1.02] text-white sm:text-7xl">

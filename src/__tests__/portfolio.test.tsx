@@ -155,7 +155,7 @@ describe("portfolio pages", () => {
       "/contact",
     );
     expect(screen.queryByText("Portfolio console")).not.toBeInTheDocument();
-    expect(screen.getByText("Portfolio signal")).toBeInTheDocument();
+    expect(screen.queryByText("Portfolio signal")).not.toBeInTheDocument();
     expect(screen.getByText("Premium digital experiences")).toBeInTheDocument();
     expect(screen.getByText("Selected work")).toBeInTheDocument();
     expect(screen.getByText("4+ Years")).toBeInTheDocument();
