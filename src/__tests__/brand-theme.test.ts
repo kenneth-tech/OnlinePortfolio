@@ -73,13 +73,14 @@ describe("brand theme", () => {
     expect(nonButtonPages.join("\n")).toContain("brand-button");
   });
 
-  test("uses dark premium site chrome", () => {
+  test("uses dark header chrome and a white professional footer", () => {
     expect(siteHeader).toContain("bg-brand-ink");
-    expect(siteFooter).toContain("bg-brand-ink");
+    expect(siteFooter).toContain("bg-white");
+    expect(siteFooter).toContain("text-brand-ink");
     expect(siteHeader).toContain("border-brand-button");
     expect(siteFooter).toContain("border-brand-button");
     expect(siteHeader).not.toContain("bg-white");
-    expect(siteFooter).not.toContain("bg-white");
+    expect(siteFooter).not.toContain("bg-brand-ink");
   });
 
   test("uses midnight navy for the page background", () => {
