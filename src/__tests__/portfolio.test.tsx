@@ -107,7 +107,7 @@ describe("site chrome", () => {
   });
 
   test("opens and closes the mobile sidebar navigation", () => {
-    render(<SiteHeader />);
+    const { unmount } = render(<SiteHeader />);
 
     const menuButton = screen.getByRole("button", {
       name: "Open main menu",
@@ -119,6 +119,7 @@ describe("site chrome", () => {
     }
 
     expect(menuButton).toHaveAttribute("aria-expanded", "false");
+    expect(document.body.style.overflow).toBe("");
     expect(navigation).toHaveAttribute("inert");
     expect(navigation).toHaveClass("max-sm:translate-x-full");
     expect(
@@ -128,6 +129,7 @@ describe("site chrome", () => {
     fireEvent.click(menuButton);
 
     expect(menuButton).toHaveAttribute("aria-expanded", "true");
+    expect(document.body.style.overflow).toBe("hidden");
     expect(menuButton).toHaveAccessibleName("Close main menu");
     expect(
       screen.getByRole("navigation", { name: "Mobile navigation" }),
@@ -140,10 +142,12 @@ describe("site chrome", () => {
     );
 
     expect(menuButton).toHaveAttribute("aria-expanded", "false");
+    expect(document.body.style.overflow).toBe("");
     expect(navigation).toHaveAttribute("inert");
     expect(navigation).toHaveClass("max-sm:translate-x-full");
 
     fireEvent.click(menuButton);
+    expect(document.body.style.overflow).toBe("hidden");
 
     const contactLink = within(navigation).getByRole("link", {
       name: "Contact",
@@ -155,8 +159,16 @@ describe("site chrome", () => {
     fireEvent.click(contactLink);
 
     expect(menuButton).toHaveAttribute("aria-expanded", "false");
+    expect(document.body.style.overflow).toBe("");
     expect(navigation).toHaveAttribute("inert");
     expect(navigation).toHaveClass("max-sm:translate-x-full");
+
+    fireEvent.click(menuButton);
+    expect(document.body.style.overflow).toBe("hidden");
+
+    unmount();
+
+    expect(document.body.style.overflow).toBe("");
   });
 
   test("renders a professional footer with profile, navigation, and contact links", () => {
