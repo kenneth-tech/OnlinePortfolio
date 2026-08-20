@@ -98,6 +98,14 @@ describe("portfolio data", () => {
       ]),
     );
   });
+
+  test("includes Node.js in web development skills", () => {
+    const webDevelopmentSkills = skillGroups.find(
+      (group) => group.title === "Web Development",
+    )?.skills;
+
+    expect(webDevelopmentSkills).toEqual(expect.arrayContaining(["Node.js"]));
+  });
 });
 
 describe("site chrome", () => {

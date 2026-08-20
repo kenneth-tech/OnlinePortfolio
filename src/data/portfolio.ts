@@ -239,6 +239,7 @@ export const skillGroups: SkillGroup[] = [
       "Tailwind CSS",
       "JavaScript",
       "TypeScript",
+      "Node.js",
       "React",
       "Next.js",
       "Handlebars",
