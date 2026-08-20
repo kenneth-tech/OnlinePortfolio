@@ -134,6 +134,14 @@ describe("site chrome", () => {
     );
   });
 
+  test("does not show the full name as a navbar brand label", () => {
+    render(<SiteHeader />);
+
+    expect(
+      screen.queryByRole("link", { name: "Mark Kenneth R. Rillamas" }),
+    ).not.toBeInTheDocument();
+  });
+
   test("opens and closes the mobile sidebar navigation", () => {
     const scrollTo = vi.spyOn(window, "scrollTo").mockImplementation(() => {});
     Object.defineProperty(window, "scrollY", {

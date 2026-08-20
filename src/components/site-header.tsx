@@ -52,14 +52,7 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 border-b border-brand-button/10 bg-brand-ink/95 backdrop-blur">
       <div className="mx-auto flex w-full max-w-6xl flex-col px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-8">
-        <div className="flex items-center justify-between gap-4">
-          <Link
-            href="/"
-            className="max-w-full truncate text-base font-semibold text-white outline-none transition hover:text-brand-button focus-visible:rounded focus-visible:ring-2 focus-visible:ring-brand-button focus-visible:ring-offset-4 focus-visible:ring-offset-brand-ink"
-            onClick={() => setIsMenuOpen(false)}
-          >
-            {profile.name}
-          </Link>
+        <div className="flex items-center justify-end gap-4">
           <button
             type="button"
             aria-controls="mobile-navigation"
