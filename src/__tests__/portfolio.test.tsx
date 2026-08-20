@@ -78,6 +78,16 @@ describe("portfolio data", () => {
       ).toBe(true);
     }
   });
+
+  test("includes web hosting and domain management skills", () => {
+    const platformSkills = skillGroups.find(
+      (group) => group.title === "Platforms and Tools",
+    )?.skills;
+
+    expect(platformSkills).toEqual(
+      expect.arrayContaining(["Hostinger", "DNS Management", "GoDaddy"]),
+    );
+  });
 });
 
 describe("site chrome", () => {

@@ -247,7 +247,17 @@ export const skillGroups: SkillGroup[] = [
   },
   {
     title: "Platforms and Tools",
-    skills: ["WordPress", "Wix", "Webflow", "GoHighLevel", "Supabase", "Vercel"],
+    skills: [
+      "WordPress",
+      "Wix",
+      "Webflow",
+      "GoHighLevel",
+      "Supabase",
+      "Vercel",
+      "Hostinger",
+      "DNS Management",
+      "GoDaddy",
+    ],
   },
   {
     title: "Design and Multimedia",
