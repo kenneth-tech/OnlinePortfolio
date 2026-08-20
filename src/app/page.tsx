@@ -60,23 +60,23 @@ export default function HomePage() {
     <div className="bg-transparent">
       <section className={`${styles.hero} relative overflow-hidden`}>
         <div className="relative mx-auto grid min-h-[calc(100svh-88px)] w-full max-w-6xl items-center gap-10 px-4 py-12 sm:px-8 sm:py-16 lg:grid-cols-[1.08fr_0.92fr] lg:gap-12 lg:py-24">
-          <div className="motion-surface">
-            <p className="w-fit rounded-full border border-brand-button/25 bg-brand-button/10 px-4 py-2 text-sm font-medium text-brand-soft">
+          <div className="motion-surface text-center sm:text-left">
+            <p className="mx-auto w-fit rounded-full border border-brand-button/25 bg-brand-button/10 px-4 py-2 text-sm font-medium text-brand-soft sm:mx-0">
               {profile.role}
             </p>
-            <h1 className="mt-6 max-w-4xl text-4xl font-bold leading-[1.05] text-white sm:text-6xl lg:text-7xl">
+            <h1 className="mx-auto mt-6 max-w-4xl text-4xl font-bold leading-[1.05] text-white sm:mx-0 sm:text-6xl lg:text-7xl">
               {profile.name}
             </h1>
             <h2 className="mt-5 text-xl font-semibold text-brand-soft sm:text-2xl">
               Premium digital experiences
             </h2>
-            <p className="mt-5 max-w-2xl text-base leading-7 text-brand-muted sm:text-lg sm:leading-8">
+            <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-brand-muted sm:mx-0 sm:text-lg sm:leading-8">
               {profile.summary}
             </p>
             <p className="mt-4 text-base text-brand-muted">
               {profile.location}
             </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:flex-wrap sm:items-start">
               <AnimatedButtonLink href="/projects">
                 View Projects
               </AnimatedButtonLink>

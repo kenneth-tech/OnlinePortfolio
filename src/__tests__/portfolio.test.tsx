@@ -305,6 +305,22 @@ describe("portfolio pages", () => {
     expect(screen.getByLabelText("Multimedia design icon")).toBeInTheDocument();
   });
 
+  test("centers the homepage hero introduction only on mobile", () => {
+    render(<HomePage />);
+
+    const heading = screen.getByRole("heading", { name: profile.name });
+    const intro = heading.closest(".motion-surface");
+    const roleBadge = screen.getByText(profile.role);
+    const actions = screen.getByRole("link", {
+      name: "View Projects",
+    }).parentElement;
+
+    expect(intro).toHaveClass("text-center", "sm:text-left");
+    expect(heading).toHaveClass("mx-auto", "sm:mx-0");
+    expect(roleBadge).toHaveClass("mx-auto", "sm:mx-0");
+    expect(actions).toHaveClass("items-center", "sm:items-start");
+  });
+
   test("renders an empty featured project state", () => {
     render(<FeaturedProjectCard />);
 
