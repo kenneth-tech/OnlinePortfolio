@@ -98,17 +98,22 @@ export function SiteHeader() {
           aria-label="Mobile navigation"
           aria-hidden={!isMenuOpen}
           inert={isMenuOpen ? undefined : true}
-          className={`${isMenuOpen ? "max-sm:translate-x-0 max-sm:opacity-100" : "max-sm:translate-x-full max-sm:opacity-0"} fixed right-0 top-0 z-50 flex h-dvh w-[min(86vw,360px)] flex-col border-l border-brand-button/20 bg-brand-card px-6 pb-8 pt-24 shadow-[-24px_0_70px_rgba(0,0,0,0.35)] backdrop-blur-xl transition-[transform,opacity] duration-300 ease-out sm:hidden`}
+          className={`${isMenuOpen ? "max-sm:translate-x-0 max-sm:opacity-100" : "max-sm:translate-x-full max-sm:opacity-0"} fixed right-0 top-0 z-50 flex h-dvh w-[min(86vw,360px)] transform-gpu flex-col border-l border-brand-button/20 bg-brand-card px-6 pb-8 pt-24 shadow-[-24px_0_70px_rgba(0,0,0,0.35)] backdrop-blur-xl transition-[transform,opacity] duration-300 ease-out sm:hidden`}
         >
           <p className="mb-5 border-b border-brand-button/15 pb-4 text-xs font-semibold uppercase tracking-normal text-brand-button sm:hidden">
             Navigation
           </p>
           <ul className="grid gap-2 text-base font-medium text-brand-muted sm:flex sm:min-w-max sm:flex-nowrap sm:gap-2 sm:text-sm">
-            {navItems.map((item) => (
+            {navItems.map((item, index) => (
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="flex min-h-12 items-center rounded-lg border border-transparent px-3 py-3 outline-none transition hover:border-brand-button/20 hover:bg-brand-button/10 hover:text-brand-soft focus-visible:ring-2 focus-visible:ring-brand-button sm:min-h-11 sm:border-0 sm:py-2"
+                  className={`${isMenuOpen ? "max-sm:translate-x-0 max-sm:opacity-100" : "max-sm:translate-x-4 max-sm:opacity-0"} flex min-h-12 transform-gpu items-center rounded-lg border border-transparent px-3 py-3 outline-none transition-[background-color,border-color,color,opacity,transform] duration-300 ease-out hover:border-brand-button/20 hover:bg-brand-button/10 hover:text-brand-soft focus-visible:ring-2 focus-visible:ring-brand-button sm:min-h-11 sm:border-0 sm:py-2`}
+                  style={{
+                    transitionDelay: isMenuOpen
+                      ? `${120 + index * 55}ms`
+                      : "0ms",
+                  }}
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.label}

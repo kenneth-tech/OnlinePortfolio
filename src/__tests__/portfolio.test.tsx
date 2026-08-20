@@ -145,6 +145,14 @@ describe("site chrome", () => {
     ).toBe(navigation);
     expect(navigation).not.toHaveAttribute("inert");
     expect(navigation).toHaveClass("max-sm:translate-x-0");
+    const homeLink = within(navigation).getByRole("link", { name: "Home" });
+    const projectsLink = within(navigation).getByRole("link", {
+      name: "Projects",
+    });
+    expect(homeLink).toHaveClass("max-sm:translate-x-0");
+    expect(homeLink).toHaveClass("max-sm:opacity-100");
+    expect(homeLink).toHaveStyle({ transitionDelay: "120ms" });
+    expect(projectsLink).toHaveStyle({ transitionDelay: "175ms" });
 
     fireEvent.click(
       screen.getByRole("button", { name: "Close mobile menu backdrop" }),
