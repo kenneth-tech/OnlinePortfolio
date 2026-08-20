@@ -24,11 +24,28 @@ export function SiteHeader() {
       return;
     }
 
-    const originalOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
+    const scrollY = window.scrollY;
+    const bodyStyle = document.body.style;
+    const rootStyle = document.documentElement.style;
+    const originalRootOverflow = rootStyle.overflow;
+    const originalBodyOverflow = bodyStyle.overflow;
+    const originalBodyPosition = bodyStyle.position;
+    const originalBodyTop = bodyStyle.top;
+    const originalBodyWidth = bodyStyle.width;
+
+    rootStyle.overflow = "hidden";
+    bodyStyle.overflow = "hidden";
+    bodyStyle.position = "fixed";
+    bodyStyle.top = `-${scrollY}px`;
+    bodyStyle.width = "100%";
 
     return () => {
-      document.body.style.overflow = originalOverflow;
+      rootStyle.overflow = originalRootOverflow;
+      bodyStyle.overflow = originalBodyOverflow;
+      bodyStyle.position = originalBodyPosition;
+      bodyStyle.top = originalBodyTop;
+      bodyStyle.width = originalBodyWidth;
+      window.scrollTo(0, scrollY);
     };
   }, [isMenuOpen]);
 

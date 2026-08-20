@@ -1,7 +1,7 @@
 import { fireEvent, render, screen, within } from "@testing-library/react";
 import { existsSync } from "node:fs";
 import { join } from "node:path";
-import { describe, expect, test } from "vitest";
+import { describe, expect, test, vi } from "vitest";
 
 import ContactPage from "../app/contact/page";
 import ExperiencePage from "../app/experience/page";
@@ -107,6 +107,11 @@ describe("site chrome", () => {
   });
 
   test("opens and closes the mobile sidebar navigation", () => {
+    const scrollTo = vi.spyOn(window, "scrollTo").mockImplementation(() => {});
+    Object.defineProperty(window, "scrollY", {
+      configurable: true,
+      value: 180,
+    });
     const { unmount } = render(<SiteHeader />);
 
     const menuButton = screen.getByRole("button", {
@@ -130,6 +135,10 @@ describe("site chrome", () => {
 
     expect(menuButton).toHaveAttribute("aria-expanded", "true");
     expect(document.body.style.overflow).toBe("hidden");
+    expect(document.documentElement.style.overflow).toBe("hidden");
+    expect(document.body.style.position).toBe("fixed");
+    expect(document.body.style.top).toBe("-180px");
+    expect(document.body.style.width).toBe("100%");
     expect(menuButton).toHaveAccessibleName("Close main menu");
     expect(
       screen.getByRole("navigation", { name: "Mobile navigation" }),
@@ -143,11 +152,17 @@ describe("site chrome", () => {
 
     expect(menuButton).toHaveAttribute("aria-expanded", "false");
     expect(document.body.style.overflow).toBe("");
+    expect(document.documentElement.style.overflow).toBe("");
+    expect(document.body.style.position).toBe("");
+    expect(document.body.style.top).toBe("");
+    expect(document.body.style.width).toBe("");
+    expect(scrollTo).toHaveBeenLastCalledWith(0, 180);
     expect(navigation).toHaveAttribute("inert");
     expect(navigation).toHaveClass("max-sm:translate-x-full");
 
     fireEvent.click(menuButton);
     expect(document.body.style.overflow).toBe("hidden");
+    expect(document.documentElement.style.overflow).toBe("hidden");
 
     const contactLink = within(navigation).getByRole("link", {
       name: "Contact",
@@ -160,15 +175,21 @@ describe("site chrome", () => {
 
     expect(menuButton).toHaveAttribute("aria-expanded", "false");
     expect(document.body.style.overflow).toBe("");
+    expect(document.documentElement.style.overflow).toBe("");
     expect(navigation).toHaveAttribute("inert");
     expect(navigation).toHaveClass("max-sm:translate-x-full");
 
     fireEvent.click(menuButton);
     expect(document.body.style.overflow).toBe("hidden");
+    expect(document.documentElement.style.overflow).toBe("hidden");
 
     unmount();
 
     expect(document.body.style.overflow).toBe("");
+    expect(document.documentElement.style.overflow).toBe("");
+    expect(scrollTo).toHaveBeenLastCalledWith(0, 180);
+
+    scrollTo.mockRestore();
   });
 
   test("renders a professional footer with profile, navigation, and contact links", () => {
