@@ -293,6 +293,7 @@ describe("site chrome", () => {
     const serviceItem = within(footer).getByText(
       "Responsive web development",
     );
+    const serviceList = serviceItem.closest("ul");
 
     expect(footerLayout).toHaveClass(
       "justify-items-center",
@@ -302,11 +303,7 @@ describe("site chrome", () => {
     );
     expect(navigationList).toHaveClass("grid-cols-2", "sm:grid-cols-1");
     expect(contactLink).toHaveClass("justify-center", "sm:justify-start");
-    expect(serviceItem).toHaveClass(
-      "rounded-full",
-      "sm:rounded-none",
-      "sm:border-l",
-    );
+    expect(serviceList).toHaveClass("hidden", "sm:grid");
     expect(footerBottom).toHaveClass("items-center", "text-center");
   });
 });

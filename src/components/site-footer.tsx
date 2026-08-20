@@ -85,11 +85,11 @@ export function SiteFooter() {
             </a>
           </div>
 
-          <ul className="mt-6 flex flex-wrap justify-center gap-2 text-sm text-brand-muted sm:grid sm:justify-start">
+          <ul className="mt-6 hidden gap-2 text-sm text-brand-muted sm:grid sm:justify-start">
             {serviceItems.map((item) => (
               <li
                 key={item}
-                className="rounded-full border border-brand-button/25 px-3 py-2 leading-6 sm:rounded-none sm:border-0 sm:border-l sm:border-brand-button/35 sm:px-0 sm:py-0 sm:pl-3"
+                className="border-l border-brand-button/35 pl-3 leading-6"
               >
                 {item}
               </li>
