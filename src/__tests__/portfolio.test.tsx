@@ -276,6 +276,39 @@ describe("site chrome", () => {
       ).toHaveAttribute("href", link.href);
     }
   });
+
+  test("uses a centered compact footer layout on mobile only", () => {
+    render(<SiteFooter />);
+
+    const footer = screen.getByRole("contentinfo");
+    const footerLayout = footer.children[0];
+    const footerBottom = footer.children[1]?.firstElementChild;
+    const footerNavigation = within(footer).getByRole("navigation", {
+      name: "Footer navigation",
+    });
+    const navigationList = footerNavigation.querySelector("ul");
+    const contactLink = within(footer).getByRole("link", {
+      name: profile.email,
+    });
+    const serviceItem = within(footer).getByText(
+      "Responsive web development",
+    );
+
+    expect(footerLayout).toHaveClass(
+      "justify-items-center",
+      "text-center",
+      "sm:justify-items-start",
+      "sm:text-left",
+    );
+    expect(navigationList).toHaveClass("grid-cols-2", "sm:grid-cols-1");
+    expect(contactLink).toHaveClass("justify-center", "sm:justify-start");
+    expect(serviceItem).toHaveClass(
+      "rounded-full",
+      "sm:rounded-none",
+      "sm:border-l",
+    );
+    expect(footerBottom).toHaveClass("items-center", "text-center");
+  });
 });
 
 describe("portfolio pages", () => {

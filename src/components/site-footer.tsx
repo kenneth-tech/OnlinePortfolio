@@ -30,11 +30,11 @@ export function SiteFooter() {
 
   return (
     <footer className="border-t border-brand-button/20 bg-black text-white">
-      <div className="mx-auto grid w-full max-w-6xl gap-8 px-4 py-10 sm:px-8 sm:py-12 lg:grid-cols-[1.2fr_0.7fr_0.8fr] lg:gap-10">
+      <div className="mx-auto grid w-full max-w-6xl justify-items-center gap-8 px-4 py-10 text-center sm:justify-items-start sm:px-8 sm:py-12 sm:text-left lg:grid-cols-[1.2fr_0.7fr_0.8fr] lg:gap-10">
         <section className="max-w-xl">
           <Link
             href="/"
-            className="inline-flex w-fit text-lg font-semibold tracking-normal outline-none transition hover:text-brand-button focus-visible:rounded focus-visible:ring-2 focus-visible:ring-brand-button focus-visible:ring-offset-4 focus-visible:ring-offset-black"
+            className="inline-flex w-fit justify-center text-lg font-semibold tracking-normal outline-none transition hover:text-brand-button focus-visible:rounded focus-visible:ring-2 focus-visible:ring-brand-button focus-visible:ring-offset-4 focus-visible:ring-offset-black sm:justify-start"
           >
             {profile.name}
           </Link>
@@ -42,22 +42,22 @@ export function SiteFooter() {
             {profile.role}
           </p>
           <p className="mt-1 text-sm text-brand-muted">{profile.location}</p>
-          <p className="mt-5 max-w-lg text-sm leading-7 text-brand-muted">
+          <p className="mx-auto mt-5 max-w-lg text-sm leading-7 text-brand-muted sm:mx-0">
             Building refined web interfaces, conversion-focused pages, and
             multimedia experiences for brands that need clear digital presence.
           </p>
         </section>
 
-        <nav aria-label="Footer navigation">
+        <nav aria-label="Footer navigation" className="w-full">
           <h2 className="text-xs font-semibold uppercase text-brand-button">
             Explore
           </h2>
-          <ul className="mt-4 grid gap-3 text-sm text-brand-muted">
+          <ul className="mt-4 grid grid-cols-2 gap-3 text-sm text-brand-muted sm:grid-cols-1">
             {footerNavItems.map((item) => (
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="inline-flex outline-none transition hover:text-brand-button focus-visible:rounded focus-visible:ring-2 focus-visible:ring-brand-button focus-visible:ring-offset-4 focus-visible:ring-offset-black"
+                  className="inline-flex justify-center outline-none transition hover:text-brand-button focus-visible:rounded focus-visible:ring-2 focus-visible:ring-brand-button focus-visible:ring-offset-4 focus-visible:ring-offset-black sm:justify-start"
                 >
                   {item.label}
                 </Link>
@@ -66,30 +66,30 @@ export function SiteFooter() {
           </ul>
         </nav>
 
-        <section>
+        <section className="w-full">
           <h2 className="text-xs font-semibold uppercase text-brand-button">
             Contact
           </h2>
           <div className="mt-4 grid gap-3 text-sm text-brand-muted">
             <a
               href={`mailto:${profile.email}`}
-              className="inline-flex outline-none transition hover:text-brand-button focus-visible:rounded focus-visible:ring-2 focus-visible:ring-brand-button focus-visible:ring-offset-4 focus-visible:ring-offset-black"
+              className="inline-flex justify-center outline-none transition hover:text-brand-button focus-visible:rounded focus-visible:ring-2 focus-visible:ring-brand-button focus-visible:ring-offset-4 focus-visible:ring-offset-black sm:justify-start"
             >
               {profile.email}
             </a>
             <a
               href={phoneHref}
-              className="inline-flex outline-none transition hover:text-brand-button focus-visible:rounded focus-visible:ring-2 focus-visible:ring-brand-button focus-visible:ring-offset-4 focus-visible:ring-offset-black"
+              className="inline-flex justify-center outline-none transition hover:text-brand-button focus-visible:rounded focus-visible:ring-2 focus-visible:ring-brand-button focus-visible:ring-offset-4 focus-visible:ring-offset-black sm:justify-start"
             >
               {profile.phone}
             </a>
           </div>
 
-          <ul className="mt-6 grid gap-2 text-sm text-brand-muted">
+          <ul className="mt-6 flex flex-wrap justify-center gap-2 text-sm text-brand-muted sm:grid sm:justify-start">
             {serviceItems.map((item) => (
               <li
                 key={item}
-                className="border-l border-brand-button/35 pl-3 leading-6"
+                className="rounded-full border border-brand-button/25 px-3 py-2 leading-6 sm:rounded-none sm:border-0 sm:border-l sm:border-brand-button/35 sm:px-0 sm:py-0 sm:pl-3"
               >
                 {item}
               </li>
@@ -99,9 +99,9 @@ export function SiteFooter() {
       </div>
 
       <div className="border-t border-brand-button/15">
-        <div className="mx-auto flex w-full max-w-6xl flex-col gap-4 px-4 py-5 text-sm text-brand-muted sm:flex-row sm:items-center sm:justify-between sm:px-8">
+        <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-4 px-4 py-5 text-center text-sm text-brand-muted sm:flex-row sm:items-center sm:justify-between sm:px-8 sm:text-left">
           <p>(c) {year} Mark Kenneth R. Rillamas. All rights reserved.</p>
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-wrap justify-center gap-3 sm:justify-start">
             {profile.links.map((link) => (
               <a
                 key={link.href}
