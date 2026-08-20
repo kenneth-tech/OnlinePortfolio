@@ -133,6 +133,8 @@ describe("brand theme", () => {
     expect(siteHeader).toContain("max-sm:translate-x-full");
     expect(siteHeader).toContain("max-sm:translate-x-0");
     expect(siteHeader).toContain("transition-[transform,opacity]");
+    expect(siteHeader).toContain("bg-brand-card px-6");
+    expect(siteHeader).not.toContain("bg-brand-card/95");
     expect(siteHeader).toContain("min-h-11");
     expect(animatedButtonLink).toContain("w-full sm:w-auto");
     expect(homePage).toContain("text-4xl");

@@ -98,7 +98,7 @@ export function SiteHeader() {
           aria-label="Mobile navigation"
           aria-hidden={!isMenuOpen}
           inert={isMenuOpen ? undefined : true}
-          className={`${isMenuOpen ? "max-sm:translate-x-0 max-sm:opacity-100" : "max-sm:translate-x-full max-sm:opacity-0"} fixed right-0 top-0 z-50 flex h-dvh w-[min(86vw,360px)] flex-col border-l border-brand-button/20 bg-brand-card/95 px-6 pb-8 pt-24 shadow-[-24px_0_70px_rgba(0,0,0,0.35)] backdrop-blur-xl transition-[transform,opacity] duration-300 ease-out sm:hidden`}
+          className={`${isMenuOpen ? "max-sm:translate-x-0 max-sm:opacity-100" : "max-sm:translate-x-full max-sm:opacity-0"} fixed right-0 top-0 z-50 flex h-dvh w-[min(86vw,360px)] flex-col border-l border-brand-button/20 bg-brand-card px-6 pb-8 pt-24 shadow-[-24px_0_70px_rgba(0,0,0,0.35)] backdrop-blur-xl transition-[transform,opacity] duration-300 ease-out sm:hidden`}
         >
           <p className="mb-5 border-b border-brand-button/15 pb-4 text-xs font-semibold uppercase tracking-normal text-brand-button sm:hidden">
             Navigation
