@@ -41,7 +41,6 @@ export default function ProjectsPage() {
   return (
     <section className="mx-auto w-full max-w-6xl px-4 py-10 sm:px-8 sm:py-14">
       <PageHeader
-        eyebrow="Project index"
         title="Projects"
         description="A curated set of live websites across social growth, local service, ecommerce, marketing, mental health, and business support."
       />

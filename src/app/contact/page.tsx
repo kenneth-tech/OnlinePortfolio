@@ -5,7 +5,6 @@ export default function ContactPage() {
   return (
     <section className="mx-auto w-full max-w-6xl px-4 py-10 sm:px-8 sm:py-14">
       <PageHeader
-        eyebrow="Availability signal"
         title="Contact"
         description="A direct channel for web projects, collaboration, freelance inquiries, and opportunities connected to development or multimedia work."
       />

@@ -5,7 +5,6 @@ export default function SkillsPage() {
   return (
     <section className="mx-auto w-full max-w-6xl px-4 py-10 sm:px-8 sm:py-14">
       <PageHeader
-        eyebrow="Capability matrix"
         title="Skills"
         description="A structured overview of the tools, platforms, design capabilities, and automation strengths behind the work."
       />

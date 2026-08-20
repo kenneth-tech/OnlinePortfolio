@@ -318,7 +318,7 @@ describe("portfolio pages", () => {
     expect(
       screen.getByRole("heading", { name: "Projects" }),
     ).toBeInTheDocument();
-    expect(screen.getByText("Project index")).toBeInTheDocument();
+    expect(screen.queryByText("Project index")).not.toBeInTheDocument();
     expect(screen.getByText("Featured build")).toBeInTheDocument();
     expect(screen.getByText("6 Live Projects")).toBeInTheDocument();
     expect(screen.getAllByRole("link", { name: "Visit site" })).toHaveLength(6);
@@ -337,7 +337,7 @@ describe("portfolio pages", () => {
     expect(
       screen.getByRole("heading", { name: "Experience" }),
     ).toBeInTheDocument();
-    expect(screen.getByText("Career timeline")).toBeInTheDocument();
+    expect(screen.queryByText("Career timeline")).not.toBeInTheDocument();
     expect(screen.queryAllByText(/Experience \d{2}/)).toHaveLength(0);
     for (const experience of experiences) {
       expect(screen.getByText(experience.role)).toBeInTheDocument();
@@ -351,7 +351,7 @@ describe("portfolio pages", () => {
     render(<SkillsPage />);
 
     expect(screen.getByRole("heading", { name: "Skills" })).toBeInTheDocument();
-    expect(screen.getByText("Capability matrix")).toBeInTheDocument();
+    expect(screen.queryByText("Capability matrix")).not.toBeInTheDocument();
     for (const group of skillGroups) {
       expect(screen.getByText(group.title)).toBeInTheDocument();
     }
@@ -361,7 +361,7 @@ describe("portfolio pages", () => {
     render(<ContactPage />);
 
     expect(screen.getByRole("heading", { name: "Contact" })).toBeInTheDocument();
-    expect(screen.getByText("Availability signal")).toBeInTheDocument();
+    expect(screen.queryByText("Availability signal")).not.toBeInTheDocument();
     expect(screen.getByRole("link", { name: profile.email })).toHaveAttribute(
       "href",
       `mailto:${profile.email}`,

@@ -5,7 +5,6 @@ export default function ExperiencePage() {
   return (
     <section className="mx-auto w-full max-w-6xl px-4 py-10 sm:px-8 sm:py-14">
       <PageHeader
-        eyebrow="Career timeline"
         title="Experience"
         description="A progression through web development, multimedia design, digital marketing, and technical operations work across remote and on-site teams."
       />
