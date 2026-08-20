@@ -257,6 +257,12 @@ export const skillGroups: SkillGroup[] = [
       "Hostinger",
       "DNS Management",
       "GoDaddy",
+      "cPanel",
+      "Domain Setup",
+      "SSL Setup",
+      "Email Hosting",
+      "Website Migration",
+      "Hosting Configuration",
     ],
   },
   {

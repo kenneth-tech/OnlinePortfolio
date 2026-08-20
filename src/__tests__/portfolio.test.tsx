@@ -85,7 +85,17 @@ describe("portfolio data", () => {
     )?.skills;
 
     expect(platformSkills).toEqual(
-      expect.arrayContaining(["Hostinger", "DNS Management", "GoDaddy"]),
+      expect.arrayContaining([
+        "Hostinger",
+        "DNS Management",
+        "GoDaddy",
+        "cPanel",
+        "Domain Setup",
+        "SSL Setup",
+        "Email Hosting",
+        "Website Migration",
+        "Hosting Configuration",
+      ]),
     );
   });
 });
