@@ -1,5 +1,6 @@
 import { CreativeIconCloud } from "../components/creative-icon-cloud";
 import { AnimatedButtonLink } from "../components/animated-button-link";
+import { ScrollReveal } from "../components/scroll-reveal";
 import { StatCard } from "../components/stat-card";
 import { profile, projects, skillGroups, type Project } from "../data/portfolio";
 import styles from "./home.module.css";
@@ -58,9 +59,12 @@ export default function HomePage() {
 
   return (
     <div className="bg-transparent">
-      <section className={`${styles.hero} relative overflow-hidden`}>
+      <ScrollReveal as="section" className={`${styles.hero} relative overflow-hidden`}>
         <div className="relative mx-auto grid min-h-[calc(100svh-88px)] w-full max-w-6xl items-center gap-10 px-4 py-12 sm:px-8 sm:py-16 lg:grid-cols-[1.08fr_0.92fr] lg:gap-12 lg:py-24">
-          <div className="motion-surface text-center sm:text-left">
+          <ScrollReveal
+            className="motion-surface text-center sm:text-left"
+            direction="left"
+          >
             <p className="mx-auto w-fit rounded-full border border-brand-button/25 bg-brand-button/10 px-4 py-2 text-sm font-medium text-brand-soft sm:mx-0">
               {profile.role}
             </p>
@@ -84,9 +88,14 @@ export default function HomePage() {
                 Contact Me
               </AnimatedButtonLink>
             </div>
-          </div>
+          </ScrollReveal>
 
-          <aside className="motion-card rounded-2xl border border-brand-button/20 bg-brand-card/70 p-4 shadow-[0_24px_90px_rgba(0,0,0,0.28)] backdrop-blur sm:p-6">
+          <ScrollReveal
+            as="aside"
+            className="motion-card rounded-2xl border border-brand-button/20 bg-brand-card/70 p-4 shadow-[0_24px_90px_rgba(0,0,0,0.28)] backdrop-blur sm:p-6"
+            delay={120}
+            direction="right"
+          >
             <div className="flex items-start justify-between gap-4 border-b border-brand-button/10 pb-5">
               <div>
                 <p className="text-sm font-semibold text-brand-button">
@@ -105,30 +114,31 @@ export default function HomePage() {
                 "Conversion-focused landing pages",
                 "UI/UX and multimedia production",
                 "Automation-assisted development",
-              ].map((item) => (
-                <div
+              ].map((item, index) => (
+                <ScrollReveal
                   key={item}
                   className="motion-card rounded-xl border border-brand-button/10 bg-brand-ink/35 px-4 py-3 text-sm font-medium text-brand-muted"
+                  delay={index * 70}
                 >
                   {item}
-                </div>
+                </ScrollReveal>
               ))}
             </div>
-          </aside>
+          </ScrollReveal>
         </div>
-      </section>
+      </ScrollReveal>
 
-      <section className="mx-auto w-full max-w-6xl border-t border-brand-button/10 px-4 py-10 sm:px-8 sm:py-12">
+      <ScrollReveal as="section" className="mx-auto w-full max-w-6xl border-t border-brand-button/10 px-4 py-10 sm:px-8 sm:py-12">
         <h2 className="text-2xl font-semibold text-white">Highlights</h2>
         <div className="mt-6 grid gap-4 md:grid-cols-3">
-          {stats.map((stat) => (
-            <StatCard key={stat.value} {...stat} />
+          {stats.map((stat, index) => (
+            <StatCard key={stat.value} {...stat} delay={index * 90} />
           ))}
         </div>
-      </section>
+      </ScrollReveal>
 
-      <section className="mx-auto grid w-full max-w-6xl gap-10 border-t border-brand-button/10 px-4 py-10 sm:px-8 sm:py-12 lg:grid-cols-[1.1fr_0.9fr]">
-        <div>
+      <ScrollReveal as="section" className="mx-auto grid w-full max-w-6xl gap-10 border-t border-brand-button/10 px-4 py-10 sm:px-8 sm:py-12 lg:grid-cols-[1.1fr_0.9fr]">
+        <ScrollReveal direction="left">
           <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-end sm:justify-between">
             <h2 className="text-2xl font-semibold text-white">Selected work</h2>
             <a
@@ -139,10 +149,12 @@ export default function HomePage() {
             </a>
           </div>
           <div className="mt-6 grid gap-4">
-            {featuredProjects.map((project) => (
-              <article
+            {featuredProjects.map((project, index) => (
+              <ScrollReveal
+                as="article"
                 key={project.title}
                 className="motion-card rounded-xl border border-brand-button/15 bg-brand-card/70 p-5 transition-[border-color,transform,box-shadow] duration-200 hover:-translate-y-1 hover:border-brand-button/45 hover:shadow-[0_18px_70px_rgba(127,255,212,0.10)]"
+                delay={index * 90}
               >
                 <p className="text-sm text-brand-button">{project.category}</p>
                 <h3 className="mt-2 text-xl font-semibold text-white">
@@ -151,12 +163,12 @@ export default function HomePage() {
                 <p className="mt-2 leading-7 text-brand-muted">
                   {project.description}
                 </p>
-              </article>
+              </ScrollReveal>
             ))}
           </div>
-        </div>
+        </ScrollReveal>
 
-        <div>
+        <ScrollReveal direction="right" delay={100}>
           <h2 className="text-2xl font-semibold text-white">Core skills</h2>
           <div className="mt-6 flex flex-wrap gap-2">
             {featuredSkills.map((skill) => (
@@ -168,8 +180,8 @@ export default function HomePage() {
               </span>
             ))}
           </div>
-        </div>
-      </section>
+        </ScrollReveal>
+      </ScrollReveal>
     </div>
   );
 }

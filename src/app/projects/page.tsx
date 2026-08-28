@@ -2,6 +2,7 @@ import Image from "next/image";
 
 import { AnimatedButtonLink } from "../../components/animated-button-link";
 import { PageHeader } from "../../components/page-header";
+import { ScrollReveal } from "../../components/scroll-reveal";
 import { projects, type Project } from "../../data/portfolio";
 
 function ProjectPreview({
@@ -39,7 +40,7 @@ export default function ProjectsPage() {
   const [featuredProject, ...projectGrid] = projects;
 
   return (
-    <section className="mx-auto w-full max-w-6xl px-4 py-10 sm:px-8 sm:py-14">
+    <ScrollReveal as="section" className="mx-auto w-full max-w-6xl px-4 py-10 sm:px-8 sm:py-14">
       <PageHeader
         title="Projects"
         description="A curated set of live websites across social growth, local service, ecommerce, marketing, mental health, and business support."
@@ -50,18 +51,19 @@ export default function ProjectsPage() {
           ["6 Live Projects", "Websites visitors can open and review."],
           ["6 Industries", "Different audiences and business goals."],
           ["Web + UI + Marketing", "Development, design, and funnel thinking."],
-        ].map(([label, detail]) => (
-          <div
+        ].map(([label, detail], index) => (
+          <ScrollReveal
             key={label}
             className="motion-card rounded-xl border border-brand-button/15 bg-brand-card/70 p-5 shadow-[0_18px_60px_rgba(0,0,0,0.18)]"
+            delay={index * 80}
           >
             <p className="text-xl font-semibold text-white">{label}</p>
             <p className="mt-2 text-sm leading-6 text-brand-muted">{detail}</p>
-          </div>
+          </ScrollReveal>
         ))}
       </div>
 
-      <article className="motion-card mt-10 grid gap-6 rounded-2xl border border-brand-button/20 bg-brand-card/75 p-4 shadow-[0_24px_90px_rgba(0,0,0,0.26)] sm:p-5 lg:grid-cols-[1.15fr_0.85fr] lg:gap-8 lg:p-6">
+      <ScrollReveal as="article" className="motion-card mt-10 grid gap-6 rounded-2xl border border-brand-button/20 bg-brand-card/75 p-4 shadow-[0_24px_90px_rgba(0,0,0,0.26)] sm:p-5 lg:grid-cols-[1.15fr_0.85fr] lg:gap-8 lg:p-6">
         <ProjectPreview project={featuredProject} priority />
         <div className="self-center">
           <p className="text-sm font-semibold text-brand-button">
@@ -102,13 +104,15 @@ export default function ProjectsPage() {
             </AnimatedButtonLink>
           </div>
         </div>
-      </article>
+      </ScrollReveal>
 
       <div className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-2">
-        {projectGrid.map((project) => (
-          <article
+        {projectGrid.map((project, index) => (
+          <ScrollReveal
+            as="article"
             key={project.title}
             className="motion-card flex flex-col overflow-hidden rounded-xl border border-brand-button/15 bg-brand-card/65 shadow-[0_18px_60px_rgba(0,0,0,0.18)] transition-[border-color,transform,box-shadow] duration-200 hover:-translate-y-1 hover:border-brand-button/45 hover:shadow-[0_18px_70px_rgba(127,255,212,0.10)]"
+            delay={(index % 2) * 90}
           >
             <ProjectPreview project={project} />
             <div className="flex flex-1 flex-col p-5 sm:p-6">
@@ -143,9 +147,9 @@ export default function ProjectsPage() {
                 </AnimatedButtonLink>
               </div>
             </div>
-          </article>
+          </ScrollReveal>
         ))}
       </div>
-    </section>
+    </ScrollReveal>
   );
 }

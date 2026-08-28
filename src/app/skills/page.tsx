@@ -1,9 +1,10 @@
 import { PageHeader } from "../../components/page-header";
+import { ScrollReveal } from "../../components/scroll-reveal";
 import { skillGroups } from "../../data/portfolio";
 
 export default function SkillsPage() {
   return (
-    <section className="mx-auto w-full max-w-6xl px-4 py-10 sm:px-8 sm:py-14">
+    <ScrollReveal as="section" className="mx-auto w-full max-w-6xl px-4 py-10 sm:px-8 sm:py-14">
       <PageHeader
         title="Skills"
         description="A structured overview of the tools, platforms, design capabilities, and automation strengths behind the work."
@@ -11,9 +12,11 @@ export default function SkillsPage() {
 
       <div className="mt-8 grid grid-cols-1 gap-5 sm:mt-10 sm:grid-cols-2">
         {skillGroups.map((group, index) => (
-          <section
+          <ScrollReveal
+            as="section"
             key={group.title}
             className="motion-card rounded-xl border border-brand-button/15 bg-brand-card/65 p-5 shadow-[0_18px_60px_rgba(0,0,0,0.18)] sm:p-6"
+            delay={(index % 2) * 90}
           >
             <div className="flex items-start justify-between gap-4 border-b border-brand-button/10 pb-4">
               <h2 className="text-xl font-semibold text-white">
@@ -33,9 +36,9 @@ export default function SkillsPage() {
                 </span>
               ))}
             </div>
-          </section>
+          </ScrollReveal>
         ))}
       </div>
-    </section>
+    </ScrollReveal>
   );
 }

@@ -10,6 +10,7 @@ import ProjectsPage from "../app/projects/page";
 import SkillsPage from "../app/skills/page";
 import { SiteFooter } from "../components/site-footer";
 import { SiteHeader } from "../components/site-header";
+import { ScrollReveal } from "../components/scroll-reveal";
 import {
   education,
   experiences,
@@ -109,6 +110,21 @@ describe("portfolio data", () => {
 });
 
 describe("site chrome", () => {
+  test("configures scroll reveal motion without opacity fade", () => {
+    render(
+      <ScrollReveal as="section" className="sample-section" delay={120}>
+        Scroll animated section
+      </ScrollReveal>,
+    );
+
+    const section = screen.getByText("Scroll animated section").closest("section");
+
+    expect(section).toHaveAttribute("data-scroll-reveal");
+    expect(section).toHaveAttribute("data-direction", "up");
+    expect(section).toHaveClass("scroll-reveal", "sample-section");
+    expect(section).toHaveStyle({ "--scroll-reveal-delay": "120ms" });
+  });
+
   test("renders navigation links for each portfolio page", () => {
     render(<SiteHeader />);
 
