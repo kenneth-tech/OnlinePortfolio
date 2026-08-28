@@ -1,4 +1,5 @@
 import { CreativeIconCloud } from "../components/creative-icon-cloud";
+import { HeroMotionGraphic } from "../components/hero-motion-graphic";
 import { AnimatedButtonLink } from "../components/animated-button-link";
 import { StatCard } from "../components/stat-card";
 import { profile, projects, skillGroups, type Project } from "../data/portfolio";
@@ -98,6 +99,7 @@ export default function HomePage() {
               </div>
               <span className="h-10 w-10 shrink-0 rounded-full border border-brand-button/30 bg-brand-button/10 shadow-[0_0_30px_rgba(127,255,212,0.22)]" />
             </div>
+            <HeroMotionGraphic />
             <CreativeIconCloud />
             <div className="mt-6 grid gap-3">
               {[

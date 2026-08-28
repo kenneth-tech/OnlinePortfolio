@@ -333,6 +333,14 @@ describe("portfolio pages", () => {
     expect(screen.getByText("Remote-ready")).toBeInTheDocument();
     expect(screen.getByLabelText("Web development icon")).toBeInTheDocument();
     expect(screen.getByLabelText("Multimedia design icon")).toBeInTheDocument();
+    expect(
+      screen.getByRole("img", {
+        name: "Animated developer and multimedia motion graphic",
+      }),
+    ).toBeInTheDocument();
+    expect(screen.getByText("Code node")).toBeInTheDocument();
+    expect(screen.getByText("Media node")).toBeInTheDocument();
+    expect(screen.getByText("Play node")).toBeInTheDocument();
   });
 
   test("centers the homepage hero introduction only on mobile", () => {
