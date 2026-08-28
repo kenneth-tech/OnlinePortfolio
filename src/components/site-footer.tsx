@@ -3,7 +3,6 @@ import { FaGithub, FaLinkedinIn } from "react-icons/fa6";
 import type { IconType } from "react-icons";
 
 import { profile, type ProfileLink } from "../data/portfolio";
-import { ScrollReveal } from "./scroll-reveal";
 
 const footerNavItems = [
   { label: "Home", href: "/" },
@@ -32,7 +31,7 @@ export function SiteFooter() {
   return (
     <footer className="border-t border-brand-button/20 bg-black text-white">
       <div className="mx-auto grid w-full max-w-6xl justify-items-center gap-8 px-4 py-10 text-center sm:justify-items-start sm:px-8 sm:py-12 sm:text-left lg:grid-cols-[1.2fr_0.7fr_0.8fr] lg:gap-10">
-        <ScrollReveal as="section" className="max-w-xl" direction="left">
+        <section className="max-w-xl">
           <Link
             href="/"
             className="inline-flex w-fit justify-center text-lg font-semibold tracking-normal outline-none transition hover:text-brand-button focus-visible:rounded focus-visible:ring-2 focus-visible:ring-brand-button focus-visible:ring-offset-4 focus-visible:ring-offset-black sm:justify-start"
@@ -47,14 +46,9 @@ export function SiteFooter() {
             Building refined web interfaces, conversion-focused pages, and
             multimedia experiences for brands that need clear digital presence.
           </p>
-        </ScrollReveal>
+        </section>
 
-        <ScrollReveal
-          as="nav"
-          aria-label="Footer navigation"
-          className="w-full"
-          delay={90}
-        >
+        <nav aria-label="Footer navigation" className="w-full">
           <h2 className="text-xs font-semibold uppercase text-brand-button">
             Explore
           </h2>
@@ -70,9 +64,9 @@ export function SiteFooter() {
               </li>
             ))}
           </ul>
-        </ScrollReveal>
+        </nav>
 
-        <ScrollReveal as="section" className="w-full" delay={140} direction="right">
+        <section className="w-full">
           <h2 className="text-xs font-semibold uppercase text-brand-button">
             Contact
           </h2>
@@ -101,11 +95,11 @@ export function SiteFooter() {
               </li>
             ))}
           </ul>
-        </ScrollReveal>
+        </section>
       </div>
 
       <div className="border-t border-brand-button/15">
-        <ScrollReveal className="mx-auto flex w-full max-w-6xl flex-col items-center gap-4 px-4 py-5 text-center text-sm text-brand-muted sm:flex-row sm:items-center sm:justify-between sm:px-8 sm:text-left">
+        <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-4 px-4 py-5 text-center text-sm text-brand-muted sm:flex-row sm:items-center sm:justify-between sm:px-8 sm:text-left">
           <p>(c) {year} Mark Kenneth R. Rillamas. All rights reserved.</p>
           <div className="flex flex-wrap justify-center gap-3 sm:justify-start">
             {profile.links.map((link) => (
@@ -121,7 +115,7 @@ export function SiteFooter() {
               </a>
             ))}
           </div>
-        </ScrollReveal>
+        </div>
       </div>
     </footer>
   );

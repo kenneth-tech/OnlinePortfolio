@@ -14,7 +14,6 @@ const siteHeader = readSource("src", "components", "site-header.tsx");
 const siteFooter = readSource("src", "components", "site-footer.tsx");
 const statCard = readSource("src", "components", "stat-card.tsx");
 const pageHeader = readSource("src", "components", "page-header.tsx");
-const scrollReveal = readSource("src", "components", "scroll-reveal.tsx");
 const creativeIconCloud = readSource(
   "src",
   "components",
@@ -112,7 +111,7 @@ describe("brand theme", () => {
 
   test("lets homepage hero artwork span the desktop viewport behind centered content", () => {
     expect(homePage).toContain(
-      '<ScrollReveal as="section" className={`${styles.hero} relative overflow-hidden`}>',
+      '<section className={`${styles.hero} relative overflow-hidden`}>',
     );
     expect(homePage).toContain(
       "min-h-[calc(100svh-88px)]",
@@ -149,22 +148,13 @@ describe("brand theme", () => {
   test("defines refined whole-site motion with reduced-motion support", () => {
     expect(globalsCss).toContain("@keyframes soft-rise");
     expect(globalsCss).toContain("@keyframes depth-float");
-    expect(globalsCss).toContain(".scroll-reveal");
-    expect(globalsCss).toContain(".scroll-reveal[data-visible=\"true\"]");
     expect(globalsCss).toContain(".motion-surface");
     expect(globalsCss).toContain(".motion-card");
     expect(globalsCss).toContain(".motion-icon");
     expect(globalsCss).toContain("@media (prefers-reduced-motion: reduce)");
-    expect(globalsCss).not.toContain("opacity: 0;");
-    expect(globalsCss).not.toContain("opacity: 1;");
-    expect(scrollReveal).toContain("IntersectionObserver");
-    expect(scrollReveal).toContain("prefers-reduced-motion");
     expect(pageHeader).toContain("motion-surface");
-    expect(pageHeader).toContain("ScrollReveal");
     expect(statCard).toContain("motion-card");
-    expect(statCard).toContain("ScrollReveal");
     expect(projectsPage).toContain("motion-card");
-    expect(projectsPage).toContain("ScrollReveal");
   });
 
   test("adds reusable 3d creative icons for web and multimedia work", () => {
