@@ -1,6 +1,5 @@
 import { PageHeader } from "../../components/page-header";
-import { SkillIcon } from "../../components/skill-icon";
-import { skillGroups } from "../../data/portfolio";
+import { SkillIcon, skillGroups } from "../../data/skills";
 
 export default function SkillsPage() {
   return (

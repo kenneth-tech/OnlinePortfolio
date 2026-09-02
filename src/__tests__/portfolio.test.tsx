@@ -16,8 +16,8 @@ import {
   experiences,
   profile,
   projects,
-  skillGroups,
 } from "../data/portfolio";
+import { skillGroups } from "../data/skills";
 
 describe("portfolio data", () => {
   test("exposes editable profile and portfolio lists", () => {
@@ -96,6 +96,9 @@ describe("portfolio data", () => {
         "Email Hosting",
         "Website Migration",
         "Hosting Configuration",
+        "Trello",
+        "Slack",
+        "Notion",
       ]),
     );
   });
@@ -445,6 +448,9 @@ describe("portfolio pages", () => {
       "UI/UX Design",
       "Video Editing",
       "SEO",
+      "Trello",
+      "Slack",
+      "Notion",
     ]) {
       expect(screen.getByLabelText(`${skill} icon`)).toBeInTheDocument();
     }

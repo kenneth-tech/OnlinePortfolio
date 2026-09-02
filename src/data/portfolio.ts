@@ -43,10 +43,8 @@ export type Education = {
   period: string;
 };
 
-export type SkillGroup = {
-  title: string;
-  skills: string[];
-};
+export { skillGroups } from "./skills";
+export type { SkillGroup } from "./skills";
 
 export const profile: Profile = {
   name: "Mark Kenneth R. Rillamas",
@@ -227,64 +225,5 @@ export const education: Education[] = [
     degree: "Bachelor of Science in Information Technology",
     school: "University of Northern Philippines",
     period: "2018 - 2020",
-  },
-];
-
-export const skillGroups: SkillGroup[] = [
-  {
-    title: "Web Development",
-    skills: [
-      "HTML",
-      "CSS",
-      "Tailwind CSS",
-      "JavaScript",
-      "TypeScript",
-      "Node.js",
-      "React",
-      "Next.js",
-      "Handlebars",
-      "SQL",
-    ],
-  },
-  {
-    title: "Platforms and Tools",
-    skills: [
-      "WordPress",
-      "Wix",
-      "Webflow",
-      "GoHighLevel",
-      "Supabase",
-      "Vercel",
-      "Hostinger",
-      "DNS Management",
-      "GoDaddy",
-      "cPanel",
-      "Domain Setup",
-      "SSL Setup",
-      "Email Hosting",
-      "Website Migration",
-      "Hosting Configuration",
-    ],
-  },
-  {
-    title: "Design and Multimedia",
-    skills: [
-      "UI/UX Design",
-      "Graphic Design",
-      "Video Editing",
-      "Motion Graphics",
-    ],
-  },
-  {
-    title: "Marketing and Automation",
-    skills: [
-      "SEO",
-      "Meta Ads",
-      "Workflow Automation",
-      "AI Prompt Engineering",
-      "Google Ads",
-      "Google Analytics",
-      "Zapier",
-    ],
   },
 ];

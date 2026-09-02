@@ -1,7 +1,8 @@
 import { CreativeIconCloud } from "../components/creative-icon-cloud";
 import { AnimatedButtonLink } from "../components/animated-button-link";
 import { StatCard } from "../components/stat-card";
-import { profile, projects, skillGroups, type Project } from "../data/portfolio";
+import { profile, projects, type Project } from "../data/portfolio";
+import { skillGroups } from "../data/skills";
 import styles from "./home.module.css";
 
 export function FeaturedProjectCard({ project }: { project?: Project }) {

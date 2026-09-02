@@ -19,7 +19,14 @@ const creativeIconCloud = readSource(
   "components",
   "creative-icon-cloud.tsx",
 );
-const skillIcon = readSource("src", "components", "skill-icon.tsx");
+const skillIcon = readSource("src", "data", "skills", "skill-icons.tsx");
+const skillGroupsSource = readSource(
+  "src",
+  "data",
+  "skills",
+  "skill-groups.ts",
+);
+const skillsIndex = readSource("src", "data", "skills", "index.ts");
 const homePage = readSource("src", "app", "page.tsx");
 const projectsPage = readSource("src", "app", "projects", "page.tsx");
 const skillsPage = readSource("src", "app", "skills", "page.tsx");
@@ -176,13 +183,24 @@ describe("brand theme", () => {
 
   test("uses branded skill icons on the skills page", () => {
     expect(skillsPage).toContain("SkillIcon");
+    expect(skillsPage).toContain("../../data/skills");
     expect(skillsPage).toContain("inline-flex items-center gap-2");
+    expect(skillsIndex).toContain('export { SkillIcon } from "./skill-icons";');
+    expect(skillsIndex).toContain('export { skillGroups } from "./skill-groups";');
+    expect(skillGroupsSource).toContain("Web Development");
+    expect(skillGroupsSource).toContain("Platforms and Tools");
+    expect(skillGroupsSource).toContain("Trello");
+    expect(skillGroupsSource).toContain("Slack");
+    expect(skillGroupsSource).toContain("Notion");
     expect(skillIcon).toContain("SiHtml5");
     expect(skillIcon).toContain("SiReact");
     expect(skillIcon).toContain("SiNodedotjs");
     expect(skillIcon).toContain("SiWordpress");
     expect(skillIcon).toContain("SiVercel");
     expect(skillIcon).toContain("SiGodaddy");
+    expect(skillIcon).toContain("SiTrello");
+    expect(skillIcon).toContain("SiNotion");
+    expect(skillIcon).toContain("FaComments");
     expect(skillIcon).toContain("FaServer");
   });
 });
