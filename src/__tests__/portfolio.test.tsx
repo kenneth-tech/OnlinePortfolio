@@ -10,6 +10,7 @@ import ProjectsPage from "../app/projects/page";
 import SkillsPage from "../app/skills/page";
 import { SiteFooter } from "../components/site-footer";
 import { SiteHeader } from "../components/site-header";
+import { SiteLogo } from "../components/site-logo";
 import {
   education,
   experiences,
@@ -109,6 +110,19 @@ describe("portfolio data", () => {
 });
 
 describe("site chrome", () => {
+  test("renders the selected code mark logo with Mark Kenneth", () => {
+    render(<SiteLogo />);
+
+    const logoLink = screen.getByRole("link", { name: "Mark Kenneth home" });
+
+    expect(logoLink).toHaveAttribute("href", "/");
+    expect(within(logoLink).getByText("</>")).toBeInTheDocument();
+    expect(within(logoLink).getByText("Mark Kenneth")).toBeInTheDocument();
+    expect(
+      within(logoLink).queryByText("Mark Kenneth R. Rillamas"),
+    ).not.toBeInTheDocument();
+  });
+
   test("renders navigation links for each portfolio page", () => {
     render(<SiteHeader />);
 
@@ -241,7 +255,11 @@ describe("site chrome", () => {
 
     const footer = screen.getByRole("contentinfo");
 
-    expect(within(footer).getByText(profile.name)).toBeInTheDocument();
+    expect(
+      within(footer).getByRole("link", { name: "Mark Kenneth home" }),
+    ).toHaveAttribute("href", "/");
+    expect(within(footer).getByText("Mark Kenneth")).toBeInTheDocument();
+    expect(within(footer).getByText("</>")).toBeInTheDocument();
     expect(within(footer).getByText(profile.role)).toBeInTheDocument();
     expect(within(footer).getByText(profile.location)).toBeInTheDocument();
     expect(

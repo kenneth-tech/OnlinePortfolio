@@ -5,6 +5,7 @@ import Link from "next/link";
 import { FaBars, FaXmark } from "react-icons/fa6";
 
 import { profile } from "../data/portfolio";
+import { SiteLogo } from "./site-logo";
 
 const navItems = [
   { label: "Home", href: "/" },
@@ -52,7 +53,8 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 border-b border-brand-button/10 bg-brand-ink/95 backdrop-blur">
       <div className="mx-auto flex w-full max-w-6xl flex-col px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-8">
-        <div className="flex items-center justify-end gap-4">
+        <div className="flex items-center justify-between gap-4">
+          <SiteLogo />
           <button
             type="button"
             aria-controls="mobile-navigation"

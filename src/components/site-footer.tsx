@@ -1,8 +1,9 @@
-import Link from "next/link";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa6";
 import type { IconType } from "react-icons";
+import Link from "next/link";
 
 import { profile, type ProfileLink } from "../data/portfolio";
+import { SiteLogo } from "./site-logo";
 
 const footerNavItems = [
   { label: "Home", href: "/" },
@@ -32,12 +33,7 @@ export function SiteFooter() {
     <footer className="border-t border-brand-button/20 bg-black text-white">
       <div className="mx-auto grid w-full max-w-6xl justify-items-center gap-8 px-4 py-10 text-center sm:justify-items-start sm:px-8 sm:py-12 sm:text-left lg:grid-cols-[1.2fr_0.7fr_0.8fr] lg:gap-10">
         <section className="max-w-xl">
-          <Link
-            href="/"
-            className="inline-flex w-fit justify-center text-lg font-semibold tracking-normal outline-none transition hover:text-brand-button focus-visible:rounded focus-visible:ring-2 focus-visible:ring-brand-button focus-visible:ring-offset-4 focus-visible:ring-offset-black sm:justify-start"
-          >
-            {profile.name}
-          </Link>
+          <SiteLogo className="mx-auto sm:mx-0" />
           <p className="mt-3 text-sm font-semibold text-brand-button">
             {profile.role}
           </p>
