@@ -1,4 +1,5 @@
 import { PageHeader } from "../../components/page-header";
+import { SkillIcon } from "../../components/skill-icon";
 import { skillGroups } from "../../data/portfolio";
 
 export default function SkillsPage() {
@@ -27,9 +28,10 @@ export default function SkillsPage() {
               {group.skills.map((skill) => (
                 <span
                   key={skill}
-                  className="rounded-full border border-brand-button/15 bg-brand-button/5 px-3 py-2 text-sm font-medium text-brand-muted"
+                  className="inline-flex items-center gap-2 rounded-full border border-brand-button/15 bg-brand-button/5 px-3 py-2 text-sm font-medium text-brand-muted"
                 >
-                  {skill}
+                  <SkillIcon skill={skill} />
+                  <span>{skill}</span>
                 </span>
               ))}
             </div>

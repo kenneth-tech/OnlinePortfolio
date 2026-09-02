@@ -431,6 +431,25 @@ describe("portfolio pages", () => {
     }
   });
 
+  test("renders skill icons beside representative skills", () => {
+    render(<SkillsPage />);
+
+    for (const skill of [
+      "HTML",
+      "Tailwind CSS",
+      "Node.js",
+      "React",
+      "WordPress",
+      "Vercel",
+      "GoDaddy",
+      "UI/UX Design",
+      "Video Editing",
+      "SEO",
+    ]) {
+      expect(screen.getByLabelText(`${skill} icon`)).toBeInTheDocument();
+    }
+  });
+
   test("renders the contact page without a backend form", () => {
     render(<ContactPage />);
 

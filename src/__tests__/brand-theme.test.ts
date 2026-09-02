@@ -19,8 +19,10 @@ const creativeIconCloud = readSource(
   "components",
   "creative-icon-cloud.tsx",
 );
+const skillIcon = readSource("src", "components", "skill-icon.tsx");
 const homePage = readSource("src", "app", "page.tsx");
 const projectsPage = readSource("src", "app", "projects", "page.tsx");
+const skillsPage = readSource("src", "app", "skills", "page.tsx");
 const homeModuleCss = readSource("src", "app", "home.module.css");
 const homeHeroImagePath = join(
   process.cwd(),
@@ -170,5 +172,17 @@ describe("brand theme", () => {
   test("keeps creative icon tiles square on mobile and rectangular on desktop", () => {
     expect(creativeIconCloud).toContain("aspect-square");
     expect(creativeIconCloud).toContain("md:aspect-[5/3]");
+  });
+
+  test("uses branded skill icons on the skills page", () => {
+    expect(skillsPage).toContain("SkillIcon");
+    expect(skillsPage).toContain("inline-flex items-center gap-2");
+    expect(skillIcon).toContain("SiHtml5");
+    expect(skillIcon).toContain("SiReact");
+    expect(skillIcon).toContain("SiNodedotjs");
+    expect(skillIcon).toContain("SiWordpress");
+    expect(skillIcon).toContain("SiVercel");
+    expect(skillIcon).toContain("SiGodaddy");
+    expect(skillIcon).toContain("FaServer");
   });
 });
