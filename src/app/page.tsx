@@ -99,21 +99,6 @@ export default function HomePage() {
               <span className="h-10 w-10 shrink-0 rounded-full border border-brand-button/30 bg-brand-button/10 shadow-[0_0_30px_rgba(127,255,212,0.22)]" />
             </div>
             <CreativeIconCloud />
-            <div className="mt-6 grid gap-3">
-              {[
-                "Responsive interfaces",
-                "Conversion-focused landing pages",
-                "UI/UX and multimedia production",
-                "Automation-assisted development",
-              ].map((item) => (
-                <div
-                  key={item}
-                  className="motion-card rounded-xl border border-brand-button/10 bg-brand-ink/35 px-4 py-3 text-sm font-medium text-brand-muted"
-                >
-                  {item}
-                </div>
-              ))}
-            </div>
           </aside>
         </div>
       </section>

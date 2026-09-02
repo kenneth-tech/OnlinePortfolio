@@ -346,6 +346,16 @@ describe("portfolio pages", () => {
     expect(screen.queryByText("Portfolio signal")).not.toBeInTheDocument();
     expect(screen.getByText("Premium digital experiences")).toBeInTheDocument();
     expect(screen.getByText("Selected work")).toBeInTheDocument();
+    expect(screen.queryByText("Responsive interfaces")).not.toBeInTheDocument();
+    expect(
+      screen.queryByText("Conversion-focused landing pages"),
+    ).not.toBeInTheDocument();
+    expect(
+      screen.queryByText("UI/UX and multimedia production"),
+    ).not.toBeInTheDocument();
+    expect(
+      screen.queryByText("Automation-assisted development"),
+    ).not.toBeInTheDocument();
     expect(screen.getByText("4+ Years")).toBeInTheDocument();
     expect(screen.getByText("Web + Multimedia")).toBeInTheDocument();
     expect(screen.getByText("Remote-ready")).toBeInTheDocument();
