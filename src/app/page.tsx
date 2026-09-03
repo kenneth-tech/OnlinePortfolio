@@ -7,25 +7,25 @@ import styles from "./home.module.css";
 
 export function FeaturedProjectCard({ project }: { project?: Project }) {
   return (
-    <article className="rounded-xl border border-brand-button/15 bg-brand-card/80 p-5 shadow-[0_18px_60px_rgba(0,0,0,0.18)]">
-      <p className="text-sm font-semibold text-brand-button">
+    <article className="rounded-xl border border-brand-button/30 bg-white p-5 text-brand-ink shadow-[0_18px_60px_rgba(0,0,0,0.18)]">
+      <p className="text-sm font-semibold text-brand-card">
         Featured project
       </p>
       {project ? (
         <>
-          <h3 className="mt-3 text-xl font-semibold leading-tight text-white">
+          <h3 className="mt-3 text-xl font-semibold leading-tight text-brand-ink">
             {project.title}
           </h3>
-          <p className="mt-3 leading-7 text-brand-muted">
+          <p className="mt-3 leading-7 text-brand-card/75">
             {project.description}
           </p>
         </>
       ) : (
         <>
-          <h3 className="mt-3 text-xl font-semibold leading-tight text-white">
+          <h3 className="mt-3 text-xl font-semibold leading-tight text-brand-ink">
             Add your first project
           </h3>
-          <p className="mt-3 leading-7 text-brand-muted">
+          <p className="mt-3 leading-7 text-brand-card/75">
             Add a project in src/data/portfolio.ts to feature it here.
           </p>
         </>
@@ -87,13 +87,13 @@ export default function HomePage() {
             </div>
           </div>
 
-          <aside className="motion-card rounded-2xl border border-brand-button/20 bg-brand-card/70 p-4 shadow-[0_24px_90px_rgba(0,0,0,0.28)] backdrop-blur sm:p-6">
+          <aside className="motion-card rounded-2xl border border-brand-button/30 bg-white p-4 text-brand-ink shadow-[0_24px_90px_rgba(0,0,0,0.28)] sm:p-6">
             <div className="flex items-start justify-between gap-4 border-b border-brand-button/10 pb-5">
               <div>
-                <p className="text-sm font-semibold text-brand-button">
+                <p className="text-sm font-semibold text-brand-card">
                   Creative engineering
                 </p>
-                <h2 className="mt-2 text-xl font-semibold text-white sm:text-2xl">
+                <h2 className="mt-2 text-xl font-semibold text-brand-ink sm:text-2xl">
                   Web, design, and multimedia in one workflow.
                 </h2>
               </div>
@@ -128,13 +128,15 @@ export default function HomePage() {
             {featuredProjects.map((project) => (
               <article
                 key={project.title}
-                className="motion-card rounded-xl border border-brand-button/15 bg-brand-card/70 p-5 transition-[border-color,transform,box-shadow] duration-200 hover:-translate-y-1 hover:border-brand-button/45 hover:shadow-[0_18px_70px_rgba(127,255,212,0.10)]"
+                className="motion-card rounded-xl border border-brand-button/30 bg-white p-5 text-brand-ink transition-[border-color,transform,box-shadow] duration-200 hover:-translate-y-1 hover:border-brand-button/60 hover:shadow-[0_18px_70px_rgba(127,255,212,0.10)]"
               >
-                <p className="text-sm text-brand-button">{project.category}</p>
-                <h3 className="mt-2 text-xl font-semibold text-white">
+                <p className="text-sm font-medium text-brand-card">
+                  {project.category}
+                </p>
+                <h3 className="mt-2 text-xl font-semibold text-brand-ink">
                   {project.title}
                 </h3>
-                <p className="mt-2 leading-7 text-brand-muted">
+                <p className="mt-2 leading-7 text-brand-card/75">
                   {project.description}
                 </p>
               </article>
@@ -148,7 +150,7 @@ export default function HomePage() {
             {featuredSkills.map((skill) => (
               <span
                 key={skill}
-                className="rounded-full border border-brand-button/15 bg-brand-button/5 px-3 py-2 text-sm font-medium text-brand-muted"
+                className="rounded-full border border-brand-button/25 bg-white px-3 py-2 text-sm font-medium text-brand-card shadow-[0_10px_30px_rgba(0,0,0,0.10)]"
               >
                 {skill}
               </span>

@@ -10,14 +10,14 @@ export default function ContactPage() {
       />
 
       <div className="mt-8 grid gap-5 sm:mt-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-6">
-        <div className="motion-card rounded-2xl border border-brand-button/20 bg-brand-card/75 p-5 shadow-[0_24px_90px_rgba(0,0,0,0.26)] sm:p-6">
-          <p className="text-sm font-semibold text-brand-button">
+        <div className="motion-card rounded-2xl border border-brand-button/30 bg-white p-5 text-brand-ink shadow-[0_24px_90px_rgba(0,0,0,0.26)] sm:p-6">
+          <p className="text-sm font-semibold text-brand-card">
             Current status
           </p>
-          <h2 className="mt-4 text-2xl font-semibold leading-tight text-white sm:text-3xl">
+          <h2 className="mt-4 text-2xl font-semibold leading-tight text-brand-ink sm:text-3xl">
             Open to remote web and multimedia work.
           </h2>
-          <p className="mt-5 leading-7 text-brand-muted">
+          <p className="mt-5 leading-7 text-brand-card/75">
             Best fit: responsive websites, landing pages, funnels, UI/UX
             support, multimedia assets, and automation-assisted builds.
           </p>
@@ -40,9 +40,9 @@ export default function ContactPage() {
               key={item.href}
               href={item.href}
               aria-label={item.value}
-              className="motion-card group rounded-xl border border-brand-button/15 bg-brand-card/65 p-5 font-semibold text-white outline-none transition hover:border-brand-button/45 focus-visible:ring-2 focus-visible:ring-brand-button focus-visible:ring-offset-4 focus-visible:ring-offset-brand-ink"
+              className="motion-card group rounded-xl border border-brand-button/30 bg-white p-5 font-semibold text-brand-ink outline-none transition hover:border-brand-button/60 focus-visible:ring-2 focus-visible:ring-brand-button focus-visible:ring-offset-4 focus-visible:ring-offset-brand-ink"
             >
-              <span className="block text-sm font-medium text-brand-button">
+              <span className="block text-sm font-medium text-brand-card">
                 {item.label}
               </span>
               <span className="mt-3 block break-words text-base sm:text-lg">

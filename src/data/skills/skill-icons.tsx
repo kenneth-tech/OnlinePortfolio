@@ -83,7 +83,7 @@ export function SkillIcon({ skill }: { skill: string }) {
   const Icon = skillIcons[skill] ?? FaCode;
 
   return (
-    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-brand-button/20 bg-brand-button/10 text-brand-button">
+    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-brand-button/30 bg-brand-button/15 text-brand-card">
       <Icon aria-label={`${skill} icon`} role="img" className="h-3.5 w-3.5" />
     </span>
   );

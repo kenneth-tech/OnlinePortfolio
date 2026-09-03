@@ -13,24 +13,24 @@ export default function ExperiencePage() {
         {experiences.map((experience) => (
           <article
             key={`${experience.role}-${experience.organization}`}
-            className="motion-card grid gap-5 rounded-xl border border-brand-button/15 bg-brand-card/65 p-5 shadow-[0_18px_60px_rgba(0,0,0,0.18)] sm:p-6 md:grid-cols-[220px_1fr]"
+            className="motion-card grid gap-5 rounded-xl border border-brand-button/30 bg-white p-5 text-brand-ink shadow-[0_18px_60px_rgba(0,0,0,0.18)] sm:p-6 md:grid-cols-[220px_1fr]"
           >
             <div>
-              <p className="text-sm font-bold text-brand-soft">
+              <p className="text-sm font-bold text-brand-card">
                 {experience.period}
               </p>
-              <p className="mt-2 text-sm text-brand-muted">
+              <p className="mt-2 text-sm text-brand-card/75">
                 {experience.organization}
               </p>
-              <p className="mt-1 text-sm text-brand-muted">
+              <p className="mt-1 text-sm text-brand-card/70">
                 {experience.location}
               </p>
             </div>
             <div>
-              <h2 className="text-xl font-semibold leading-tight text-white sm:text-2xl">
+              <h2 className="text-xl font-semibold leading-tight text-brand-ink sm:text-2xl">
                 {experience.role}
               </h2>
-              <ul className="mt-5 grid gap-3 text-sm text-brand-muted sm:text-base">
+              <ul className="mt-5 grid gap-3 text-sm text-brand-card/75 sm:text-base">
                 {experience.highlights.map((highlight) => (
                   <li
                     key={highlight}
@@ -51,13 +51,13 @@ export default function ExperiencePage() {
           {education.map((item) => (
             <article
               key={`${item.degree}-${item.school}`}
-              className="motion-card rounded-xl border border-brand-button/15 bg-brand-card/65 p-5 text-white sm:p-6"
+              className="motion-card rounded-xl border border-brand-button/30 bg-white p-5 text-brand-ink sm:p-6"
             >
               <h3 className="text-xl font-semibold">
                 {item.degree}
               </h3>
-              <p className="mt-2 text-brand-muted">{item.school}</p>
-              <p className="mt-2 text-sm font-semibold text-brand-soft">
+              <p className="mt-2 text-brand-card/75">{item.school}</p>
+              <p className="mt-2 text-sm font-semibold text-brand-card">
                 {item.period}
               </p>
             </article>

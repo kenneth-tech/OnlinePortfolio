@@ -366,6 +366,48 @@ describe("portfolio pages", () => {
     expect(screen.getByLabelText("Multimedia design icon")).toBeInTheDocument();
   });
 
+  test("uses white card styling across portfolio card surfaces", () => {
+    render(<HomePage />);
+
+    expect(screen.getByText("Creative engineering").closest("aside")).toHaveClass(
+      "bg-white",
+      "text-brand-ink",
+    );
+    expect(screen.getByText("4+ Years").closest(".motion-card")).toHaveClass(
+      "bg-white",
+      "text-brand-ink",
+    );
+    expect(screen.getByLabelText("Web development icon")).toHaveClass(
+      "bg-white",
+      "text-brand-card",
+    );
+
+    render(<ProjectsPage />);
+    expect(screen.getByText("Featured build").closest("article")).toHaveClass(
+      "bg-white",
+      "text-brand-ink",
+    );
+
+    render(<ExperiencePage />);
+    expect(
+      screen
+        .getByText(experiences[0].role)
+        .closest("article"),
+    ).toHaveClass("bg-white", "text-brand-ink");
+
+    render(<SkillsPage />);
+    expect(screen.getByText("Web Development").closest("section")).toHaveClass(
+      "bg-white",
+      "text-brand-ink",
+    );
+
+    render(<ContactPage />);
+    expect(screen.getByText("Current status").closest(".motion-card")).toHaveClass(
+      "bg-white",
+      "text-brand-ink",
+    );
+  });
+
   test("centers the homepage hero introduction only on mobile", () => {
     render(<HomePage />);
 

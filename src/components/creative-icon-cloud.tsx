@@ -34,7 +34,7 @@ const icons: CreativeIcon[] = [
     frameClassName: "translate-y-1 rotate-[3deg]",
     children: (
       <span aria-hidden="true" className="relative h-10 w-10">
-        <span className="absolute left-1 top-1 h-6 w-8 rounded-md border border-brand-button/55 bg-brand-card/80" />
+        <span className="absolute left-1 top-1 h-6 w-8 rounded-md border border-brand-button/55 bg-brand-button/15" />
         <span className="absolute bottom-1 right-1 h-5 w-5 rounded-full border border-brand-soft/70 bg-brand-button/20" />
       </span>
     ),
@@ -59,7 +59,7 @@ export function CreativeIconCloud() {
           key={icon.label}
           aria-label={icon.label}
           role="img"
-          className={`${icon.frameClassName} motion-icon flex aspect-square items-center justify-center rounded-2xl border border-brand-button/20 bg-brand-ink/45 text-brand-button shadow-[0_18px_48px_rgba(0,0,0,0.24)] backdrop-blur md:aspect-[5/3]`}
+          className={`${icon.frameClassName} motion-icon flex aspect-square items-center justify-center rounded-2xl border border-brand-button/30 bg-white text-brand-card shadow-[0_18px_48px_rgba(0,0,0,0.16)] md:aspect-[5/3]`}
         >
           {icon.children}
         </div>
