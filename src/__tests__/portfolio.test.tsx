@@ -378,8 +378,8 @@ describe("portfolio pages", () => {
       "text-brand-ink",
     );
     expect(screen.getByLabelText("Web development icon")).toHaveClass(
-      "bg-white",
-      "text-brand-card",
+      "bg-brand-card",
+      "text-brand-button",
     );
 
     render(<ProjectsPage />);
