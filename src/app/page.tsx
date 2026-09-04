@@ -3,6 +3,7 @@ import { AnimatedButtonLink } from "../components/animated-button-link";
 import { StatCard } from "../components/stat-card";
 import { profile, projects, type Project } from "../data/portfolio";
 import { skillGroups } from "../data/skills";
+import { SkillIcon } from "../data/skills/skill-icons";
 import styles from "./home.module.css";
 
 export function FeaturedProjectCard({ project }: { project?: Project }) {
@@ -156,8 +157,9 @@ export default function HomePage() {
             {featuredSkills.map((skill) => (
               <span
                 key={skill}
-                className="rounded-full border border-brand-button/25 bg-white px-3 py-2 text-sm font-medium text-brand-card shadow-[0_10px_30px_rgba(0,0,0,0.10)]"
+                className="inline-flex items-center gap-2 rounded-full border border-brand-button/25 bg-white px-3 py-2 text-sm font-medium text-brand-card shadow-[0_10px_30px_rgba(0,0,0,0.10)]"
               >
+                <SkillIcon skill={skill} />
                 {skill}
               </span>
             ))}

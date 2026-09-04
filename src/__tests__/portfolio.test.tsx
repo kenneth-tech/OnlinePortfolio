@@ -445,6 +445,14 @@ describe("portfolio pages", () => {
     expect(skillsPanel).not.toHaveClass("lg:sticky");
   });
 
+  test("renders icons beside homepage core skills", () => {
+    render(<HomePage />);
+
+    for (const skill of ["HTML", "Tailwind CSS", "Node.js", "Next.js"]) {
+      expect(screen.getByLabelText(`${skill} icon`)).toBeInTheDocument();
+    }
+  });
+
   test("renders an empty featured project state", () => {
     render(<FeaturedProjectCard />);
 
