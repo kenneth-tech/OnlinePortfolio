@@ -424,7 +424,7 @@ describe("portfolio pages", () => {
     expect(actions).toHaveClass("items-center", "sm:items-start");
   });
 
-  test("arranges selected work and core skills as a balanced homepage section", () => {
+  test("places core skills below the horizontal selected work cards", () => {
     render(<HomePage />);
 
     const section = screen.getByRole("region", {
@@ -433,16 +433,16 @@ describe("portfolio pages", () => {
     const selectedWorkList = screen.getByLabelText("Selected work previews");
     const skillsPanel = screen.getByText("Core skills").closest(".motion-card");
 
-    expect(section).toHaveClass(
+    expect(section).toHaveClass("space-y-8");
+    expect(section).not.toHaveClass(
       "lg:grid-cols-[minmax(0,1.35fr)_minmax(300px,0.65fr)]",
-      "lg:items-start",
     );
     expect(selectedWorkList).toHaveClass("lg:grid-cols-3");
     expect(skillsPanel).toHaveClass(
       "bg-white",
       "text-brand-ink",
-      "lg:sticky",
     );
+    expect(skillsPanel).not.toHaveClass("lg:sticky");
   });
 
   test("renders an empty featured project state", () => {

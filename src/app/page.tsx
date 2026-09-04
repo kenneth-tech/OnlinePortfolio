@@ -115,7 +115,7 @@ export default function HomePage() {
 
       <section
         aria-label="Selected work and core skills"
-        className="mx-auto grid w-full max-w-6xl gap-8 border-t border-brand-button/10 px-4 py-10 sm:px-8 sm:py-12 lg:grid-cols-[minmax(0,1.35fr)_minmax(300px,0.65fr)] lg:items-start lg:gap-10"
+        className="mx-auto w-full max-w-6xl space-y-8 border-t border-brand-button/10 px-4 py-10 sm:px-8 sm:py-12"
       >
         <div className="min-w-0">
           <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between">
@@ -150,7 +150,7 @@ export default function HomePage() {
           </div>
         </div>
 
-        <aside className="motion-card rounded-2xl border border-brand-button/30 bg-white p-5 text-brand-ink shadow-[0_24px_90px_rgba(0,0,0,0.22)] sm:p-6 lg:sticky lg:top-28">
+        <aside className="motion-card rounded-2xl border border-brand-button/30 bg-white p-5 text-brand-ink shadow-[0_24px_90px_rgba(0,0,0,0.22)] sm:p-6">
           <h2 className="text-2xl font-semibold text-brand-ink">Core skills</h2>
           <div className="mt-6 flex flex-wrap gap-2.5">
             {featuredSkills.map((skill) => (
