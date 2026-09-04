@@ -424,6 +424,27 @@ describe("portfolio pages", () => {
     expect(actions).toHaveClass("items-center", "sm:items-start");
   });
 
+  test("arranges selected work and core skills as a balanced homepage section", () => {
+    render(<HomePage />);
+
+    const section = screen.getByRole("region", {
+      name: "Selected work and core skills",
+    });
+    const selectedWorkList = screen.getByLabelText("Selected work previews");
+    const skillsPanel = screen.getByText("Core skills").closest(".motion-card");
+
+    expect(section).toHaveClass(
+      "lg:grid-cols-[minmax(0,1.35fr)_minmax(300px,0.65fr)]",
+      "lg:items-start",
+    );
+    expect(selectedWorkList).toHaveClass("lg:grid-cols-3");
+    expect(skillsPanel).toHaveClass(
+      "bg-white",
+      "text-brand-ink",
+      "lg:sticky",
+    );
+  });
+
   test("renders an empty featured project state", () => {
     render(<FeaturedProjectCard />);
 

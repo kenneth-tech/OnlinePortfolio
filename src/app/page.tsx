@@ -113,9 +113,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto grid w-full max-w-6xl gap-10 border-t border-brand-button/10 px-4 py-10 sm:px-8 sm:py-12 lg:grid-cols-[1.1fr_0.9fr]">
-        <div>
-          <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-end sm:justify-between">
+      <section
+        aria-label="Selected work and core skills"
+        className="mx-auto grid w-full max-w-6xl gap-8 border-t border-brand-button/10 px-4 py-10 sm:px-8 sm:py-12 lg:grid-cols-[minmax(0,1.35fr)_minmax(300px,0.65fr)] lg:items-start lg:gap-10"
+      >
+        <div className="min-w-0">
+          <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between">
             <h2 className="text-2xl font-semibold text-white">Selected work</h2>
             <a
               href="/projects"
@@ -124,11 +127,14 @@ export default function HomePage() {
               View all
             </a>
           </div>
-          <div className="mt-6 grid gap-4">
+          <div
+            aria-label="Selected work previews"
+            className="mt-6 grid gap-5 lg:grid-cols-3"
+          >
             {featuredProjects.map((project) => (
               <article
                 key={project.title}
-                className="motion-card rounded-xl border border-brand-button/30 bg-white p-5 text-brand-ink transition-[border-color,transform,box-shadow] duration-200 hover:-translate-y-1 hover:border-brand-button/60 hover:shadow-[0_18px_70px_rgba(127,255,212,0.10)]"
+                className="motion-card flex min-h-[220px] flex-col rounded-xl border border-brand-button/30 bg-white p-5 text-brand-ink transition-[border-color,transform,box-shadow] duration-200 hover:-translate-y-1 hover:border-brand-button/60 hover:shadow-[0_18px_70px_rgba(127,255,212,0.10)]"
               >
                 <p className="text-sm font-medium text-brand-card">
                   {project.category}
@@ -136,7 +142,7 @@ export default function HomePage() {
                 <h3 className="mt-2 text-xl font-semibold text-brand-ink">
                   {project.title}
                 </h3>
-                <p className="mt-2 leading-7 text-brand-card/75">
+                <p className="mt-3 flex-1 leading-7 text-brand-card/75">
                   {project.description}
                 </p>
               </article>
@@ -144,9 +150,9 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div>
-          <h2 className="text-2xl font-semibold text-white">Core skills</h2>
-          <div className="mt-6 flex flex-wrap gap-2">
+        <aside className="motion-card rounded-2xl border border-brand-button/30 bg-white p-5 text-brand-ink shadow-[0_24px_90px_rgba(0,0,0,0.22)] sm:p-6 lg:sticky lg:top-28">
+          <h2 className="text-2xl font-semibold text-brand-ink">Core skills</h2>
+          <div className="mt-6 flex flex-wrap gap-2.5">
             {featuredSkills.map((skill) => (
               <span
                 key={skill}
@@ -156,7 +162,7 @@ export default function HomePage() {
               </span>
             ))}
           </div>
-        </div>
+        </aside>
       </section>
     </div>
   );
