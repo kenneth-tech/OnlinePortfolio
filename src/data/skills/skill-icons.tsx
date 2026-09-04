@@ -37,53 +37,64 @@ import {
   SiZapier,
 } from "react-icons/si";
 
-const skillIcons: Record<string, IconType> = {
-  HTML: SiHtml5,
-  CSS: SiCss,
-  "Tailwind CSS": SiTailwindcss,
-  JavaScript: SiJavascript,
-  TypeScript: SiTypescript,
-  "Node.js": SiNodedotjs,
-  React: SiReact,
-  "Next.js": SiNextdotjs,
-  Handlebars: SiHandlebarsdotjs,
-  SQL: FaDatabase,
-  WordPress: SiWordpress,
-  Wix: SiWix,
-  Webflow: SiWebflow,
-  GoHighLevel: FaChartLine,
-  Supabase: SiSupabase,
-  Vercel: SiVercel,
-  Trello: SiTrello,
-  Slack: FaComments,
-  Notion: SiNotion,
-  Hostinger: FaServer,
-  "DNS Management": FaGlobe,
-  GoDaddy: SiGodaddy,
-  cPanel: SiCpanel,
-  "Domain Setup": FaGlobe,
-  "SSL Setup": FaLock,
-  "Email Hosting": FaEnvelope,
-  "Website Migration": FaCode,
-  "Hosting Configuration": FaServer,
-  "UI/UX Design": FaCode,
-  "Graphic Design": FaPalette,
-  "Video Editing": FaVideo,
-  "Motion Graphics": FaVideo,
-  SEO: FaGlobe,
-  "Meta Ads": SiMeta,
-  "Workflow Automation": FaRobot,
-  "AI Prompt Engineering": FaRobot,
-  "Google Ads": SiGoogleads,
-  "Google Analytics": SiGoogleanalytics,
-  Zapier: SiZapier,
+type SkillIconMeta = {
+  Icon: IconType;
+  color: string;
+};
+
+const skillIcons: Record<string, SkillIconMeta> = {
+  HTML: { Icon: SiHtml5, color: "#E34F26" },
+  CSS: { Icon: SiCss, color: "#663399" },
+  "Tailwind CSS": { Icon: SiTailwindcss, color: "#06B6D4" },
+  JavaScript: { Icon: SiJavascript, color: "#F7DF1E" },
+  TypeScript: { Icon: SiTypescript, color: "#3178C6" },
+  "Node.js": { Icon: SiNodedotjs, color: "#5FA04E" },
+  React: { Icon: SiReact, color: "#61DAFB" },
+  "Next.js": { Icon: SiNextdotjs, color: "#000000" },
+  Handlebars: { Icon: SiHandlebarsdotjs, color: "#000000" },
+  SQL: { Icon: FaDatabase, color: "#4479A1" },
+  WordPress: { Icon: SiWordpress, color: "#21759B" },
+  Wix: { Icon: SiWix, color: "#0C6EFC" },
+  Webflow: { Icon: SiWebflow, color: "#146EF5" },
+  GoHighLevel: { Icon: FaChartLine, color: "#28E0B9" },
+  Supabase: { Icon: SiSupabase, color: "#3ECF8E" },
+  Vercel: { Icon: SiVercel, color: "#000000" },
+  Trello: { Icon: SiTrello, color: "#0052CC" },
+  Slack: { Icon: FaComments, color: "#4A154B" },
+  Notion: { Icon: SiNotion, color: "#000000" },
+  Hostinger: { Icon: FaServer, color: "#673DE6" },
+  "DNS Management": { Icon: FaGlobe, color: "#2563EB" },
+  GoDaddy: { Icon: SiGodaddy, color: "#1BDBDB" },
+  cPanel: { Icon: SiCpanel, color: "#FF6C2C" },
+  "Domain Setup": { Icon: FaGlobe, color: "#2563EB" },
+  "SSL Setup": { Icon: FaLock, color: "#16A34A" },
+  "Email Hosting": { Icon: FaEnvelope, color: "#EA4335" },
+  "Website Migration": { Icon: FaCode, color: "#0EA5E9" },
+  "Hosting Configuration": { Icon: FaServer, color: "#673DE6" },
+  "UI/UX Design": { Icon: FaCode, color: "#A855F7" },
+  "Graphic Design": { Icon: FaPalette, color: "#FF61F6" },
+  "Video Editing": { Icon: FaVideo, color: "#9999FF" },
+  "Motion Graphics": { Icon: FaVideo, color: "#FF7A59" },
+  SEO: { Icon: FaGlobe, color: "#00A67E" },
+  "Meta Ads": { Icon: SiMeta, color: "#0668E1" },
+  "Workflow Automation": { Icon: FaRobot, color: "#FF4F00" },
+  "AI Prompt Engineering": { Icon: FaRobot, color: "#10A37F" },
+  "Google Ads": { Icon: SiGoogleads, color: "#4285F4" },
+  "Google Analytics": { Icon: SiGoogleanalytics, color: "#E37400" },
+  Zapier: { Icon: SiZapier, color: "#FF4F00" },
 };
 
 export function SkillIcon({ skill }: { skill: string }) {
-  const Icon = skillIcons[skill] ?? FaCode;
+  const { Icon, color } = skillIcons[skill] ?? {
+    Icon: FaCode,
+    color: "#0B2545",
+  };
 
   return (
-    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-brand-button/30 bg-brand-button/15 text-brand-card">
+    <span
+      className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-brand-button/30 bg-white"
+      style={{ color }}
+    >
       <Icon aria-label={`${skill} icon`} role="img" className="h-3.5 w-3.5" />
     </span>
   );

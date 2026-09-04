@@ -17,7 +17,7 @@ import {
   profile,
   projects,
 } from "../data/portfolio";
-import { skillGroups } from "../data/skills";
+import { SkillIcon, skillGroups } from "../data/skills";
 
 describe("portfolio data", () => {
   test("exposes editable profile and portfolio lists", () => {
@@ -525,6 +525,36 @@ describe("portfolio pages", () => {
     ]) {
       expect(screen.getByLabelText(`${skill} icon`)).toBeInTheDocument();
     }
+  });
+
+  test("renders skill icons with recognizable brand colors", () => {
+    render(
+      <>
+        <SkillIcon skill="HTML" />
+        <SkillIcon skill="Tailwind CSS" />
+        <SkillIcon skill="Node.js" />
+        <SkillIcon skill="React" />
+        <SkillIcon skill="Next.js" />
+      </>,
+    );
+
+    expect(screen.getByLabelText("HTML icon").closest("span")).toHaveStyle({
+      color: "rgb(227, 79, 38)",
+    });
+    expect(
+      screen.getByLabelText("Tailwind CSS icon").closest("span"),
+    ).toHaveStyle({
+      color: "rgb(6, 182, 212)",
+    });
+    expect(screen.getByLabelText("Node.js icon").closest("span")).toHaveStyle({
+      color: "rgb(95, 160, 78)",
+    });
+    expect(screen.getByLabelText("React icon").closest("span")).toHaveStyle({
+      color: "rgb(97, 218, 251)",
+    });
+    expect(screen.getByLabelText("Next.js icon").closest("span")).toHaveStyle({
+      color: "rgb(0, 0, 0)",
+    });
   });
 
   test("renders the contact page without a backend form", () => {
