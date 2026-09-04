@@ -51,7 +51,7 @@ export function SiteHeader() {
   }, [isMenuOpen]);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-brand-button/10 bg-brand-ink/95 backdrop-blur">
+    <header className="fixed inset-x-0 top-0 z-[100] border-b border-brand-button/15 bg-brand-ink/98 shadow-[0_12px_40px_rgba(0,0,0,0.24)] backdrop-blur">
       <div className="mx-auto flex w-full max-w-6xl flex-col px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-8">
         <div className="flex items-center justify-between gap-4">
           <SiteLogo />

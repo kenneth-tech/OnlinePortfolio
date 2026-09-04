@@ -132,7 +132,8 @@ describe("brand theme", () => {
     expect(globalsCss).toContain("overflow-x: hidden;");
     expect(globalsCss).toContain("@media (max-width: 640px)");
     expect(globalsCss).toContain("background-attachment: scroll;");
-    expect(siteHeader).toContain("sticky top-0 z-50");
+    expect(siteHeader).toContain("fixed inset-x-0 top-0 z-[100]");
+    expect(rootLayout).toContain('main className="flex-1 pt-[76px]"');
     expect(siteHeader).toContain('"use client";');
     expect(siteHeader).toContain('aria-expanded={isMenuOpen}');
     expect(siteHeader).toContain('aria-controls="mobile-navigation"');

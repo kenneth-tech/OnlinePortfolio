@@ -129,6 +129,12 @@ describe("site chrome", () => {
   test("renders navigation links for each portfolio page", () => {
     render(<SiteHeader />);
 
+    expect(screen.getByRole("banner")).toHaveClass(
+      "fixed",
+      "inset-x-0",
+      "top-0",
+      "z-[100]",
+    );
     expect(screen.getByRole("link", { name: "Home" })).toHaveAttribute(
       "href",
       "/",
