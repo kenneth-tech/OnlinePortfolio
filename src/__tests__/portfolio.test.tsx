@@ -11,6 +11,7 @@ import SkillsPage from "../app/skills/page";
 import { SiteFooter } from "../components/site-footer";
 import { SiteHeader } from "../components/site-header";
 import { SiteLogo } from "../components/site-logo";
+import { ScrollReveal } from "../components/scroll-reveal";
 import {
   education,
   experiences,
@@ -130,7 +131,7 @@ describe("site chrome", () => {
     render(<SiteHeader />);
 
     expect(screen.getByRole("banner")).toHaveClass(
-      "fixed",
+      "sticky",
       "inset-x-0",
       "top-0",
       "z-[100]",
@@ -155,6 +156,38 @@ describe("site chrome", () => {
       "href",
       "/contact",
     );
+  });
+
+  test("toggles between light and dark mode from the navbar", () => {
+    const store = new Map<string, string>();
+    vi.stubGlobal("localStorage", {
+      getItem: vi.fn((key: string) => store.get(key) ?? null),
+      setItem: vi.fn((key: string, value: string) => {
+        store.set(key, value);
+      }),
+    });
+    document.documentElement.dataset.theme = "";
+
+    render(<SiteHeader />);
+
+    const themeButton = screen.getByRole("button", {
+      name: "Switch to dark mode",
+    });
+
+    expect(document.documentElement.dataset.theme).toBe("light");
+    expect(themeButton).toHaveAttribute("aria-pressed", "false");
+
+    fireEvent.click(themeButton);
+
+    expect(document.documentElement.dataset.theme).toBe("dark");
+    expect(localStorage.getItem("portfolio-theme")).toBe("dark");
+    expect(themeButton).toHaveAccessibleName("Switch to light mode");
+    expect(themeButton).toHaveAttribute("aria-pressed", "true");
+
+    fireEvent.click(themeButton);
+
+    expect(document.documentElement.dataset.theme).toBe("light");
+    expect(localStorage.getItem("portfolio-theme")).toBe("light");
   });
 
   test("does not show the full name as a navbar brand label", () => {
@@ -335,6 +368,60 @@ describe("site chrome", () => {
   });
 });
 
+describe("scroll reveal", () => {
+  test("reveals animated elements when they enter the viewport", () => {
+    let observedElement: Element | undefined;
+    let observerCallback:
+      | ((entries: IntersectionObserverEntry[]) => void)
+      | undefined;
+    const observe = vi.fn((element: Element) => {
+      observedElement = element;
+    });
+    const unobserve = vi.fn();
+    const disconnect = vi.fn();
+
+    vi.stubGlobal(
+      "IntersectionObserver",
+      vi.fn(function MockIntersectionObserver(
+        callback: (entries: IntersectionObserverEntry[]) => void,
+      ) {
+        observerCallback = callback;
+
+        return {
+          observe,
+          unobserve,
+          disconnect,
+        };
+      }),
+    );
+
+    render(
+      <ScrollReveal>
+        <section>
+          <div className="motion-card">Project card</div>
+        </section>
+      </ScrollReveal>,
+    );
+
+    const card = screen.getByText("Project card");
+
+    expect(observe).toHaveBeenCalledWith(card);
+    expect(card).toHaveClass("reveal-on-scroll");
+    expect(card).not.toHaveClass("is-visible");
+
+    observerCallback?.([
+      {
+        target: observedElement,
+        isIntersecting: true,
+      } as IntersectionObserverEntry,
+    ]);
+
+    expect(card).toHaveClass("is-visible");
+    expect(unobserve).toHaveBeenCalledWith(card);
+    expect(disconnect).not.toHaveBeenCalled();
+  });
+});
+
 describe("portfolio pages", () => {
   test("renders the home page introduction and primary actions", () => {
     render(<HomePage />);
@@ -343,39 +430,43 @@ describe("portfolio pages", () => {
       screen.getByRole("heading", { name: profile.name }),
     ).toBeInTheDocument();
     expect(screen.getByText(profile.role)).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: "View Projects" })).toHaveAttribute(
+    expect(
+      screen.getByRole("link", { name: "View Project Proof" }),
+    ).toHaveAttribute("href", "/projects");
+    expect(screen.getByRole("link", { name: "Email Mark" })).toHaveAttribute(
       "href",
-      "/projects",
+      `mailto:${profile.email}`,
     );
-    expect(screen.getByRole("link", { name: "Contact Me" })).toHaveAttribute(
-      "href",
-      "/contact",
-    );
-    expect(screen.queryByText("Portfolio console")).not.toBeInTheDocument();
-    expect(screen.queryByText("Portfolio signal")).not.toBeInTheDocument();
-    expect(screen.getByText("Premium digital experiences")).toBeInTheDocument();
-    expect(screen.getByText("Selected work")).toBeInTheDocument();
-    expect(screen.queryByText("Responsive interfaces")).not.toBeInTheDocument();
+    expect(screen.queryByText("ATS-friendly portfolio")).not.toBeInTheDocument();
+    expect(screen.queryByText("Resume Summary")).not.toBeInTheDocument();
+    expect(screen.queryByText("Web Developer")).not.toBeInTheDocument();
+    expect(screen.queryByText("Multimedia Designer")).not.toBeInTheDocument();
+    expect(screen.queryByText("Creative Identity")).not.toBeInTheDocument();
+    expect(screen.queryByText("UI")).not.toBeInTheDocument();
+    expect(screen.queryByText("Code")).not.toBeInTheDocument();
+    expect(screen.queryByText("Media")).not.toBeInTheDocument();
     expect(
-      screen.queryByText("Conversion-focused landing pages"),
-    ).not.toBeInTheDocument();
+      screen.getByRole("img", {
+        name: "Purple isometric programming laptop illustration",
+      }),
+    ).toBeInTheDocument();
     expect(
-      screen.queryByText("UI/UX and multimedia production"),
+      screen.queryByLabelText("Isometric developer desk animation"),
     ).not.toBeInTheDocument();
-    expect(
-      screen.queryByText("Automation-assisted development"),
-    ).not.toBeInTheDocument();
+    expect(screen.queryByLabelText("Animated code laptop")).not.toBeInTheDocument();
+    expect(screen.queryByLabelText("Animated coffee cup")).not.toBeInTheDocument();
+    expect(screen.getByText("Project Proof")).toBeInTheDocument();
+    expect(screen.getByText("Core Competencies")).toBeInTheDocument();
     expect(screen.getByText("4+ Years")).toBeInTheDocument();
-    expect(screen.getByText("Web + Multimedia")).toBeInTheDocument();
-    expect(screen.getByText("Remote-ready")).toBeInTheDocument();
-    expect(screen.getByLabelText("Web development icon")).toBeInTheDocument();
-    expect(screen.getByLabelText("Multimedia design icon")).toBeInTheDocument();
+    expect(screen.getByText("6 Live Projects")).toBeInTheDocument();
   });
 
-  test("uses white card styling across portfolio card surfaces", () => {
+  test("uses professional card styling across portfolio card surfaces", () => {
     render(<HomePage />);
 
-    expect(screen.getByText("Creative engineering").closest("aside")).toHaveClass(
+    expect(
+      screen.getByLabelText("Animated identity motion graphic"),
+    ).toHaveClass(
       "bg-white",
       "text-brand-ink",
     );
@@ -383,13 +474,9 @@ describe("portfolio pages", () => {
       "bg-white",
       "text-brand-ink",
     );
-    expect(screen.getByLabelText("Web development icon")).toHaveClass(
-      "bg-brand-card",
-      "text-brand-button",
-    );
 
     render(<ProjectsPage />);
-    expect(screen.getByText("Featured build").closest("article")).toHaveClass(
+    expect(screen.getByText("Project Showcase").closest("section")).toHaveClass(
       "bg-white",
       "text-brand-ink",
     );
@@ -408,47 +495,21 @@ describe("portfolio pages", () => {
     );
 
     render(<ContactPage />);
-    expect(screen.getByText("Current status").closest(".motion-card")).toHaveClass(
+    expect(screen.getByText("Project Inquiry").closest(".motion-card")).toHaveClass(
       "bg-white",
       "text-brand-ink",
     );
   });
 
-  test("centers the homepage hero introduction only on mobile", () => {
+  test("keeps the homepage hero resume-like and left aligned", () => {
     render(<HomePage />);
 
     const heading = screen.getByRole("heading", { name: profile.name });
-    const intro = heading.closest(".motion-surface");
-    const roleBadge = screen.getByText(profile.role);
-    const actions = screen.getByRole("link", {
-      name: "View Projects",
-    }).parentElement;
+    const intro = heading.closest("section");
 
-    expect(intro).toHaveClass("text-center", "sm:text-left");
-    expect(heading).toHaveClass("mx-auto", "sm:mx-0");
-    expect(roleBadge).toHaveClass("mx-auto", "sm:mx-0");
-    expect(actions).toHaveClass("items-center", "sm:items-start");
-  });
-
-  test("places core skills below the horizontal selected work cards", () => {
-    render(<HomePage />);
-
-    const section = screen.getByRole("region", {
-      name: "Selected work and core skills",
-    });
-    const selectedWorkList = screen.getByLabelText("Selected work previews");
-    const skillsPanel = screen.getByText("Core skills").closest(".motion-card");
-
-    expect(section).toHaveClass("space-y-8");
-    expect(section).not.toHaveClass(
-      "lg:grid-cols-[minmax(0,1.35fr)_minmax(300px,0.65fr)]",
-    );
-    expect(selectedWorkList).toHaveClass("lg:grid-cols-3");
-    expect(skillsPanel).toHaveClass(
-      "bg-white",
-      "text-brand-ink",
-    );
-    expect(skillsPanel).not.toHaveClass("lg:sticky");
+    expect(intro).toHaveClass("lg:grid-cols-[1.05fr_0.95fr]");
+    expect(heading).toHaveClass("text-brand-ink");
+    expect(screen.getByText(profile.location)).toBeInTheDocument();
   });
 
   test("renders icons beside homepage core skills", () => {
@@ -472,8 +533,8 @@ describe("portfolio pages", () => {
     expect(
       screen.getByRole("heading", { name: "Projects" }),
     ).toBeInTheDocument();
-    expect(screen.queryByText("Project index")).not.toBeInTheDocument();
-    expect(screen.getByText("Featured build")).toBeInTheDocument();
+    expect(screen.getByText("Project Showcase")).toBeInTheDocument();
+    expect(screen.getAllByText("Outcome").length).toBeGreaterThan(0);
     expect(screen.getByText("6 Live Projects")).toBeInTheDocument();
     expect(screen.getAllByRole("link", { name: "Visit site" })).toHaveLength(6);
     for (const project of projects) {
@@ -491,8 +552,7 @@ describe("portfolio pages", () => {
     expect(
       screen.getByRole("heading", { name: "Experience" }),
     ).toBeInTheDocument();
-    expect(screen.queryByText("Career timeline")).not.toBeInTheDocument();
-    expect(screen.queryAllByText(/Experience \d{2}/)).toHaveLength(0);
+    expect(screen.getByText("Resume Experience")).toBeInTheDocument();
     for (const experience of experiences) {
       expect(screen.getByText(experience.role)).toBeInTheDocument();
     }
@@ -505,7 +565,7 @@ describe("portfolio pages", () => {
     render(<SkillsPage />);
 
     expect(screen.getByRole("heading", { name: "Skills" })).toBeInTheDocument();
-    expect(screen.queryByText("Capability matrix")).not.toBeInTheDocument();
+    expect(screen.getByText("Skills Matrix")).toBeInTheDocument();
     for (const group of skillGroups) {
       expect(screen.getByText(group.title)).toBeInTheDocument();
     }
@@ -567,7 +627,7 @@ describe("portfolio pages", () => {
     render(<ContactPage />);
 
     expect(screen.getByRole("heading", { name: "Contact" })).toBeInTheDocument();
-    expect(screen.queryByText("Availability signal")).not.toBeInTheDocument();
+    expect(screen.getByText("Project Inquiry")).toBeInTheDocument();
     expect(screen.getByRole("link", { name: profile.email })).toHaveAttribute(
       "href",
       `mailto:${profile.email}`,

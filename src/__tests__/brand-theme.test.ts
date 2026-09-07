@@ -14,194 +14,116 @@ const siteHeader = readSource("src", "components", "site-header.tsx");
 const siteFooter = readSource("src", "components", "site-footer.tsx");
 const statCard = readSource("src", "components", "stat-card.tsx");
 const pageHeader = readSource("src", "components", "page-header.tsx");
-const creativeIconCloud = readSource(
-  "src",
-  "components",
-  "creative-icon-cloud.tsx",
-);
-const skillIcon = readSource("src", "data", "skills", "skill-icons.tsx");
-const skillGroupsSource = readSource(
-  "src",
-  "data",
-  "skills",
-  "skill-groups.ts",
-);
-const skillsIndex = readSource("src", "data", "skills", "index.ts");
 const homePage = readSource("src", "app", "page.tsx");
-const projectsPage = readSource("src", "app", "projects", "page.tsx");
-const skillsPage = readSource("src", "app", "skills", "page.tsx");
 const homeModuleCss = readSource("src", "app", "home.module.css");
-const homeHeroImagePath = join(
-  process.cwd(),
-  "public",
-  "images",
-  "homepage-hero-bg.png",
-);
+const projectsPage = readSource("src", "app", "projects", "page.tsx");
+const experiencePage = readSource("src", "app", "experience", "page.tsx");
+const skillsPage = readSource("src", "app", "skills", "page.tsx");
+const contactPage = readSource("src", "app", "contact", "page.tsx");
 const rootLayout = readSource("src", "app", "layout.tsx");
-const cursorGlow = readSource("src", "components", "cursor-glow.tsx");
+const scrollReveal = readSource("src", "components", "scroll-reveal.tsx");
 const animatedButtonLink = readSource(
   "src",
   "components",
   "animated-button-link.tsx",
 );
-const nonButtonPages = [
-  "projects",
-  "experience",
-  "skills",
-  "contact",
-].map((route) => readSource("src", "app", route, "page.tsx"));
 
-describe("brand theme", () => {
-  test("defines the approved premium dark portfolio palette", () => {
-    expect(globalsCss).toContain("#071A2F");
-    expect(globalsCss).toContain("#0B2545");
-    expect(globalsCss).toContain("#7FFFD4");
-    expect(globalsCss).toContain("#B8FFE8");
-    expect(globalsCss).toContain("#F5FFFC");
-    expect(globalsCss).toContain("#9AAFC2");
-    expect(globalsCss).not.toContain("#321E48");
-    expect(globalsCss).not.toContain("#43637E");
-    expect(globalsCss).not.toContain("#65DCD5");
-    expect(globalsCss).not.toContain("#D9FFF4");
+describe("ATS and client portfolio theme", () => {
+  test("defines a readable light-first professional palette", () => {
+    expect(globalsCss).toContain("--brand-ink: #111827");
+    expect(globalsCss).toContain("--brand-card: #FFFFFF");
+    expect(globalsCss).toContain("--brand-button: #2563EB");
+    expect(globalsCss).toContain("--brand-soft: #E0F2FE");
+    expect(globalsCss).toContain("--brand-muted: #4B5563");
+    expect(globalsCss).toContain("--background: #F8FAFC");
+    expect(globalsCss).toContain("--foreground: #111827");
+    expect(globalsCss).not.toContain('url("/images/homepage-hero-bg.png")');
   });
 
-  test("uses refined aquamarine button and glow styling", () => {
-    expect(globalsCss).toContain("--brand-button: #7FFFD4");
-    expect(globalsCss).toContain("--brand-soft: #B8FFE8");
-    expect(globalsCss).toContain("--brand-card: #0B2545");
-    expect(globalsCss).toContain("--brand-muted: #9AAFC2");
-    expect(rootLayout).not.toContain("CursorGlow");
-    expect(cursorGlow).toBe("");
-    expect(animatedButtonLink).toContain("brand-button");
-    expect(animatedButtonLink).toContain("shadow-[0_0_26px_rgba(127,255,212,0.20)]");
-    expect(animatedButtonLink).toContain("transition-[background-color,border-color,color,transform,box-shadow]");
-    expect(animatedButtonLink).toContain("hover:-translate-y-1");
-    expect(animatedButtonLink).toContain("hover:border-brand-button");
-    expect(animatedButtonLink).not.toContain("after:");
-    expect(homePage).toContain("brand-button");
-    expect(nonButtonPages.join("\n")).toContain("brand-button");
-  });
-
-  test("uses dark header chrome and a black professional footer", () => {
-    expect(siteHeader).toContain("bg-brand-ink");
-    expect(siteFooter).toContain("bg-black");
+  test("uses restrained chrome and mobile layout safeguards", () => {
+    expect(siteHeader).toContain("bg-white/95");
+    expect(siteHeader).toContain("border-slate-200");
+    expect(siteFooter).toContain("bg-brand-ink");
     expect(siteFooter).toContain("text-white");
-    expect(siteHeader).toContain("border-brand-button");
-    expect(siteFooter).toContain("border-brand-button");
-    expect(siteHeader).not.toContain("bg-white");
-    expect(siteFooter).not.toContain("bg-white");
-    expect(siteFooter).not.toContain("bg-brand-ink");
-  });
-
-  test("uses midnight navy for the page background", () => {
-    expect(globalsCss).toContain("--background: #071A2F");
-    expect(globalsCss).toContain("linear-gradient");
-  });
-
-  test("applies the portfolio artwork and gradient as the full-site background", () => {
-    expect(globalsCss).toContain("html {");
-    expect(globalsCss).toContain("min-height: 100%;");
-    expect(globalsCss).toContain('url("/images/homepage-hero-bg.png")');
-    expect(globalsCss).toContain("background-attachment: fixed;");
-    expect(globalsCss).toContain("background-repeat: no-repeat, no-repeat;");
-    expect(globalsCss).not.toContain("rgba(127, 255, 212, 0.045) 1px");
-    expect(homePage).not.toContain("absolute inset-0 -z-10 bg-[linear-gradient");
-  });
-
-  test("keeps homepage overlays separate from the site-wide background image", () => {
-    expect(homePage).toContain('import styles from "./home.module.css";');
-    expect(homePage).toContain("styles.hero");
-    expect(homeModuleCss).not.toContain("/images/homepage-hero-bg.png");
-    expect(homeModuleCss).not.toContain("mix-blend-mode: screen;");
-    expect(homeModuleCss).not.toContain(".hero::after");
-    expect(homeModuleCss).not.toContain("rgba(7, 26, 47, 0.98)");
-    expect(existsSync(homeHeroImagePath)).toBe(true);
-  });
-
-  test("lets homepage hero artwork span the desktop viewport behind centered content", () => {
-    expect(homePage).toContain(
-      '<section className={`${styles.hero} relative overflow-hidden`}>',
-    );
-    expect(homePage).toContain(
-      "min-h-[calc(100svh-88px)]",
-    );
-    expect(homePage).not.toContain("`${styles.hero} relative mx-auto grid");
-  });
-
-  test("adds mobile-friendly layout safeguards and touch targets", () => {
+    expect(rootLayout).toContain('main className="flex-1 pt-[72px]"');
     expect(globalsCss).toContain("overflow-x: hidden;");
-    expect(globalsCss).toContain("@media (max-width: 640px)");
-    expect(globalsCss).toContain("background-attachment: scroll;");
-    expect(siteHeader).toContain("fixed inset-x-0 top-0 z-[100]");
-    expect(rootLayout).toContain('main className="flex-1 pt-[76px]"');
-    expect(siteHeader).toContain('"use client";');
-    expect(siteHeader).toContain('aria-expanded={isMenuOpen}');
-    expect(siteHeader).toContain('aria-controls="mobile-navigation"');
-    expect(siteHeader).toContain("sm:hidden");
-    expect(siteHeader).toContain('aria-label="Mobile navigation"');
-    expect(siteHeader).toContain("Close mobile menu backdrop");
-    expect(siteHeader).toContain("max-sm:translate-x-full");
-    expect(siteHeader).toContain("max-sm:translate-x-0");
-    expect(siteHeader).toContain("transition-[transform,opacity]");
-    expect(siteHeader).toContain("bg-brand-card px-6");
-    expect(siteHeader).not.toContain("bg-brand-card/95");
-    expect(siteHeader).toContain("min-h-11");
-    expect(animatedButtonLink).toContain("w-full sm:w-auto");
-    expect(homePage).toContain("text-4xl");
-    expect(homePage).toContain("sm:text-6xl");
-    expect(homePage).toContain("lg:text-7xl");
-    expect(projectsPage).toContain("grid-cols-1");
-    expect(pageHeader).toContain("text-3xl");
-    expect(pageHeader).toContain("sm:text-5xl");
+    expect(globalsCss).toContain("scroll-behavior: smooth;");
   });
 
-  test("defines refined whole-site motion with reduced-motion support", () => {
-    expect(globalsCss).toContain("@keyframes soft-rise");
-    expect(globalsCss).toContain("@keyframes depth-float");
-    expect(globalsCss).toContain(".motion-surface");
-    expect(globalsCss).toContain(".motion-card");
-    expect(globalsCss).toContain(".motion-icon");
+  test("does not depend on remote font downloads during production builds", () => {
+    expect(rootLayout).not.toContain("next/font/google");
+    expect(rootLayout).not.toContain("Geist");
+    expect(globalsCss).toContain("--font-geist-sans:");
+    expect(globalsCss).toContain("--font-geist-mono:");
+  });
+
+  test("keeps cards, buttons, and page headers compact and readable", () => {
+    expect(animatedButtonLink).toContain("rounded-lg");
+    expect(animatedButtonLink).toContain("min-h-11");
+    expect(animatedButtonLink).not.toContain("hover:-translate-y-1");
+    expect(statCard).toContain("rounded-lg");
+    expect(pageHeader).toContain("text-brand-ink");
+    expect(pageHeader).toContain("max-w-4xl");
+  });
+
+  test("promotes project proof and client-friendly content across pages", () => {
+    expect(homePage).not.toContain("ATS-friendly portfolio");
+    expect(homePage).not.toContain("Resume Summary");
+    expect(homePage).toContain("Animated identity motion graphic");
+    expect(homePage).toContain("/images/971.jpg");
+    expect(homePage).toContain("Purple isometric programming laptop illustration");
+    expect(homePage).not.toContain("Isometric developer desk animation");
+    expect(homePage).not.toContain("Animated code laptop");
+    expect(homePage).not.toContain("Animated coffee cup");
+    expect(homePage).not.toContain("Central web and media motion logo");
+    expect(homePage).not.toContain("Animated web developer logo");
+    expect(homePage).not.toContain("Animated multimedia designer logo");
+    expect(homePage).not.toContain("Creative Identity");
+    expect(homePage).toContain("Project Proof");
+    expect(homePage).toContain("Core Competencies");
+    expect(projectsPage).toContain("Project Showcase");
+    expect(projectsPage).toContain("Outcome");
+    expect(experiencePage).toContain("Resume Experience");
+    expect(skillsPage).toContain("Skills Matrix");
+    expect(contactPage).toContain("Project Inquiry");
+  });
+
+  test("supports a navbar-controlled dark theme", () => {
+    expect(globalsCss).toContain(':root[data-theme="dark"]');
+    expect(siteHeader).toContain("portfolio-theme");
+    expect(siteHeader).toContain("Switch to dark mode");
+    expect(siteHeader).toContain("Switch to light mode");
+    expect(siteHeader).toContain("aria-pressed={isDarkMode}");
+  });
+
+  test("adds accessible scroll reveal animation across routed pages", () => {
+    expect(rootLayout).toContain("ScrollReveal");
+    expect(scrollReveal).toContain('"use client";');
+    expect(scrollReveal).toContain("IntersectionObserver");
+    expect(scrollReveal).toContain("reveal-on-scroll");
+    expect(globalsCss).toContain(".reveal-on-scroll");
+    expect(globalsCss).toContain(".reveal-on-scroll.is-visible");
     expect(globalsCss).toContain("@media (prefers-reduced-motion: reduce)");
-    expect(pageHeader).toContain("motion-surface");
-    expect(statCard).toContain("motion-card");
-    expect(projectsPage).toContain("motion-card");
   });
 
-  test("adds reusable 3d creative icons for web and multimedia work", () => {
-    expect(creativeIconCloud).toContain("CreativeIconCloud");
-    expect(creativeIconCloud).toContain("Web development icon");
-    expect(creativeIconCloud).toContain("Multimedia design icon");
-    expect(creativeIconCloud).toContain("UI design icon");
-    expect(creativeIconCloud).toContain("Video production icon");
-    expect(creativeIconCloud).toContain("motion-icon");
-    expect(homePage).toContain("CreativeIconCloud");
-  });
-
-  test("keeps creative icon tiles square on mobile and rectangular on desktop", () => {
-    expect(creativeIconCloud).toContain("aspect-square");
-    expect(creativeIconCloud).toContain("md:aspect-[5/3]");
-  });
-
-  test("uses branded skill icons on the skills page", () => {
-    expect(skillsPage).toContain("SkillIcon");
-    expect(skillsPage).toContain("../../data/skills");
-    expect(skillsPage).toContain("inline-flex items-center gap-2");
-    expect(skillsIndex).toContain('export { SkillIcon } from "./skill-icons";');
-    expect(skillsIndex).toContain('export { skillGroups } from "./skill-groups";');
-    expect(skillGroupsSource).toContain("Web Development");
-    expect(skillGroupsSource).toContain("Platforms and Tools");
-    expect(skillGroupsSource).toContain("Trello");
-    expect(skillGroupsSource).toContain("Slack");
-    expect(skillGroupsSource).toContain("Notion");
-    expect(skillIcon).toContain("SiHtml5");
-    expect(skillIcon).toContain("SiReact");
-    expect(skillIcon).toContain("SiNodedotjs");
-    expect(skillIcon).toContain("SiWordpress");
-    expect(skillIcon).toContain("SiVercel");
-    expect(skillIcon).toContain("SiGodaddy");
-    expect(skillIcon).toContain("SiTrello");
-    expect(skillIcon).toContain("SiNotion");
-    expect(skillIcon).toContain("FaComments");
-    expect(skillIcon).toContain("FaServer");
+  test("uses the uploaded programming illustration in the homepage hero", () => {
+    expect(homePage).toContain("Image");
+    expect(homeModuleCss).toContain(".heroImageWrap");
+    expect(homeModuleCss).toContain(".heroImage");
+    expect(homeModuleCss).toContain(".heroImageWrap::before");
+    expect(homeModuleCss).toContain(".heroImageWrap::after");
+    expect(homeModuleCss).toContain("@keyframes image-float");
+    expect(homeModuleCss).toContain("@keyframes image-glow");
+    expect(homeModuleCss).toContain("@keyframes image-shine");
+    expect(homeModuleCss).not.toContain(".isometricStage");
+    expect(homeModuleCss).not.toContain(".laptopScreen");
+    expect(homeModuleCss).not.toContain(".laptopBase");
+    expect(homeModuleCss).not.toContain(".coffeeCup");
+    expect(homeModuleCss).not.toContain(".codeLine");
+    expect(homeModuleCss).not.toContain(".centralLogo");
+    expect(homeModuleCss).not.toContain(".logoChip");
+    expect(homePage).not.toContain("h-28 w-28");
+    expect(homePage).not.toContain("h-32 w-32");
+    expect(homePage).not.toContain("Array.from");
   });
 });

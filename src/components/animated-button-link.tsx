@@ -10,13 +10,13 @@ type AnimatedButtonLinkProps = {
 };
 
 const baseClasses =
-  "inline-flex min-h-12 w-full sm:w-auto items-center justify-center rounded-lg border px-5 py-3 text-sm font-semibold outline-none transition-[background-color,border-color,color,transform,box-shadow] duration-200 hover:-translate-y-1";
+  "inline-flex min-h-11 w-full items-center justify-center rounded-lg border px-4 py-2.5 text-sm font-semibold outline-none transition-[background-color,border-color,color,box-shadow] duration-200 sm:w-auto";
 
 const variantClasses = {
   primary:
-    "border-brand-button bg-brand-button text-brand-ink shadow-[0_0_26px_rgba(127,255,212,0.20)] hover:border-brand-button hover:bg-brand-soft hover:shadow-[0_0_34px_rgba(127,255,212,0.28)] focus-visible:ring-2 focus-visible:ring-brand-button focus-visible:ring-offset-4 focus-visible:ring-offset-brand-ink",
+    "border-brand-button bg-brand-button text-white shadow-sm hover:bg-blue-700 focus-visible:ring-2 focus-visible:ring-brand-button focus-visible:ring-offset-4 focus-visible:ring-offset-white",
   secondary:
-    "border-brand-button/30 bg-brand-card/70 text-white hover:border-brand-button hover:bg-brand-card focus-visible:ring-2 focus-visible:ring-brand-button focus-visible:ring-offset-4 focus-visible:ring-offset-brand-ink",
+    "border-slate-300 bg-white text-brand-ink hover:border-brand-button hover:bg-brand-soft focus-visible:ring-2 focus-visible:ring-brand-button focus-visible:ring-offset-4 focus-visible:ring-offset-white",
 };
 
 export function AnimatedButtonLink({

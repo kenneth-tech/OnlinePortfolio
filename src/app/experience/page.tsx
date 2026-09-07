@@ -6,64 +6,61 @@ export default function ExperiencePage() {
     <section className="mx-auto w-full max-w-6xl px-4 py-10 sm:px-8 sm:py-14">
       <PageHeader
         title="Experience"
-        description="A progression through web development, multimedia design, digital marketing, and technical operations work across remote and on-site teams."
+        description="Resume-style career history with responsibilities, business context, and practical delivery experience across development, design, media, and operations."
       />
 
-      <div className="mt-8 space-y-5 sm:mt-10 sm:space-y-6">
-        {experiences.map((experience) => (
-          <article
-            key={`${experience.role}-${experience.organization}`}
-            className="motion-card grid gap-5 rounded-xl border border-brand-button/30 bg-white p-5 text-brand-ink shadow-[0_18px_60px_rgba(0,0,0,0.18)] sm:p-6 md:grid-cols-[220px_1fr]"
-          >
-            <div>
-              <p className="text-sm font-bold text-brand-card">
-                {experience.period}
-              </p>
-              <p className="mt-2 text-sm text-brand-card/75">
-                {experience.organization}
-              </p>
-              <p className="mt-1 text-sm text-brand-card/70">
-                {experience.location}
-              </p>
-            </div>
-            <div>
-              <h2 className="text-xl font-semibold leading-tight text-brand-ink sm:text-2xl">
-                {experience.role}
-              </h2>
-              <ul className="mt-5 grid gap-3 text-sm text-brand-card/75 sm:text-base">
-                {experience.highlights.map((highlight) => (
-                  <li
-                    key={highlight}
-                    className="leading-7"
-                  >
-                    {highlight}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </article>
-        ))}
-      </div>
+      <section className="motion-card mt-8 rounded-lg border border-slate-200 bg-white p-5 text-brand-ink shadow-sm sm:p-6">
+        <p className="text-sm font-semibold text-brand-button">
+          Resume Experience
+        </p>
+        <div className="mt-6 space-y-6">
+          {experiences.map((experience) => (
+            <article
+              key={`${experience.role}-${experience.organization}`}
+              className="grid gap-4 border-b border-slate-200 bg-white pb-6 text-brand-ink last:border-b-0 last:pb-0 md:grid-cols-[240px_1fr]"
+            >
+              <div>
+                <p className="text-sm font-bold text-brand-ink">
+                  {experience.period}
+                </p>
+                <p className="mt-2 text-sm text-brand-muted">
+                  {experience.organization}
+                </p>
+                <p className="mt-1 text-sm text-brand-muted">
+                  {experience.location}
+                </p>
+              </div>
+              <div>
+                <h2 className="text-xl font-semibold leading-tight text-brand-ink">
+                  {experience.role}
+                </h2>
+                <ul className="mt-4 grid gap-2 text-sm text-brand-muted sm:text-base">
+                  {experience.highlights.map((highlight) => (
+                    <li key={highlight} className="leading-7">
+                      {highlight}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
 
-      <div className="mt-10 border-t border-brand-button/10 pt-8 sm:mt-12">
-        <h2 className="text-2xl font-semibold text-white">Education</h2>
+      <section className="mt-8 rounded-lg border border-slate-200 bg-white p-5 text-brand-ink shadow-sm sm:p-6">
+        <h2 className="text-2xl font-semibold text-brand-ink">Education</h2>
         <div className="mt-5 grid gap-5">
           {education.map((item) => (
-            <article
-              key={`${item.degree}-${item.school}`}
-              className="motion-card rounded-xl border border-brand-button/30 bg-white p-5 text-brand-ink sm:p-6"
-            >
-              <h3 className="text-xl font-semibold">
-                {item.degree}
-              </h3>
-              <p className="mt-2 text-brand-card/75">{item.school}</p>
-              <p className="mt-2 text-sm font-semibold text-brand-card">
+            <article key={`${item.degree}-${item.school}`}>
+              <h3 className="text-xl font-semibold">{item.degree}</h3>
+              <p className="mt-2 text-brand-muted">{item.school}</p>
+              <p className="mt-2 text-sm font-semibold text-brand-ink">
                 {item.period}
               </p>
             </article>
           ))}
         </div>
-      </div>
+      </section>
     </section>
   );
 }

@@ -30,30 +30,30 @@ export function SiteFooter() {
   const phoneHref = `tel:${profile.phone.replaceAll(" ", "")}`;
 
   return (
-    <footer className="border-t border-brand-button/20 bg-black text-white">
+    <footer className="border-t border-slate-800 bg-brand-ink text-white">
       <div className="mx-auto grid w-full max-w-6xl justify-items-center gap-8 px-4 py-10 text-center sm:justify-items-start sm:px-8 sm:py-12 sm:text-left lg:grid-cols-[1.2fr_0.7fr_0.8fr] lg:gap-10">
         <section className="max-w-xl">
-          <SiteLogo className="mx-auto sm:mx-0" />
-          <p className="mt-3 text-sm font-semibold text-brand-button">
+          <SiteLogo className="mx-auto sm:mx-0" variant="dark" />
+          <p className="mt-3 text-sm font-semibold text-blue-200">
             {profile.role}
           </p>
-          <p className="mt-1 text-sm text-brand-muted">{profile.location}</p>
-          <p className="mx-auto mt-5 max-w-lg text-sm leading-7 text-brand-muted sm:mx-0">
+          <p className="mt-1 text-sm text-slate-300">{profile.location}</p>
+          <p className="mx-auto mt-5 max-w-lg text-sm leading-7 text-slate-300 sm:mx-0">
             Building refined web interfaces, conversion-focused pages, and
             multimedia experiences for brands that need clear digital presence.
           </p>
         </section>
 
         <nav aria-label="Footer navigation" className="w-full">
-          <h2 className="text-xs font-semibold uppercase text-brand-button">
+          <h2 className="text-xs font-semibold uppercase text-blue-200">
             Explore
           </h2>
-          <ul className="mt-4 grid grid-cols-2 gap-3 text-sm text-brand-muted sm:grid-cols-1">
+          <ul className="mt-4 grid grid-cols-2 gap-3 text-sm text-slate-300 sm:grid-cols-1">
             {footerNavItems.map((item) => (
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="inline-flex justify-center outline-none transition hover:text-brand-button focus-visible:rounded focus-visible:ring-2 focus-visible:ring-brand-button focus-visible:ring-offset-4 focus-visible:ring-offset-black sm:justify-start"
+                  className="inline-flex justify-center outline-none transition hover:text-white focus-visible:rounded focus-visible:ring-2 focus-visible:ring-blue-200 focus-visible:ring-offset-4 focus-visible:ring-offset-brand-ink sm:justify-start"
                 >
                   {item.label}
                 </Link>
@@ -63,29 +63,29 @@ export function SiteFooter() {
         </nav>
 
         <section className="w-full">
-          <h2 className="text-xs font-semibold uppercase text-brand-button">
+          <h2 className="text-xs font-semibold uppercase text-blue-200">
             Contact
           </h2>
-          <div className="mt-4 grid gap-3 text-sm text-brand-muted">
+          <div className="mt-4 grid gap-3 text-sm text-slate-300">
             <a
               href={`mailto:${profile.email}`}
-              className="inline-flex justify-center outline-none transition hover:text-brand-button focus-visible:rounded focus-visible:ring-2 focus-visible:ring-brand-button focus-visible:ring-offset-4 focus-visible:ring-offset-black sm:justify-start"
+              className="inline-flex justify-center outline-none transition hover:text-white focus-visible:rounded focus-visible:ring-2 focus-visible:ring-blue-200 focus-visible:ring-offset-4 focus-visible:ring-offset-brand-ink sm:justify-start"
             >
               {profile.email}
             </a>
             <a
               href={phoneHref}
-              className="inline-flex justify-center outline-none transition hover:text-brand-button focus-visible:rounded focus-visible:ring-2 focus-visible:ring-brand-button focus-visible:ring-offset-4 focus-visible:ring-offset-black sm:justify-start"
+              className="inline-flex justify-center outline-none transition hover:text-white focus-visible:rounded focus-visible:ring-2 focus-visible:ring-blue-200 focus-visible:ring-offset-4 focus-visible:ring-offset-brand-ink sm:justify-start"
             >
               {profile.phone}
             </a>
           </div>
 
-          <ul className="mt-6 hidden gap-2 text-sm text-brand-muted sm:grid sm:justify-start">
+          <ul className="mt-6 hidden gap-2 text-sm text-slate-300 sm:grid sm:justify-start">
             {serviceItems.map((item) => (
               <li
                 key={item}
-                className="border-l border-brand-button/35 pl-3 leading-6"
+                className="border-l border-blue-200/35 pl-3 leading-6"
               >
                 {item}
               </li>
@@ -94,8 +94,8 @@ export function SiteFooter() {
         </section>
       </div>
 
-      <div className="border-t border-brand-button/15">
-        <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-4 px-4 py-5 text-center text-sm text-brand-muted sm:flex-row sm:items-center sm:justify-between sm:px-8 sm:text-left">
+      <div className="border-t border-slate-800">
+        <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-4 px-4 py-5 text-center text-sm text-slate-300 sm:flex-row sm:items-center sm:justify-between sm:px-8 sm:text-left">
           <p>(c) {year} Mark Kenneth R. Rillamas. All rights reserved.</p>
           <div className="flex flex-wrap justify-center gap-3 sm:justify-start">
             {profile.links.map((link) => (
@@ -105,7 +105,7 @@ export function SiteFooter() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label={link.label}
-                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-brand-button/25 text-white outline-none transition-[background-color,border-color,color,transform,box-shadow] duration-200 hover:-translate-y-0.5 hover:border-brand-button hover:bg-brand-button/10 hover:text-brand-button hover:shadow-[0_0_24px_rgba(127,255,212,0.16)] focus-visible:ring-2 focus-visible:ring-brand-button focus-visible:ring-offset-4 focus-visible:ring-offset-black"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-slate-700 text-white outline-none transition-[background-color,border-color,color] duration-200 hover:border-blue-200 hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-blue-200 focus-visible:ring-offset-4 focus-visible:ring-offset-brand-ink"
               >
                 <SocialIcon label={link.label} />
               </a>

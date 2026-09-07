@@ -1,13 +1,25 @@
 @import "tailwindcss";
 
 :root {
-  --brand-ink: #071A2F;
-  --brand-card: #0B2545;
-  --brand-button: #7FFFD4;
-  --brand-soft: #B8FFE8;
-  --brand-muted: #9AAFC2;
-  --background: #071A2F;
-  --foreground: #F5FFFC;
+  --brand-ink: #111827;
+  --brand-card: #FFFFFF;
+  --brand-button: #2563EB;
+  --brand-soft: #E0F2FE;
+  --brand-muted: #4B5563;
+  --background: #F8FAFC;
+  --foreground: #111827;
+  --font-geist-sans: Arial, Helvetica, sans-serif;
+  --font-geist-mono: "Courier New", Courier, monospace;
+}
+
+:root[data-theme="dark"] {
+  --brand-ink: #F8FAFC;
+  --brand-card: #1E293B;
+  --brand-button: #60A5FA;
+  --brand-soft: #172554;
+  --brand-muted: #CBD5E1;
+  --background: #0F172A;
+  --foreground: #F8FAFC;
 }
 
 @theme inline {
@@ -24,27 +36,53 @@
 
 html {
   min-height: 100%;
-  background: #071A2F;
+  background: var(--background);
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 body {
   min-height: 100%;
   overflow-x: hidden;
   background:
-    linear-gradient(90deg, rgba(7, 26, 47, 0.96) 0%, rgba(7, 26, 47, 0.7) 48%, rgba(7, 26, 47, 0.82) 100%),
-    url("/images/homepage-hero-bg.png");
-  background-attachment: fixed;
-  background-position: center, center right;
-  background-repeat: no-repeat, no-repeat;
-  background-size: cover, cover;
+    linear-gradient(180deg, rgba(224, 242, 254, 0.72) 0%, rgba(248, 250, 252, 0) 420px),
+    var(--background);
   color: var(--foreground);
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
 }
 
+:root[data-theme="dark"] body {
+  background:
+    linear-gradient(180deg, rgba(30, 41, 59, 0.88) 0%, rgba(15, 23, 42, 0) 420px),
+    var(--background);
+}
+
+:root[data-theme="dark"] .bg-white,
+:root[data-theme="dark"] .bg-white\/95 {
+  background-color: rgb(30 41 59) !important;
+}
+
+:root[data-theme="dark"] .bg-slate-50,
+:root[data-theme="dark"] .bg-slate-100 {
+  background-color: rgb(15 23 42) !important;
+}
+
+:root[data-theme="dark"] .border-slate-200,
+:root[data-theme="dark"] .border-slate-300 {
+  border-color: rgb(51 65 85) !important;
+}
+
+:root[data-theme="dark"] .text-slate-300 {
+  color: rgb(203 213 225) !important;
+}
+
+:root[data-theme="dark"] .shadow-sm {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.28) !important;
+}
+
 ::selection {
-  background: #7FFFD4;
-  color: #071A2F;
+  background: #2563EB;
+  color: #FFFFFF;
 }
 
 a {
@@ -82,11 +120,12 @@ video {
 }
 
 .motion-surface {
-  animation: soft-rise 700ms ease both;
+  transition:
+    opacity 560ms ease,
+    transform 560ms ease;
 }
 
 .motion-card {
-  animation: soft-rise 720ms ease both;
   transition:
     border-color 200ms ease,
     box-shadow 200ms ease,
@@ -94,7 +133,23 @@ video {
 }
 
 .motion-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-2px);
+}
+
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 560ms ease,
+    transform 560ms ease,
+    border-color 200ms ease,
+    box-shadow 200ms ease;
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .motion-icon {
@@ -122,15 +177,17 @@ video {
   }
 
   .motion-card:hover,
+  .reveal-on-scroll,
+  .reveal-on-scroll.is-visible,
   .motion-icon,
   .motion-icon:hover {
+    opacity: 1;
     transform: none;
   }
 }
 
 @media (max-width: 640px) {
   body {
-    background-attachment: scroll;
-    background-position: center, center top;
+    background-size: auto;
   }
 }

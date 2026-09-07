@@ -1,3 +1,130 @@
 .hero {
   isolation: isolate;
 }
+
+.motionStage {
+  overflow: hidden;
+}
+
+.heroImageWrap {
+  aspect-ratio: 4 / 3;
+  background: #0b0448;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 20px 60px rgba(15, 23, 42, 0.16);
+  animation: image-glow 5.8s ease-in-out infinite;
+}
+
+.heroImageWrap::before {
+  position: absolute;
+  inset: -22%;
+  content: "";
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 32% 22%, rgba(168, 85, 247, 0.28), transparent 28%),
+    radial-gradient(circle at 72% 72%, rgba(236, 72, 153, 0.18), transparent 24%);
+  opacity: 0.75;
+  animation: image-aura 7s ease-in-out infinite;
+  z-index: 1;
+}
+
+.heroImageWrap::after {
+  position: absolute;
+  inset: -45%;
+  content: "";
+  pointer-events: none;
+  background:
+    linear-gradient(
+      115deg,
+      transparent 40%,
+      rgba(255, 255, 255, 0.18) 49%,
+      rgba(255, 255, 255, 0.06) 54%,
+      transparent 62%
+    ),
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.08),
+      transparent 38%,
+      rgba(15, 23, 42, 0.12)
+    );
+  animation: image-shine 6.8s ease-in-out infinite;
+  z-index: 3;
+}
+
+.heroImageWrap,
+.heroImage {
+  will-change: transform;
+}
+
+.heroImage {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: image-float 8s ease-in-out infinite;
+}
+
+@keyframes image-float {
+  0%,
+  100% {
+    transform: scale(1.03) translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: scale(1.075) translate3d(-6px, -4px, 0);
+  }
+}
+
+@keyframes image-glow {
+  0%,
+  100% {
+    box-shadow:
+      inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+      0 20px 60px rgba(15, 23, 42, 0.16),
+      0 0 0 rgba(124, 58, 237, 0);
+  }
+
+  50% {
+    box-shadow:
+      inset 0 0 0 1px rgba(255, 255, 255, 0.14),
+      0 24px 74px rgba(15, 23, 42, 0.2),
+      0 0 38px rgba(124, 58, 237, 0.28);
+  }
+}
+
+@keyframes image-aura {
+  0%,
+  100% {
+    opacity: 0.58;
+    transform: translate3d(-2%, 1%, 0) scale(1);
+  }
+
+  50% {
+    opacity: 0.9;
+    transform: translate3d(2%, -2%, 0) scale(1.05);
+  }
+}
+
+@keyframes image-shine {
+  0%,
+  38% {
+    transform: translateX(-42%) rotate(0deg);
+  }
+
+  70%,
+  100% {
+    transform: translateX(42%) rotate(0deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heroImageWrap,
+  .heroImageWrap::before,
+  .heroImageWrap::after,
+  .heroImage {
+    animation-duration: 1ms;
+    animation-iteration-count: 1;
+    transform: none;
+  }
+}

@@ -1,25 +1,36 @@
+import { FaGithub, FaLinkedinIn } from "react-icons/fa6";
+import type { IconType } from "react-icons";
+
 import { PageHeader } from "../../components/page-header";
-import { profile } from "../../data/portfolio";
+import { profile, type ProfileLink } from "../../data/portfolio";
+
+const socialIcons: Partial<Record<ProfileLink["label"], IconType>> = {
+  GitHub: FaGithub,
+  LinkedIn: FaLinkedinIn,
+};
 
 export default function ContactPage() {
+  const phoneHref = `tel:${profile.phone.replaceAll(" ", "")}`;
+
   return (
     <section className="mx-auto w-full max-w-6xl px-4 py-10 sm:px-8 sm:py-14">
       <PageHeader
         title="Contact"
-        description="A direct channel for web projects, collaboration, freelance inquiries, and opportunities connected to development or multimedia work."
+        description="Direct contact details for project inquiries, freelance work, collaboration, and remote web or multimedia opportunities."
       />
 
-      <div className="mt-8 grid gap-5 sm:mt-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-6">
-        <div className="motion-card rounded-2xl border border-brand-button/30 bg-white p-5 text-brand-ink shadow-[0_24px_90px_rgba(0,0,0,0.26)] sm:p-6">
-          <p className="text-sm font-semibold text-brand-card">
-            Current status
+      <div className="mt-8 grid gap-5 sm:mt-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-6">
+        <div className="motion-card rounded-lg border border-slate-200 bg-white p-5 text-brand-ink shadow-sm sm:p-6">
+          <p className="text-sm font-semibold text-brand-button">
+            Project Inquiry
           </p>
           <h2 className="mt-4 text-2xl font-semibold leading-tight text-brand-ink sm:text-3xl">
-            Open to remote web and multimedia work.
+            Open to web development, UI support, and multimedia projects.
           </h2>
-          <p className="mt-5 leading-7 text-brand-card/75">
+          <p className="mt-5 leading-7 text-brand-muted">
             Best fit: responsive websites, landing pages, funnels, UI/UX
-            support, multimedia assets, and automation-assisted builds.
+            support, multimedia assets, automation-assisted builds, and ongoing
+            site improvements.
           </p>
         </div>
 
@@ -32,7 +43,7 @@ export default function ContactPage() {
             },
             {
               label: "Phone",
-              href: `tel:${profile.phone.replaceAll(" ", "")}`,
+              href: phoneHref,
               value: profile.phone,
             },
           ].map((item) => (
@@ -40,9 +51,9 @@ export default function ContactPage() {
               key={item.href}
               href={item.href}
               aria-label={item.value}
-              className="motion-card group rounded-xl border border-brand-button/30 bg-white p-5 font-semibold text-brand-ink outline-none transition hover:border-brand-button/60 focus-visible:ring-2 focus-visible:ring-brand-button focus-visible:ring-offset-4 focus-visible:ring-offset-brand-ink"
+              className="motion-card group rounded-lg border border-slate-200 bg-white p-5 font-semibold text-brand-ink outline-none shadow-sm transition hover:border-brand-button focus-visible:ring-2 focus-visible:ring-brand-button focus-visible:ring-offset-4 focus-visible:ring-offset-white"
             >
-              <span className="block text-sm font-medium text-brand-card">
+              <span className="block text-sm font-medium text-brand-muted">
                 {item.label}
               </span>
               <span className="mt-3 block break-words text-base sm:text-lg">
@@ -50,6 +61,31 @@ export default function ContactPage() {
               </span>
             </a>
           ))}
+
+          <div className="motion-card rounded-lg border border-slate-200 bg-white p-5 text-brand-ink shadow-sm">
+            <p className="text-sm font-semibold text-brand-button">
+              Professional Links
+            </p>
+            <div className="mt-4 flex flex-wrap gap-3">
+              {profile.links.map((link) => {
+                const Icon = socialIcons[link.label];
+
+                return (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={link.label}
+                    className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-semibold text-brand-ink outline-none transition hover:border-brand-button hover:bg-brand-soft focus-visible:ring-2 focus-visible:ring-brand-button focus-visible:ring-offset-4 focus-visible:ring-offset-white"
+                  >
+                    {Icon ? <Icon aria-hidden="true" className="h-4 w-4" /> : null}
+                    {link.label}
+                  </a>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </div>
     </section>
