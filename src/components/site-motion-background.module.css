@@ -1,0 +1,89 @@
+.background {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.5;
+  overflow: hidden;
+  pointer-events: none;
+  color: #5676bb;
+  background:
+    radial-gradient(ellipse at 0% 15%, #b8cce6 0%, transparent 48%),
+    radial-gradient(ellipse at 100% 80%, #ccc5e4 0%, transparent 48%),
+    var(--background);
+}
+
+.grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(#6687bc12 1px, transparent 1px),
+    linear-gradient(90deg, #6687bc12 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse, transparent 20%, black 100%);
+}
+
+.scene {
+  width: 100%;
+  height: 100%;
+  opacity: 0.48;
+}
+
+.panel { fill: var(--background); stroke: currentColor; stroke-width: 1.5; }
+.outline { stroke: currentColor; stroke-width: 1.5; }
+.softFill { fill: currentColor; opacity: 0.18; }
+.caption { fill: currentColor; font: 11px var(--font-geist-mono); letter-spacing: 1.5px; }
+
+.floatCode { animation: drift-code 15s ease-in-out infinite; }
+.floatBrowser { animation: drift-browser 18s ease-in-out infinite; }
+.floatSymbol { animation: drift-code 20s ease-in-out infinite reverse; }
+.codeLines path { stroke-dasharray: 330; animation: write-code 9s ease-in-out infinite; }
+.codeLines path:nth-child(2) { animation-delay: -7.5s; }
+.codeLines path:nth-child(3) { animation-delay: -6s; }
+.codeLines path:nth-child(4) { animation-delay: -4.5s; }
+.codeLines path:nth-child(5) { animation-delay: -3s; }
+.cursor { animation: cursor-pulse 2s ease-in-out infinite; }
+.layoutBlocks { animation: layout-rise 10s ease-in-out infinite; }
+.bezier { stroke-dasharray: 480; animation: draw-curve 12s ease-in-out infinite; }
+.playhead { animation: scrub-timeline 12s linear infinite; }
+.signal { stroke-dasharray: 12 20; animation: signal-flow 18s linear infinite; }
+.signalReverse { stroke-dasharray: 12 20; animation: signal-flow 22s linear infinite reverse; }
+.orbit { transform-origin: 810px 480px; animation: orbit-turn 120s linear infinite; }
+
+.veil {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 42%, rgba(214, 223, 235, 0.86), rgba(214, 223, 235, 0.16) 75%);
+}
+
+:global(:root[data-theme="dark"]) .background {
+  color: #7da6ed;
+  background:
+    radial-gradient(ellipse at 0% 15%, #172b50 0%, transparent 48%),
+    radial-gradient(ellipse at 100% 80%, #29204c 0%, transparent 48%),
+    var(--background);
+}
+
+:global(:root[data-theme="dark"]) .scene { opacity: 0.4; }
+:global(:root[data-theme="dark"]) .veil {
+  background: radial-gradient(ellipse at 50% 42%, rgba(15, 23, 42, 0.88), rgba(15, 23, 42, 0.15) 75%);
+}
+
+.background[data-playing="false"] * { animation-play-state: paused; }
+
+@keyframes drift-code { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-24px); } }
+@keyframes drift-browser { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(-12px, 20px); } }
+@keyframes write-code { 0%, 100% { stroke-dashoffset: 330; } 35%, 80% { stroke-dashoffset: 0; } }
+@keyframes cursor-pulse { 0%, 100% { opacity: 0.2; } 50% { opacity: 1; } }
+@keyframes layout-rise { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
+@keyframes draw-curve { 0%, 100% { stroke-dashoffset: 480; } 40%, 80% { stroke-dashoffset: 0; } }
+@keyframes scrub-timeline { from { transform: translateX(0); } to { transform: translateX(390px); } }
+@keyframes signal-flow { to { stroke-dashoffset: -320; } }
+@keyframes orbit-turn { to { transform: rotate(360deg); } }
+
+@media (max-width: 640px) {
+  .scene { width: 180%; max-width: none; margin-left: -40%; opacity: 0.3; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .background:not([data-playing="true"]) * { animation: none; }
+}

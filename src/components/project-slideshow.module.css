@@ -1,0 +1,40 @@
+.track {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  overscroll-behavior-x: contain;
+  scrollbar-width: thin;
+  scrollbar-color: var(--brand-button) transparent;
+  padding: 4px 2px 20px;
+}
+
+.track > article {
+  flex: 0 0 100%;
+  min-width: 0;
+  scroll-snap-align: start;
+}
+
+.track[data-wheel-scrolling="true"] {
+  scroll-snap-type: none;
+  scroll-behavior: auto;
+}
+
+.track:focus-visible {
+  outline: 2px solid var(--brand-button);
+  outline-offset: 4px;
+  border-radius: 20px;
+}
+
+@media (min-width: 640px) {
+  .track > article { flex-basis: calc((100% - 20px) / 2); }
+}
+
+@media (min-width: 1024px) {
+  .track > article { flex-basis: calc((100% - 60px) / 4); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track { scroll-behavior: auto; }
+}

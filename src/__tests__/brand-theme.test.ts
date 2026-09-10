@@ -35,7 +35,7 @@ describe("ATS and client portfolio theme", () => {
     expect(globalsCss).toContain("--brand-button: #2563EB");
     expect(globalsCss).toContain("--brand-soft: #E0F2FE");
     expect(globalsCss).toContain("--brand-muted: #4B5563");
-    expect(globalsCss).toContain("--background: #F8FAFC");
+    expect(globalsCss).toContain("--background: #D6DFEB");
     expect(globalsCss).toContain("--foreground: #111827");
     expect(globalsCss).not.toContain('url("/images/homepage-hero-bg.png")');
   });
@@ -43,7 +43,7 @@ describe("ATS and client portfolio theme", () => {
   test("uses restrained chrome and mobile layout safeguards", () => {
     expect(siteHeader).toContain("bg-white/95");
     expect(siteHeader).toContain("border-slate-200");
-    expect(siteFooter).toContain("bg-brand-ink");
+    expect(siteFooter).toContain("bg-[#111827]");
     expect(siteFooter).toContain("text-white");
     expect(rootLayout).toContain('main className="flex-1 pt-[72px]"');
     expect(globalsCss).toContain("overflow-x: hidden;");

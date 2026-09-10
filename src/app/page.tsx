@@ -2,6 +2,7 @@ import Image from "next/image";
 
 import { AnimatedButtonLink } from "../components/animated-button-link";
 import { StatCard } from "../components/stat-card";
+import { ProjectSlideshow } from "../components/project-slideshow";
 import { experiences, profile, projects, type Project } from "../data/portfolio";
 import { skillGroups } from "../data/skills";
 import { SkillIcon } from "../data/skills/skill-icons";
@@ -9,7 +10,7 @@ import styles from "./home.module.css";
 
 export function FeaturedProjectCard({ project }: { project?: Project }) {
   return (
-    <article className="rounded-lg border border-slate-200 bg-white p-5 text-brand-ink shadow-sm">
+    <article className="glass-panel rounded-lg border border-slate-200 bg-white p-5 text-brand-ink shadow-sm">
       <p className="text-sm font-semibold text-brand-button">
         Featured project
       </p>
@@ -51,7 +52,6 @@ export default function HomePage() {
   const featuredSkills = skillGroups
     .flatMap((group) => group.skills)
     .slice(0, 14);
-  const featuredProjects = projects.slice(0, 4);
   const recentExperience = experiences.slice(0, 2);
   const stats = [
     {
@@ -102,7 +102,7 @@ export default function HomePage() {
 
         <section
           aria-label="Animated identity motion graphic"
-          className="motion-card overflow-hidden rounded-lg border border-slate-200 bg-white p-5 text-brand-ink shadow-sm sm:p-6"
+          className="glass-panel motion-card overflow-hidden rounded-lg border border-slate-200 bg-white p-5 text-brand-ink shadow-sm sm:p-6"
         >
           <div
             className={`${styles.heroImageWrap} ${styles.motionStage} relative mx-auto max-w-md rounded-lg`}
@@ -128,7 +128,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-6xl px-4 py-10 sm:px-8 sm:py-12">
+      <section className="mx-auto w-full max-w-[1600px] px-4 py-10 sm:px-8 sm:py-12">
         <div className="flex flex-col gap-3 border-b border-slate-200 pb-5 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p className="text-sm font-semibold text-brand-button">
@@ -146,12 +146,21 @@ export default function HomePage() {
           </a>
         </div>
 
-        <div className="mt-6 grid gap-5 lg:grid-cols-2">
-          {featuredProjects.map((project) => (
+        <ProjectSlideshow count={projects.length}>
+          {projects.map((project) => (
             <article
               key={project.title}
-              className="motion-card rounded-lg border border-slate-200 bg-white p-5 text-brand-ink shadow-sm"
+              className="glass-panel flex flex-col rounded-lg border border-slate-200 bg-white p-5 text-brand-ink shadow-sm"
             >
+              <div className="relative mb-5 aspect-[16/10] overflow-hidden rounded-lg border border-slate-200 bg-slate-100">
+                <Image
+                  src={project.image.src}
+                  alt={project.image.alt}
+                  fill
+                  sizes="(min-width: 1600px) 327px, (min-width: 1024px) calc((100vw - 292px) / 4), (min-width: 640px) calc((100vw - 168px) / 2), calc(100vw - 74px)"
+                  className="object-cover object-top"
+                />
+              </div>
               <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
                 <div>
                   <p className="text-sm font-semibold text-brand-button">
@@ -185,13 +194,22 @@ export default function HomePage() {
                   </span>
                 ))}
               </div>
+              <a
+                href={project.url}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={`Visit ${project.title} website`}
+                className="mt-auto inline-flex min-h-11 items-center pt-5 text-sm font-semibold text-brand-button underline-offset-4 hover:underline focus-visible:rounded focus-visible:outline-2 focus-visible:outline-brand-button"
+              >
+                Visit site <span aria-hidden="true" className="ml-2">↗</span>
+              </a>
             </article>
           ))}
-        </div>
+        </ProjectSlideshow>
       </section>
 
       <section className="mx-auto grid w-full max-w-6xl gap-6 px-4 py-10 sm:px-8 sm:py-12 lg:grid-cols-[0.9fr_1.1fr]">
-        <section className="motion-card rounded-lg border border-slate-200 bg-white p-5 text-brand-ink shadow-sm sm:p-6">
+        <section className="glass-panel motion-card rounded-lg border border-slate-200 bg-white p-5 text-brand-ink shadow-sm sm:p-6">
           <p className="text-sm font-semibold text-brand-button">
             Core Competencies
           </p>
@@ -208,7 +226,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="motion-card rounded-lg border border-slate-200 bg-white p-5 text-brand-ink shadow-sm sm:p-6">
+        <section className="glass-panel motion-card rounded-lg border border-slate-200 bg-white p-5 text-brand-ink shadow-sm sm:p-6">
           <p className="text-sm font-semibold text-brand-button">
             Recent Experience
           </p>
@@ -231,7 +249,7 @@ export default function HomePage() {
       </section>
 
       <section className="mx-auto w-full max-w-6xl px-4 pb-12 sm:px-8 sm:pb-16">
-        <div className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
+        <div className="glass-panel rounded-lg border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
           <p className="text-sm font-semibold text-brand-button">
             Service Fit
           </p>

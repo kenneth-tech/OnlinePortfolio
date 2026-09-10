@@ -9,7 +9,7 @@ export default function ExperiencePage() {
         description="Resume-style career history with responsibilities, business context, and practical delivery experience across development, design, media, and operations."
       />
 
-      <section className="motion-card mt-8 rounded-lg border border-slate-200 bg-white p-5 text-brand-ink shadow-sm sm:p-6">
+      <section className="glass-panel motion-card mt-8 rounded-lg border border-slate-200 bg-white p-5 text-brand-ink shadow-sm sm:p-6">
         <p className="text-sm font-semibold text-brand-button">
           Resume Experience
         </p>
@@ -47,7 +47,7 @@ export default function ExperiencePage() {
         </div>
       </section>
 
-      <section className="mt-8 rounded-lg border border-slate-200 bg-white p-5 text-brand-ink shadow-sm sm:p-6">
+      <section className="glass-panel mt-8 rounded-lg border border-slate-200 bg-white p-5 text-brand-ink shadow-sm sm:p-6">
         <h2 className="text-2xl font-semibold text-brand-ink">Education</h2>
         <div className="mt-5 grid gap-5">
           {education.map((item) => (

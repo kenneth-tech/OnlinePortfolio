@@ -9,7 +9,7 @@ export default function SkillsPage() {
         description="A scannable skills matrix for recruiters and clients reviewing technical fit, platform experience, design capability, and marketing support."
       />
 
-      <section className="motion-card mt-8 rounded-lg border border-slate-200 bg-white p-5 text-brand-ink shadow-sm sm:p-6">
+      <section className="glass-panel motion-card mt-8 rounded-lg border border-slate-200 bg-white p-5 text-brand-ink shadow-sm sm:p-6">
         <p className="text-sm font-semibold text-brand-button">
           Skills Matrix
         </p>

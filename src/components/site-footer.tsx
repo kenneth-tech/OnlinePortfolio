@@ -30,7 +30,7 @@ export function SiteFooter() {
   const phoneHref = `tel:${profile.phone.replaceAll(" ", "")}`;
 
   return (
-    <footer className="border-t border-slate-800 bg-brand-ink text-white">
+    <footer className="glass-footer border-t border-slate-800 bg-[#111827] text-white">
       <div className="mx-auto grid w-full max-w-6xl justify-items-center gap-8 px-4 py-10 text-center sm:justify-items-start sm:px-8 sm:py-12 sm:text-left lg:grid-cols-[1.2fr_0.7fr_0.8fr] lg:gap-10">
         <section className="max-w-xl">
           <SiteLogo className="mx-auto sm:mx-0" variant="dark" />
@@ -53,7 +53,7 @@ export function SiteFooter() {
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="inline-flex justify-center outline-none transition hover:text-white focus-visible:rounded focus-visible:ring-2 focus-visible:ring-blue-200 focus-visible:ring-offset-4 focus-visible:ring-offset-brand-ink sm:justify-start"
+                  className="inline-flex justify-center outline-none transition hover:text-white focus-visible:rounded focus-visible:ring-2 focus-visible:ring-blue-200 focus-visible:ring-offset-4 focus-visible:ring-offset-[#111827] sm:justify-start"
                 >
                   {item.label}
                 </Link>
@@ -69,13 +69,13 @@ export function SiteFooter() {
           <div className="mt-4 grid gap-3 text-sm text-slate-300">
             <a
               href={`mailto:${profile.email}`}
-              className="inline-flex justify-center outline-none transition hover:text-white focus-visible:rounded focus-visible:ring-2 focus-visible:ring-blue-200 focus-visible:ring-offset-4 focus-visible:ring-offset-brand-ink sm:justify-start"
+              className="inline-flex justify-center outline-none transition hover:text-white focus-visible:rounded focus-visible:ring-2 focus-visible:ring-blue-200 focus-visible:ring-offset-4 focus-visible:ring-offset-[#111827] sm:justify-start"
             >
               {profile.email}
             </a>
             <a
               href={phoneHref}
-              className="inline-flex justify-center outline-none transition hover:text-white focus-visible:rounded focus-visible:ring-2 focus-visible:ring-blue-200 focus-visible:ring-offset-4 focus-visible:ring-offset-brand-ink sm:justify-start"
+              className="inline-flex justify-center outline-none transition hover:text-white focus-visible:rounded focus-visible:ring-2 focus-visible:ring-blue-200 focus-visible:ring-offset-4 focus-visible:ring-offset-[#111827] sm:justify-start"
             >
               {profile.phone}
             </a>
@@ -105,7 +105,7 @@ export function SiteFooter() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label={link.label}
-                className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-slate-700 text-white outline-none transition-[background-color,border-color,color] duration-200 hover:border-blue-200 hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-blue-200 focus-visible:ring-offset-4 focus-visible:ring-offset-brand-ink"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-slate-700 text-white outline-none transition-[background-color,border-color,color] duration-200 hover:border-blue-200 hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-blue-200 focus-visible:ring-offset-4 focus-visible:ring-offset-[#111827]"
               >
                 <SocialIcon label={link.label} />
               </a>

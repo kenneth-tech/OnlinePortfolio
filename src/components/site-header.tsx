@@ -79,7 +79,7 @@ export function SiteHeader() {
   }, [isMenuOpen]);
 
   return (
-    <header className="sticky inset-x-0 top-0 z-[100] border-b border-slate-200 bg-white/95 shadow-sm backdrop-blur">
+    <header className="glass-header sticky inset-x-0 top-0 z-[100] border-b border-slate-200 bg-white/95 shadow-sm backdrop-blur">
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-8">
         <div className="flex items-center gap-4">
           <SiteLogo />

@@ -12,7 +12,7 @@ function ProjectPreview({
   priority?: boolean;
 }) {
   return (
-    <div className="overflow-hidden rounded-lg border border-slate-200 bg-white text-brand-ink shadow-sm">
+    <div className="glass-panel overflow-hidden rounded-lg border border-slate-200 bg-white text-brand-ink shadow-sm">
       <div className="flex h-9 items-center gap-2 border-b border-slate-200 bg-slate-50 px-4">
         <span className="h-2.5 w-2.5 rounded-full bg-red-400" />
         <span className="h-2.5 w-2.5 rounded-full bg-yellow-400" />
@@ -43,7 +43,7 @@ export default function ProjectsPage() {
         description="Live client-ready work samples with role, outcome, technology stack, and direct links for fast review."
       />
 
-      <section className="motion-card mt-8 rounded-lg border border-slate-200 bg-white p-5 text-brand-ink shadow-sm sm:p-6">
+      <section className="glass-panel motion-card mt-8 rounded-lg border border-slate-200 bg-white p-5 text-brand-ink shadow-sm sm:p-6">
         <p className="text-sm font-semibold text-brand-button">
           Project Showcase
         </p>
@@ -67,7 +67,7 @@ export default function ProjectsPage() {
         {projects.map((project, index) => (
           <article
             key={project.title}
-            className="motion-card grid gap-5 rounded-lg border border-slate-200 bg-white p-4 text-brand-ink shadow-sm sm:p-5 lg:grid-cols-[0.9fr_1.1fr]"
+            className="glass-panel motion-card grid gap-5 rounded-lg border border-slate-200 bg-white p-4 text-brand-ink shadow-sm sm:p-5 lg:grid-cols-[0.9fr_1.1fr]"
           >
             <ProjectPreview project={project} priority={index === 0} />
             <div className="flex flex-col self-center">

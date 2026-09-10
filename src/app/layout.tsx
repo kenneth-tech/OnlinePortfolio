@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { ScrollReveal } from "../components/scroll-reveal";
 import { SiteFooter } from "../components/site-footer";
 import { SiteHeader } from "../components/site-header";
+import { SiteMotionBackground } from "../components/site-motion-background";
 import { profile } from "../data/portfolio";
 import "./globals.css";
 
@@ -16,6 +17,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className="h-full antialiased">
       <body className="flex min-h-full flex-col">
+        <SiteMotionBackground />
         <SiteHeader />
         <ScrollReveal>
           <main className="flex-1 pt-[72px]">{children}</main>

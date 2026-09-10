@@ -48,10 +48,10 @@ export type { SkillGroup } from "./skills";
 
 export const profile: Profile = {
   name: "Mark Kenneth R. Rillamas",
-  role: "Web Developer | Multimedia Designer",
+  role: "Full Stack Web Developer",
   location: "Mandaluyong City, Metro Manila",
   summary:
-    "Web Developer and Multimedia Designer with experience building responsive websites, landing pages, and digital experiences using modern tools and efficient development workflows. Skilled in UI/UX design, rapid prototyping, automation, and multimedia production with a focus on usability, performance, and conversion.",
+    "Full Stack Web Developer and Multimedia Designer with experience building responsive websites, landing pages, and digital experiences using modern tools and efficient development workflows. Skilled in UI/UX design, rapid prototyping, automation, and multimedia production with a focus on usability, performance, and conversion.",
   email: "rillamasmarkkenneth763@gmail.com",
   phone: "0965 135 5727",
   links: [

@@ -20,7 +20,7 @@ export default function ContactPage() {
       />
 
       <div className="mt-8 grid gap-5 sm:mt-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-6">
-        <div className="motion-card rounded-lg border border-slate-200 bg-white p-5 text-brand-ink shadow-sm sm:p-6">
+        <div className="glass-panel motion-card rounded-lg border border-slate-200 bg-white p-5 text-brand-ink shadow-sm sm:p-6">
           <p className="text-sm font-semibold text-brand-button">
             Project Inquiry
           </p>
@@ -51,7 +51,7 @@ export default function ContactPage() {
               key={item.href}
               href={item.href}
               aria-label={item.value}
-              className="motion-card group rounded-lg border border-slate-200 bg-white p-5 font-semibold text-brand-ink outline-none shadow-sm transition hover:border-brand-button focus-visible:ring-2 focus-visible:ring-brand-button focus-visible:ring-offset-4 focus-visible:ring-offset-white"
+              className="glass-panel motion-card group rounded-lg border border-slate-200 bg-white p-5 font-semibold text-brand-ink outline-none shadow-sm transition hover:border-brand-button focus-visible:ring-2 focus-visible:ring-brand-button focus-visible:ring-offset-4 focus-visible:ring-offset-white"
             >
               <span className="block text-sm font-medium text-brand-muted">
                 {item.label}
@@ -62,7 +62,7 @@ export default function ContactPage() {
             </a>
           ))}
 
-          <div className="motion-card rounded-lg border border-slate-200 bg-white p-5 text-brand-ink shadow-sm">
+          <div className="glass-panel motion-card rounded-lg border border-slate-200 bg-white p-5 text-brand-ink shadow-sm">
             <p className="text-sm font-semibold text-brand-button">
               Professional Links
             </p>
