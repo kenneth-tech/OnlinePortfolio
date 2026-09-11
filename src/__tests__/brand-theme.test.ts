@@ -15,6 +15,11 @@ const siteFooter = readSource("src", "components", "site-footer.tsx");
 const statCard = readSource("src", "components", "stat-card.tsx");
 const pageHeader = readSource("src", "components", "page-header.tsx");
 const homePage = readSource("src", "app", "page.tsx");
+const flippableHeroMedia = readSource(
+  "src",
+  "components",
+  "flippable-hero-media.tsx",
+);
 const homeModuleCss = readSource("src", "app", "home.module.css");
 const projectsPage = readSource("src", "app", "projects", "page.tsx");
 const experiencePage = readSource("src", "app", "experience", "page.tsx");
@@ -70,8 +75,7 @@ describe("ATS and client portfolio theme", () => {
     expect(homePage).not.toContain("ATS-friendly portfolio");
     expect(homePage).not.toContain("Resume Summary");
     expect(homePage).toContain("Animated identity motion graphic");
-    expect(homePage).toContain("/images/971.jpg");
-    expect(homePage).toContain("Purple isometric programming laptop illustration");
+    expect(homePage).toContain("FlippableHeroMedia");
     expect(homePage).not.toContain("Isometric developer desk animation");
     expect(homePage).not.toContain("Animated code laptop");
     expect(homePage).not.toContain("Animated coffee cup");
@@ -106,9 +110,15 @@ describe("ATS and client portfolio theme", () => {
     expect(globalsCss).toContain("@media (prefers-reduced-motion: reduce)");
   });
 
-  test("uses the uploaded programming illustration in the homepage hero", () => {
-    expect(homePage).toContain("Image");
+  test("uses the uploaded motion graphic in the homepage hero", () => {
+    expect(homePage).toContain("FlippableHeroMedia");
+    expect(flippableHeroMedia).toContain("/images/new.webm");
+    expect(flippableHeroMedia).toContain('poster="/images/971.jpg"');
+    expect(flippableHeroMedia).toContain('type="video/webm"');
+    expect(flippableHeroMedia).toContain("Flip hero motion graphic");
+    expect(flippableHeroMedia).toContain("rotateY(${turns * 360}deg)");
     expect(homeModuleCss).toContain(".heroImageWrap");
+    expect(homeModuleCss).toContain(".heroFlipButton");
     expect(homeModuleCss).toContain(".heroImage");
     expect(homeModuleCss).toContain(".heroImageWrap::before");
     expect(homeModuleCss).toContain(".heroImageWrap::after");

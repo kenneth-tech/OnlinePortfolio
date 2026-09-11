@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 import { AnimatedButtonLink } from "../components/animated-button-link";
+import { FlippableHeroMedia } from "../components/flippable-hero-media";
 import { StatCard } from "../components/stat-card";
 import { ProjectSlideshow } from "../components/project-slideshow";
 import { experiences, profile, projects, type Project } from "../data/portfolio";
@@ -104,19 +105,7 @@ export default function HomePage() {
           aria-label="Animated identity motion graphic"
           className="glass-panel motion-card overflow-hidden rounded-lg border border-slate-200 bg-white p-5 text-brand-ink shadow-sm sm:p-6"
         >
-          <div
-            className={`${styles.heroImageWrap} ${styles.motionStage} relative mx-auto max-w-md rounded-lg lg:max-w-xl`}
-          >
-            <Image
-              alt="Purple isometric programming laptop illustration"
-              className={styles.heroImage}
-              height={4500}
-              priority
-              sizes="(min-width: 1440px) 576px, (min-width: 1024px) 45vw, (min-width: 640px) 448px, calc(100vw - 74px)"
-              src="/images/971.jpg"
-              width={6000}
-            />
-          </div>
+          <FlippableHeroMedia />
         </section>
       </section>
 

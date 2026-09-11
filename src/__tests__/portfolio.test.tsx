@@ -481,11 +481,20 @@ describe("portfolio pages", () => {
     expect(screen.queryByText("UI")).not.toBeInTheDocument();
     expect(screen.queryByText("Code")).not.toBeInTheDocument();
     expect(screen.queryByText("Media")).not.toBeInTheDocument();
-    expect(
-      screen.getByRole("img", {
-        name: "Purple isometric programming laptop illustration",
-      }),
-    ).toBeInTheDocument();
+    const heroControl = screen.getByRole("button", {
+      name: "Flip hero motion graphic",
+    });
+    const heroVideo = heroControl.querySelector("video");
+
+    expect(heroVideo).toBeInTheDocument();
+    expect(heroVideo).toHaveAttribute("poster", "/images/971.jpg");
+    expect(heroVideo?.querySelector("source")).toHaveAttribute(
+      "src",
+      "/images/new.webm",
+    );
+    expect(heroControl).toHaveStyle({ transform: "rotateY(0deg)" });
+    fireEvent.click(heroControl);
+    expect(heroControl).toHaveStyle({ transform: "rotateY(360deg)" });
     expect(
       screen.queryByLabelText("Isometric developer desk animation"),
     ).not.toBeInTheDocument();
