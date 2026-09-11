@@ -45,6 +45,10 @@ export const skillGroups: SkillGroup[] = [
   {
     title: "Design and Multimedia",
     skills: [
+      "Figma",
+      "Photoshop",
+      "Premiere Pro",
+      "Affinity",
       "UI/UX Design",
       "Graphic Design",
       "Video Editing",

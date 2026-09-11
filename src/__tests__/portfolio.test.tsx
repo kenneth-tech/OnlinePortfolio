@@ -369,6 +369,42 @@ describe("site chrome", () => {
 });
 
 describe("scroll reveal", () => {
+  test("reveals a homepage section as a group without hiding its nested cards", () => {
+    let reveal: ((entries: IntersectionObserverEntry[]) => void) | undefined;
+    const observe = vi.fn();
+    const unobserve = vi.fn();
+    vi.stubGlobal("IntersectionObserver", vi.fn(function (
+      callback: (entries: IntersectionObserverEntry[]) => void,
+    ) {
+      reveal = callback;
+      return { observe, unobserve, disconnect: vi.fn() };
+    }));
+    const { unmount } = render(
+      <ScrollReveal>
+        <section className="section-reveal" aria-label="Homepage section">
+          <div className="motion-card">Grouped card</div>
+        </section>
+      </ScrollReveal>,
+    );
+    const section = screen.getByRole("region", { name: "Homepage section" });
+    expect(observe).toHaveBeenCalledTimes(1);
+    expect(observe).toHaveBeenCalledWith(section);
+    expect(screen.getByText("Grouped card")).not.toHaveClass("reveal-on-scroll");
+    reveal?.([{
+      target: section,
+      isIntersecting: true,
+      intersectionRatio: 1,
+      boundingClientRect: section.getBoundingClientRect(),
+      intersectionRect: section.getBoundingClientRect(),
+      rootBounds: null,
+      time: 0,
+    }]);
+    expect(section).toHaveClass("is-visible");
+    expect(unobserve).toHaveBeenCalledWith(section);
+    unmount();
+    vi.unstubAllGlobals();
+  });
+
   test("reveals animated elements when they enter the viewport", () => {
     let observedElement: Element | undefined;
     let observerCallback:
@@ -485,7 +521,7 @@ describe("portfolio pages", () => {
     expect(
       screen
         .getByText(experiences[0].role)
-        .closest("article"),
+        .closest(".glass-panel"),
     ).toHaveClass("bg-white", "text-brand-ink");
 
     render(<SkillsPage />);

@@ -1,4 +1,4 @@
-import { act, cleanup, fireEvent, render, screen } from "@testing-library/react";
+import { act, cleanup, render, screen } from "@testing-library/react";
 import { afterEach, beforeEach, expect, test, vi } from "vitest";
 
 import { SiteMotionBackground } from "../components/site-motion-background";
@@ -22,22 +22,17 @@ afterEach(() => {
   vi.unstubAllGlobals();
 });
 
-test("pauses and resumes the scene through its accessible control", () => {
+test("plays the decorative scene without a motion button", () => {
   render(<SiteMotionBackground />);
-  const pause = screen.getByRole("button", { name: "Pause background animation" });
-  const scene = document.getElementById(pause.getAttribute("aria-controls")!);
+  const scene = document.getElementById("site-motion-background");
   expect(scene).toHaveAttribute("data-playing", "true");
-  fireEvent.click(pause);
-  expect(scene).toHaveAttribute("data-playing", "false");
-  fireEvent.click(screen.getByRole("button", { name: "Play background animation" }));
-  expect(scene).toHaveAttribute("data-playing", "true");
+  expect(screen.queryByRole("button")).not.toBeInTheDocument();
 });
 
 test("starts with a still scene when reduced motion is requested", () => {
   reducedMotion = true;
   render(<SiteMotionBackground />);
-  const play = screen.getByRole("button", { name: "Play background animation" });
-  expect(document.getElementById(play.getAttribute("aria-controls")!)).toHaveAttribute("data-playing", "false");
+  expect(document.getElementById("site-motion-background")).toHaveAttribute("data-playing", "false");
 });
 
 test("responds when the visitor enables reduced motion while browsing", () => {
@@ -46,5 +41,5 @@ test("responds when the visitor enables reduced motion while browsing", () => {
     reducedMotion = true;
     preferenceChanged();
   });
-  expect(screen.getByRole("button", { name: "Play background animation" })).toBeInTheDocument();
+  expect(document.getElementById("site-motion-background")).toHaveAttribute("data-playing", "false");
 });

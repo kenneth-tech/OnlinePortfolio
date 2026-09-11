@@ -7,7 +7,7 @@ type ScrollRevealProps = {
   children: ReactNode;
 };
 
-const revealSelector = ".motion-surface, .motion-card";
+const revealSelector = ".motion-surface, .motion-card, .section-reveal";
 
 export function ScrollReveal({ children }: ScrollRevealProps) {
   const rootRef = useRef<HTMLDivElement>(null);
@@ -20,7 +20,7 @@ export function ScrollReveal({ children }: ScrollRevealProps) {
       return;
     }
 
-    const elements = Array.from(root.querySelectorAll(revealSelector));
+    const elements = Array.from(root.querySelectorAll(revealSelector)).filter((element) => !element.parentElement?.closest(".section-reveal"));
 
     if (!("IntersectionObserver" in window)) {
       for (const element of elements) {

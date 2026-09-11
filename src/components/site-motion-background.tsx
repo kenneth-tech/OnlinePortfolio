@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useSyncExternalStore } from "react";
+import { useSyncExternalStore } from "react";
 
 import styles from "./site-motion-background.module.css";
 
@@ -18,8 +18,7 @@ export function SiteMotionBackground() {
     () => window.matchMedia(motionQuery).matches,
     () => true,
   );
-  const [manualPlayback, setManualPlayback] = useState<boolean | null>(null);
-  const isPlaying = manualPlayback ?? !reducedMotion;
+  const isPlaying = !reducedMotion;
 
   return (
     <>
@@ -129,15 +128,6 @@ export function SiteMotionBackground() {
         </svg>
         <div className={styles.veil} />
       </div>
-      <button
-        type="button"
-        onClick={() => setManualPlayback(!isPlaying)}
-        aria-controls="site-motion-background"
-        aria-label={isPlaying ? "Pause background animation" : "Play background animation"}
-        className="fixed bottom-4 right-4 z-40 min-h-11 rounded-full border border-slate-200 bg-brand-card px-4 py-2 text-xs font-semibold text-brand-ink shadow-sm outline-none focus-visible:ring-2 focus-visible:ring-brand-button"
-      >
-        {isPlaying ? "Pause motion" : "Play motion"}
-      </button>
     </>
   );
 }

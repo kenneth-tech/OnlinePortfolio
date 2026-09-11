@@ -31,7 +31,7 @@ export function SiteFooter() {
 
   return (
     <footer className="glass-footer border-t border-slate-800 bg-[#111827] text-white">
-      <div className="mx-auto grid w-full max-w-6xl justify-items-center gap-8 px-4 py-10 text-center sm:justify-items-start sm:px-8 sm:py-12 sm:text-left lg:grid-cols-[1.2fr_0.7fr_0.8fr] lg:gap-10">
+      <div className="mx-auto grid w-full max-w-[1600px] justify-items-center gap-8 px-4 py-10 text-center sm:justify-items-start sm:px-8 sm:py-12 sm:text-left lg:grid-cols-[1.2fr_0.7fr_0.8fr] lg:gap-10">
         <section className="max-w-xl">
           <SiteLogo className="mx-auto sm:mx-0" variant="dark" />
           <p className="mt-3 text-sm font-semibold text-blue-200">
@@ -95,7 +95,7 @@ export function SiteFooter() {
       </div>
 
       <div className="border-t border-slate-800">
-        <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-4 px-4 py-5 text-center text-sm text-slate-300 sm:flex-row sm:items-center sm:justify-between sm:px-8 sm:text-left">
+        <div className="mx-auto flex w-full max-w-[1600px] flex-col items-center gap-4 px-4 py-5 text-center text-sm text-slate-300 sm:flex-row sm:items-center sm:justify-between sm:px-8 sm:text-left">
           <p>(c) {year} Mark Kenneth R. Rillamas. All rights reserved.</p>
           <div className="flex flex-wrap justify-center gap-3 sm:justify-start">
             {profile.links.map((link) => (

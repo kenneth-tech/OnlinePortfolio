@@ -1,4 +1,5 @@
 import type { IconType } from "react-icons";
+import Image from "next/image";
 import {
   FaChartLine,
   FaCode,
@@ -15,6 +16,7 @@ import {
 import {
   SiCpanel,
   SiCss,
+  SiFigma,
   SiGodaddy,
   SiGoogleads,
   SiGoogleanalytics,
@@ -72,6 +74,7 @@ const skillIcons: Record<string, SkillIconMeta> = {
   "Website Migration": { Icon: FaCode, color: "#0EA5E9" },
   "Hosting Configuration": { Icon: FaServer, color: "#673DE6" },
   "UI/UX Design": { Icon: FaCode, color: "#A855F7" },
+  Figma: { Icon: SiFigma, color: "#A259FF" },
   "Graphic Design": { Icon: FaPalette, color: "#FF61F6" },
   "Video Editing": { Icon: FaVideo, color: "#9999FF" },
   "Motion Graphics": { Icon: FaVideo, color: "#FF7A59" },
@@ -84,7 +87,21 @@ const skillIcons: Record<string, SkillIconMeta> = {
   Zapier: { Icon: SiZapier, color: "#FF4F00" },
 };
 
+const skillLogoImages: Record<string, string> = {
+  Photoshop: "/images/skills/photoshop.svg",
+  "Premiere Pro": "/images/skills/premiere-pro.svg",
+  Affinity: "/images/skills/affinity.png",
+};
+
 export function SkillIcon({ skill }: { skill: string }) {
+  const logoImage = skillLogoImages[skill];
+  if (logoImage) {
+    return (
+      <span className="flex h-6 w-6 shrink-0 items-center justify-center">
+        <Image src={logoImage} alt={`${skill} icon`} width={24} height={24} className="h-6 w-6 rounded object-contain" />
+      </span>
+    );
+  }
   const { Icon, color } = skillIcons[skill] ?? {
     Icon: FaCode,
     color: "#0B2545",

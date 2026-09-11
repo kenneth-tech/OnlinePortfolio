@@ -74,7 +74,7 @@ export default function HomePage() {
   return (
     <div className="bg-transparent">
       <section
-        className={`${styles.hero} mx-auto grid w-full max-w-6xl gap-8 px-4 py-10 sm:px-8 sm:py-14 lg:grid-cols-[1.05fr_0.95fr] lg:items-start lg:gap-10`}
+        className={`${styles.hero} mx-auto grid w-full max-w-[1600px] gap-8 px-4 py-10 sm:px-8 sm:py-14 lg:grid-cols-[1.05fr_0.95fr] lg:items-start lg:gap-10`}
       >
         <div className="motion-surface">
           <h1 className="max-w-4xl text-4xl font-bold leading-tight text-brand-ink sm:text-5xl lg:text-6xl">
@@ -105,14 +105,14 @@ export default function HomePage() {
           className="glass-panel motion-card overflow-hidden rounded-lg border border-slate-200 bg-white p-5 text-brand-ink shadow-sm sm:p-6"
         >
           <div
-            className={`${styles.heroImageWrap} ${styles.motionStage} relative mx-auto max-w-md rounded-lg`}
+            className={`${styles.heroImageWrap} ${styles.motionStage} relative mx-auto max-w-md rounded-lg lg:max-w-xl`}
           >
             <Image
               alt="Purple isometric programming laptop illustration"
               className={styles.heroImage}
               height={4500}
               priority
-              sizes="(min-width: 1024px) 448px, calc(100vw - 56px)"
+              sizes="(min-width: 1440px) 576px, (min-width: 1024px) 45vw, (min-width: 640px) 448px, calc(100vw - 74px)"
               src="/images/971.jpg"
               width={6000}
             />
@@ -120,15 +120,15 @@ export default function HomePage() {
         </section>
       </section>
 
-      <section className="mx-auto w-full max-w-6xl px-4 py-6 sm:px-8">
-        <div className="grid gap-4 md:grid-cols-3">
+      <section className="section-reveal mx-auto w-full max-w-[1600px] px-4 py-6 sm:px-8">
+        <div className="section-stagger grid gap-4 md:grid-cols-3">
           {stats.map((stat) => (
             <StatCard key={stat.value} {...stat} />
           ))}
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-[1600px] px-4 py-10 sm:px-8 sm:py-12">
+      <section className="section-reveal section-stagger mx-auto w-full max-w-[1600px] px-4 py-10 sm:px-8 sm:py-12">
         <div className="flex flex-col gap-3 border-b border-slate-200 pb-5 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p className="text-sm font-semibold text-brand-button">
@@ -208,7 +208,7 @@ export default function HomePage() {
         </ProjectSlideshow>
       </section>
 
-      <section className="mx-auto grid w-full max-w-6xl gap-6 px-4 py-10 sm:px-8 sm:py-12 lg:grid-cols-[0.9fr_1.1fr]">
+      <section className="section-reveal section-stagger mx-auto grid w-full max-w-[1600px] gap-6 px-4 py-10 sm:px-8 sm:py-12 lg:grid-cols-[0.9fr_1.1fr]">
         <section className="glass-panel motion-card rounded-lg border border-slate-200 bg-white p-5 text-brand-ink shadow-sm sm:p-6">
           <p className="text-sm font-semibold text-brand-button">
             Core Competencies
@@ -248,12 +248,12 @@ export default function HomePage() {
         </section>
       </section>
 
-      <section className="mx-auto w-full max-w-6xl px-4 pb-12 sm:px-8 sm:pb-16">
+      <section className="section-reveal mx-auto w-full max-w-[1600px] px-4 pb-12 sm:px-8 sm:pb-16">
         <div className="glass-panel rounded-lg border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
           <p className="text-sm font-semibold text-brand-button">
             Service Fit
           </p>
-          <ul className="mt-4 grid gap-3 text-sm text-brand-muted sm:grid-cols-2">
+          <ul className="section-stagger mt-4 grid gap-3 text-sm text-brand-muted sm:grid-cols-2">
             {serviceProof.map((item) => (
               <li key={item} className="leading-6">
                 {item}

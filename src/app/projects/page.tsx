@@ -37,7 +37,7 @@ function ProjectPreview({
 
 export default function ProjectsPage() {
   return (
-    <section className="mx-auto w-full max-w-6xl px-4 py-10 sm:px-8 sm:py-14">
+    <section className="mx-auto w-full max-w-[1600px] px-4 py-10 sm:px-8 sm:py-14">
       <PageHeader
         title="Projects"
         description="Live client-ready work samples with role, outcome, technology stack, and direct links for fast review."
